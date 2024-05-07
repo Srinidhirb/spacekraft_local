@@ -331,7 +331,7 @@ if (isset($_COOKIE['user_id'])) {
                 <path d="M0.125 0.500043C0.125 0.500043 1.86764 0.500043 3.625 0.500043M8.125 16.5L1.125 9.50004C1.125 9.50004 2.625 9.50004 3.625 9.50004C4.625 9.50004 9.125 9.56183 9.125 5.00004C9.125 0.438253 4.625 0.500043 3.625 0.500043M12.125 0.500043C12.125 0.500043 6.55393 0.500043 3.625 0.500043M0.125 4.50004H12.125" stroke="#717579" stroke-width="1.5" />
               </svg>
               1000 <span class="duration"> / month</span></span>
-            <a href="#"> <span class="button"> Choose Plan</span></a>
+            <a href="Space_listed"> <span class="button"> Choose Plan</span></a>
           </div>
         </td>
         <td>

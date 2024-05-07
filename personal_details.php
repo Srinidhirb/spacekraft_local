@@ -91,6 +91,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $selectedDates = !empty($selectedDates) ? $selectedDates : 0;
 
     // Personal Details
+    $you_are = $_POST['you_are'] ?? []; // Retrieve the array of selected values or an empty array if none are selected
+    $you = implode(',', $you_are); // Convert the array to a comma-separated string
+
     $full_name = $_POST['full_name'] ?? "";
     $email = $_POST['email'] ?? "";
     $mobile_number = $_POST['number'] ?? "";
@@ -133,13 +136,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         SpaceArea, Description, images, Amenities,
         min_duration, min_duration_unit, max_duration, max_duration_unit,
         selected_year, selected_month, selected_dates,
-        DailyPrice, WeeklyPrice, MonthlyPrice, Maintenance, SecurityDeposit, full_name, email, mobile_number, otp
+        DailyPrice, WeeklyPrice, MonthlyPrice, Maintenance, SecurityDeposit,you, full_name, email, mobile_number, otp
     ) VALUES (
         ?, ?, ?, ?, ?, ?, ?, ?,?,
             ?, ?, ?, ?,
             ?, ?, ?, ?,
             ?, ?, ?,
-            ?, ?, ?, ?, ?,?,?,?,?
+            ?, ?, ?,?, ?, ?,?,?,?,?
     )";
 
 
@@ -149,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($stmt) {
         // Bind parameters
         $stmt->bind_param(
-            "sssssssssssssssssssssssssssss",
+            "ssssssssssssssssssssssssssssss",
             $_COOKIE['user_id'],
             handleEmpty($spaceName),
             handleEmpty($projectType),
@@ -175,6 +178,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             handleEmpty($spaceMonthlyPrice),
             handleEmpty($spaceMain),
             handleEmpty($spaceDeposit),
+            $you,
             $full_name,
             $email,
             $mobile_number,
@@ -184,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Execute the statement
         if ($stmt->execute()) {
             // Insert successful
-            echo '<script>window.location.href = "Space_listed.php";</script>';
+            echo '<script>window.location.href = "premium_listing";</script>';
             session_destroy();
             exit();
         } else {
@@ -260,7 +264,7 @@ $conn->close();
         <div class="heading-small">Personal Details</div>
         <form method="post" id="form">
             <label for="you_are">You are <span class="red">*</span></label>
-            <div class="you_are" id="you_are">
+            <div class="you_are" id="you">
                 <label>
                     <input type="checkbox" name="you_are[]" value="Owner">
                     <span>Owner</span>
