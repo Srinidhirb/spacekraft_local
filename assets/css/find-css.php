@@ -22,7 +22,7 @@ color: inherit;
 }
 
 * {
-color: rgb(0, 0, 0);
+
 
 font-family: Lato;
 font-weight: 400;
@@ -222,7 +222,7 @@ letter-spacing: 0.32px;
 
 /* LISTING */
 * {
-color: rgb(0, 0, 0);
+
 
 font-family: Lato;
 font-weight: 400;

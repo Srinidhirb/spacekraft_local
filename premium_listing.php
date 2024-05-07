@@ -29,7 +29,7 @@ if (isset($_COOKIE['user_id'])) {
       font-size: 32px;
       font-weight: 500;
       line-height: 38.4px;
-      text-align: left;
+      text-align: center;
 
     }
 
@@ -200,8 +200,104 @@ if (isset($_COOKIE['user_id'])) {
       display: block;
       content: "";
     }
+    .mobile_pricing{
+      display: none;
+    }
+    .custom-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 5rem 0rem;
+    }
 
-  
+
+
+
+    .custom-card-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .custom-pricing-card {
+      margin: 20px 30px;
+      height: 400px;
+      width: 275px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      transition: 0.5s ease-in-out;
+      padding: 16px 14px;
+      border-radius: 10px;
+      border: 2px solid #031B64;
+    }
+
+    .custom-pricing-card i {
+      color: #031B64;
+      height: 60px;
+      width: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      border-radius: 50%;
+      box-shadow: 0 0 34px -12px gray;
+    }
+
+    .custom-pricing-card span {
+      color: #031B64;
+      margin: -10px 0;
+      font-weight: bold;
+      font-size: 29px;
+    }
+
+    .custom-price {
+      font-size: 30px;
+      font-family: "Baloo 2";
+    }
+
+    .custom-package-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .custom-package-list li {
+      list-style: none;
+      margin: 6px 0;
+      color: gray;
+      font-size: 16px;
+    }
+
+    .custom-get-started-btn {
+      border: 2px solid #031B64;
+      color: white;
+      background:  #031B64;
+      padding: 8px 25px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s ease-in-out;
+    }
+
+    .custom-get-started-btn:hover {
+      background: transparent;
+      color: #031B64;
+    }
+    @media screen and (max-width:1000px) {
+      .pricing{
+        display: none;
+
+      }
+      .mobile_pricing{
+        display: block;
+      }
+      
+    }
   </style>
 </head>
 
@@ -353,6 +449,68 @@ if (isset($_COOKIE['user_id'])) {
           </svg></td>
       </tr>
     </table>
+  </div>
+  <div class="mobile_pricing">
+  <div class="custom-container">
+
+<div class="custom-card-group">
+  <div class="custom-pricing-card">
+
+    <span>Basic</span>
+    <h4 class="custom-price">Free</h4>
+    <ul class="custom-package-list">
+      <li> Basic Features
+      </li>
+      <li>Plan Validity - Free Lifetime</li>
+      <li> <strike> Visiblity in top slots</strike></li>
+      <li><strike>Invoice based billing</strike></li>
+      <li><strike>24/7 Support</strike></li>
+      <li><strike>Social Media promotion</strike></li>
+
+    </ul>
+    <a href="#" class="custom-get-started-btn">Get Started</a>
+  </div>
+  <div class="custom-pricing-card">
+    <span>Pro</span>
+    <h4 class="custom-price">₹ 1000 / month</h4>
+    <ul class="custom-package-list">
+      <li>Basic Features</li>
+      <li>Plan Validity - 30 days free</li>
+      <li><strike> Visiblity in top slots</strike></li>
+      <li>Invoice based billing</li>
+      <li>24/7 Support</li>
+      <li>Social Media promotion</li>
+    </ul>
+    <a href="#" class="custom-get-started-btn">Choose Plan</a>
+  </div>
+  <div class="custom-pricing-card">
+    <span>Plus</span>
+    <h4 class="custom-price">₹ 2000 / month</h4>
+    <ul class="custom-package-list">
+      <li>Basic Features</li>
+      <li>Plan Validity - 60 days free</li>
+      <li>Visiblity in top slots</li>
+      <li>Invoice based billing</li>
+      <li>24/7 Support</li>
+      <li>Social Media promotion</li>
+    </ul>
+    <a href="#" class="custom-get-started-btn">Choose Plan</a>
+  </div>
+  <div class="custom-pricing-card">
+    <span>Enterprise</span>
+    <h4 class="custom-price">Let's Chat</h4>
+    <ul class="custom-package-list">
+      <li>Basic Features</li>
+      <li>Plan Validity - 90 days free</li>
+      <li>Visiblity in top slots</li>
+      <li>Invoice based billing</li>
+      <li>24/7 Support</li>
+      <li>Social Media promotion</li>
+    </ul>
+    <a href="#" class="custom-get-started-btn">Get Started</a>
+  </div>
+</div>
+</div>
   </div>
   <?php include 'footer.php' ?>
   <script>

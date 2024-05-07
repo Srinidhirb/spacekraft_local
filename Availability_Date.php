@@ -109,8 +109,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                 <!--<input type="text" id="calendar" name="calendar" placeholder="Select Dates" pattern="\d{4}-\d{2}-\d{2}" required>-->
-                <input type="text" id="calendar" name="calendar" placeholder="YYYY-MM-DD" pattern="\d{4}-\d{2}-\d{2}" title="Please enter a date in the format YYYY-MM-DD" required value="<?php echo isset($_SESSION['selectedDates']) ? $_SESSION['selectedDates'] : ''; ?>">
-
+                <!-- <input type="text" id="calendar" name="calendar" placeholder="YYYY-MM-DD" pattern="\d{4}-\d{2}-\d{2}" title="Please enter a date in the format YYYY-MM-DD" required value="<?php echo isset($_SESSION['selectedDates']) ? $_SESSION['selectedDates'] : ''; ?>"> -->
+                <div id="calendarContainer" class="calendar-container"></div>
+                <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize flatpickr for multi-date selection on the calendarContainer div
+            flatpickr("#calendarContainer", {
+                mode: "multiple",
+                dateFormat: "Y-m-d", // Adjust date format to YYYY-MM-DD
+                minDate: "today",
+                disable: [new Date()], // Set a minimum date if needed
+                inline: true, // Display the calendar inline
+            });
+        });
+    </script>
             </div>
 
 
@@ -124,33 +136,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
         <?php include 'footer.php'?>
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Initialize flatpickr for multi-date selection
-                flatpickr("#calendar", {
-                    mode: "multiple",
-                    dateFormat: "d-m-y",
-                    minDate: "today",
-                    disable: [new Date()], // Set a minimum date if needed
-                });
-            });
-
-            document.addEventListener('DOMContentLoaded', function() {
-                var currentYear = new Date().getFullYear();
-                var selectYear = document.getElementById('year');
-
-                // Generate options for the next 10 years
-                for (var i = 0; i < 10; i++) {
-                    var option = document.createElement('option');
-                    option.value = currentYear + i;
-                    option.text = currentYear + i;
-                    selectYear.appendChild(option);
-                }
-            });
-
-            function goToStep2() {
-                window.location.href = 'Space_showcase.php'; // Change 'Availability_Date.php' to the actual URL of step 3
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize flatpickr for multi-date selection
+        flatpickr("#calendar", {
+            mode: "multiple",
+            dateFormat: "Y-m-d", // Adjust date format to YYYY-MM-DD
+            minDate: "today",
+            disable: [new Date()], // Set a minimum date if needed
+            onReady: function(selectedDates, dateStr, instance) {
+                // Open the calendar after it's ready
+                instance.open();
             }
-        </script>
+        });
+    });
+
+    function goToStep2() {
+        window.location.href = 'Space_showcase.php'; // Change 'Space_showcase.php' to the actual URL of step 3
+    }
+</script>
+
     </div>
 </body>
 
