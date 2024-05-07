@@ -1,5 +1,17 @@
+
 <?php
-ob_start(); // Start output buffering
+// Connect to the database
+
+$dotenv = parse_ini_file(__DIR__ . '/.env');
+
+if ($dotenv === false) {
+    throw new Exception("Error loading .env file");
+}
+
+foreach ($dotenv as $key => $value) {
+    $_ENV[$key] = $value;
+}
+
 // Database credentials
 $servername = $_ENV['DB_HOST'];
 $username = $_ENV['DB_USER'];
@@ -26,6 +38,4 @@ if (!function_exists('create_unique_id')) {
         return $randomString;
     }
 }
-ob_end_flush();
 ?>
-
