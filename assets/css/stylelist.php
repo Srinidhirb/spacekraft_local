@@ -329,17 +329,30 @@ width:100%;
     width: 452px;
     margin: 12px 0 0 0;
 }
-.you_are button{
-    border: 1px solid #999999;
+
+
+.you_are label {
+    display: block;
+}
+
+.you_are label input[type="checkbox"] {
+    display: none;
+}
+
+.you_are label input[type="checkbox"] + span {
+    display: inline-block;
+    padding: 8px 16px; /* Adjust padding as needed */
+    background-color: #e0e0e0; /* Default button background color */
+    border: 1px solid #ccc;
+    border-radius: 4px;
     cursor: pointer;
-    background-color: #ffffff;
-    padding: 10px 15px;
-    font-size:14px; 
-    border-radius: 20px;
 }
-.you_are button:hover{
-    background-color: #e9e8e8;
+
+.you_are label input[type="checkbox"]:checked + span {
+    background-color: #4caf50; /* Background color when checked */
+    color: white; /* Text color when checked */
 }
+
 /* Style the file input */
 .file-input {
 display: none; /* Hide the file input */
