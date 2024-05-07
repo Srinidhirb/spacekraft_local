@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
         <div class="heading-small">Availability Date</div>
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="" method="post" enctype="multipart/form-data" id="form">
             <div class="label-container">
                 <label for="calendar">Select Dates&nbsp;<span class="red">*</span></label>
             </div>

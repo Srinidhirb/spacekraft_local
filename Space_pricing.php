@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php
     include 'header.php';
     ?>
-    <div class="add-listing">
+    <div class="add-listing" id="form" >
         <h1 class="name-center">List a Space</h1>
 
         <div class="step-diagram">
