@@ -4,6 +4,7 @@ $user_id = isset($_COOKIE['user_id']) ? $_COOKIE['user_id'] : '';
 
 include 'connect.php';
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $selectedYear = isset($_POST['year']) ? $_POST['year'] : '';
     $selectedMonth = isset($_POST['month']) ? $_POST['month'] : '';
