@@ -343,9 +343,11 @@
           </div>
         </div>
         <div class="search_bar_input" id="search_bar_input">
-          <input type="text" name="search" placeholder="Search..">
-          <button class="btn">Find</button>
-          <div class="close-icon" onclick="closeSearch()">&#10005;</div>
+        <form action="find.php" method="GET">
+          <input type="text" id="search" name="search" placeholder="Search term..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+            <button type="submit" class="btn">Find</button>
+            <div class="close-icon" onclick="closeSearch()">&#10005;</div>
+          </form>
         </div>
 
       </div>

@@ -2,22 +2,6 @@
 // Include your database connection file
 @include 'connect.php';
 
-if (isset($_GET['search'])) {
-    $searchTerm = $_GET['search'];
-    // Use $searchTerm to filter your listings
-    // Example: SELECT * FROM listings WHERE title LIKE '%$searchTerm%'
-    echo "Search results for: " . $searchTerm;
-
-    // Modify your SQL query to filter listings that contain the search term anywhere in the title
-    $sql = "SELECT * FROM combined_list WHERE title LIKE '%$searchTerm%'";
-
-    // Execute your modified SQL query and display the results
-} else {
-    // No search term provided, display all listings
-    // Example: SELECT * FROM listings
-    echo "No search term provided";
-}
-
 if (isset($_COOKIE['user_id'])) {
     $user_id = $_COOKIE['user_id'];
 } else {
@@ -42,25 +26,6 @@ $limit = "LIMIT $offset, $perPage";
 // Initialize the total number of rows and pages
 $totalRows = 0;
 $totalPages = 0;
-if (isset($_GET['search'])) {
-    $searchTerm = $_GET['search'];
-    // Use $searchTerm to filter your listings
-    // Example: SELECT * FROM combined_list WHERE title LIKE '%$searchTerm%'
-    echo "Search results for: " . $searchTerm;
-
-    // Modify your SQL query to filter listings that contain the search term anywhere in the title
-    $sql = "SELECT * FROM combined_list WHERE title LIKE '%$searchTerm%' $limit";
-
-    // Execute your modified SQL query and display the results
-    $result = $conn->query($sql);
-} else {
-    // No search term provided, display all listings
-    // Example: SELECT * FROM combined_list
-    $sql = "SELECT * FROM combined_list $limit";
-
-    // Execute your SQL query to fetch all listings
-    $result = $conn->query($sql);
-}
 
 // Check if the 'City' parameter is set in the URL
 if (isset($_GET['City'])) {
@@ -79,11 +44,13 @@ if (isset($_GET['City'])) {
         isset($_GET['type']) ||
         isset($_GET['duration']) ||
         isset($_GET['amenities']) ||
-        isset($_GET['sort_by'])
+        isset($_GET['sort_by']) ||
+        isset($_GET['search']) // Add this line for search functionality
     ) {
         $location = isset($_GET['location']) ? $_GET['location'] : "";
         $type = isset($_GET['type']) ? $_GET['type'] : "";
         $duration = isset($_GET['duration']) ? $_GET['duration'] : "";
+        $search = isset($_GET['search']) ? $_GET['search'] : ""; // Add this line for search functionality
 
         // Modify your SQL query to include the search conditions for location and type
         $sql = "SELECT * FROM combined_list WHERE 1";
@@ -94,6 +61,10 @@ if (isset($_GET['City'])) {
 
         if (!empty($type)) {
             $sql .= " AND SpaceType LIKE '%$type%'";
+        }
+
+        if (!empty($search)) { // Add this block for search functionality
+            $sql .= " AND (City LIKE '%$search%' OR SpaceType LIKE '%$search%' OR Amenities LIKE '%$search%')";
         }
 
         // Add conditions based on the provided duration parameter
@@ -194,6 +165,12 @@ if (isset($_GET['City'])) {
                 exit;
             }
         }
+
+        if (!empty($search)) {
+            $searchTerm = "$search%";
+            $sqlTotalRows .= " AND (City LIKE '$searchTerm' OR SpaceType LIKE '$searchTerm' OR Amenities LIKE '$searchTerm')";
+        }
+        
 
         // ... (add conditions based on other search parameters)
 
