@@ -50,6 +50,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         gtag('js', new Date());
         gtag('config', 'G-WXVP8RTRY0');
     </script>
+    <style>
+        .calendar_container {
+            display: none;
+            gap: 5px;
+
+        }
+
+        .flatpickr-calendar.inline {
+            width: auto !important;
+            margin: 15px 0 0 0;
+        }
+
+        @media screen and (max-width:738px) {
+            .calendar_container {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .flatpickr-calendar.inline {
+                width: auto;
+                margin: 15px auto;
+            }
+.lap_cal{
+    display:none;
+}
+        }
+    </style>
 </head>
 
 <body>
@@ -88,42 +115,64 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
         <div class="heading-small">Availability Date</div>
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="" method="post" enctype="multipart/form-data" id="form">
             <div class="label-container">
 
                 <label for="calendar">Select Dates&nbsp;<span class="red">*</span></label>
             </div>
-            <div class="container">
-
-                <select id="year" name="year" style='display:none;' required>
-                    <option value="none" selected>January</option>
-                </select>
-
-
-                <select id="month" name="month" style='display:none;' required>
-                    <option value="none" selected>January</option>
-
-                </select>
-
-
-
-
-                <!--<input type="text" id="calendar" name="calendar" placeholder="Select Dates" pattern="\d{4}-\d{2}-\d{2}" required>-->
-                <!-- <input type="text" id="calendar" name="calendar" placeholder="YYYY-MM-DD" pattern="\d{4}-\d{2}-\d{2}" title="Please enter a date in the format YYYY-MM-DD" required value="<?php echo isset($_SESSION['selectedDates']) ? $_SESSION['selectedDates'] : ''; ?>"> -->
-                <div id="calendarContainer" class="calendar-container"></div>
-                <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize flatpickr for multi-date selection on the calendarContainer div
-            flatpickr("#calendarContainer", {
-                mode: "multiple",
-                dateFormat: "Y-m-d", // Adjust date format to YYYY-MM-DD
-                minDate: "today",
-                disable: [new Date()], // Set a minimum date if needed
-                inline: true, // Display the calendar inline
-            });
-        });
-    </script>
+            <div class="calendar_container">
+                <div id="calendarContainerCurrent" class="calendar-container"></div>
+                <div id="calendarContainerNext" class="calendar-container"></div>
             </div>
+            <div class="lap_cal">
+                <div id="calendarContainer"></div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // Get the next month
+                        let nextMonth = new Date();
+                        nextMonth.setMonth(nextMonth.getMonth() + 1);
+
+                        // Initialize flatpickr for both current month and next month calendar
+                        flatpickr("#calendarContainer", {
+                            mode: "multiple",
+                            dateFormat: "Y-m-d", // Adjust date format to YYYY-MM-DD
+                            minDate: "today",
+                            disable: [new Date()], // Set a minimum date if needed
+                            inline: true, // Display the calendar inline
+                            showMonths: 2, // Display two months side by side
+                            defaultDate: [new Date(), nextMonth] // Set default dates for both months
+                        });
+                    });
+                </script>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Initialize flatpickr for current month calendar
+                    flatpickr("#calendarContainerCurrent", {
+                        mode: "multiple",
+                        dateFormat: "Y-m-d", // Adjust date format to YYYY-MM-DD
+                        minDate: "today",
+                        disable: [new Date()], // Set a minimum date if needed
+                        inline: true, // Display the calendar inline
+                    });
+
+                    // Get the next month
+                    let nextMonth = new Date();
+                    nextMonth.setMonth(nextMonth.getMonth() + 1);
+
+                    // Initialize flatpickr for next month calendar
+                    flatpickr("#calendarContainerNext", {
+                        mode: "multiple",
+                        dateFormat: "Y-m-d", // Adjust date format to YYYY-MM-DD
+                        minDate: "today",
+                        defaultDate: nextMonth,
+                        disable: [new Date()],
+                        inline: true, // Display the calendar inline
+                    });
+                });
+            </script>
+
+
 
 
             <span class="space">Mandatory fields are marked with&nbsp;<span class="red">*</span></span>
@@ -132,28 +181,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button type="button" class="back-btn" onclick="goToStep2()">Back</button>
                 <button type="submit" class="next-btn">Next</button>
             </div>
-        </form>
-    </div>
-        <?php include 'footer.php'?>
-        <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialize flatpickr for multi-date selection
-        flatpickr("#calendar", {
-            mode: "multiple",
-            dateFormat: "Y-m-d", // Adjust date format to YYYY-MM-DD
-            minDate: "today",
-            disable: [new Date()], // Set a minimum date if needed
-            onReady: function(selectedDates, dateStr, instance) {
-                // Open the calendar after it's ready
-                instance.open();
-            }
-        });
-    });
 
-    function goToStep2() {
-        window.location.href = 'Space_showcase.php'; // Change 'Space_showcase.php' to the actual URL of step 3
-    }
-</script>
+    </div>
+    <?php include 'footer.php' ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize flatpickr for multi-date selection
+            flatpickr("#calendar", {
+                mode: "multiple",
+                dateFormat: "Y-m-d", // Adjust date format to YYYY-MM-DD
+                minDate: "today",
+                disable: [new Date()], // Set a minimum date if needed
+                onReady: function(selectedDates, dateStr, instance) {
+                    // Open the calendar after it's ready
+                    instance.open();
+                }
+            });
+        });
+
+        function goToStep2() {
+            window.location.href = 'Space_showcase.php'; // Change 'Space_showcase.php' to the actual URL of step 3
+        }
+    </script>
 
     </div>
 </body>

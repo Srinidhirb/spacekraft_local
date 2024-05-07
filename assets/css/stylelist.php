@@ -148,7 +148,7 @@ margin-top: 10%;
 margin-right: 5%; /* Add margin-right for better spacing on small screens */
 }
 
-form {
+#form {
 width: 100%;
 display: flex;
 flex-direction:column;
@@ -322,7 +322,24 @@ width:100%;
 
 
 
-
+.you_are{
+    display:flex;
+    gap:15px;
+    align-self: center;
+    width: 452px;
+    margin: 12px 0 0 0;
+}
+.you_are button{
+    border: 1px solid #999999;
+    cursor: pointer;
+    background-color: #ffffff;
+    padding: 10px 15px;
+    font-size:14px; 
+    border-radius: 20px;
+}
+.you_are button:hover{
+    background-color: #e9e8e8;
+}
 /* Style the file input */
 .file-input {
 display: none; /* Hide the file input */
@@ -749,4 +766,12 @@ width:90%;
 .file-label,.file-name{
     width:80%
 }
+.you_are{
+    width:90%;
+}
+}
+
+.calendar_container{
+    display:flex;
+    width:100%;
 }

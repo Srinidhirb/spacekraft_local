@@ -108,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </div>
         <div class="heading-small">Space Details</div>
-        <form action="" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <form action="" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" id="form" >
             <label for="space_name">Space Name <span class="red">*</span></label>
             <input type="text" name="space_name" id="space_name" pattern="[A-Za-z]+([\s.-][A-Za-z]+)*$" placeholder="Enter name of the space" required value="<?php echo isset($_SESSION['spaceName']) ? $_SESSION['spaceName'] : ''; ?>">
 

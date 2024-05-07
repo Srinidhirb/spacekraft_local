@@ -232,7 +232,7 @@
     display: flex;
     justify-content: center;
 
-    
+
   }
 
   @media (max-width: 890px) {
@@ -298,26 +298,37 @@
     align-items: center;
     justify-content: center;
   }
-  .mobile_search{
+
+  .mobile_search {
     display: flex;
     gap: 15px;
+    align-items: center;
+    justify-content: center;
   }
-  .nav_flex .links{
+  .mobile_search form{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav_flex .links {
     display: flex;
     flex-direction: column;
     align-items: start;
     gap: 28px;
   }
-  .nav_flex .login li{
+
+  .nav_flex .login li {
     justify-content: start;
   }
-  .nav_flex .btn{
+
+  .nav_flex .btn {
     width: 130px;
     text-align: center;
   }
+
   /* CSS for hamburger icon */
-
-
 </style>
 <header>
 
@@ -343,8 +354,8 @@
           </div>
         </div>
         <div class="search_bar_input" id="search_bar_input">
-        <form action="find.php" method="GET">
-          <input type="text" id="search" name="search" placeholder="Search term..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+          <form action="find.php" method="GET">
+            <input type="text" id="search" name="search" placeholder="Search term..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
             <button type="submit" class="btn">Find</button>
             <div class="close-icon" onclick="closeSearch()">&#10005;</div>
           </form>
@@ -412,28 +423,31 @@
       </a>
     </div>
     <div class="open" id="open" onclick="display_nav_right()"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M3 18H21V16H3V18ZM3 13H21V11H3V13ZM3 6H21V4H3V6Z" fill="#222222" />
-</svg> </div>
+        <path d="M3 18H21V16H3V18ZM3 13H21V11H3V13ZM3 6H21V4H3V6Z" fill="#222222" />
+      </svg> </div>
     <div class="close" id="close" onclick="close_nav_right()"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M6 6L18 18M6 18L18 6" stroke="#222222" stroke-width="2" stroke-linecap="round" />
-</svg></div>
+        <path d="M6 6L18 18M6 18L18 6" stroke="#222222" stroke-width="2" stroke-linecap="round" />
+      </svg></div>
 
 
     <div class="nav_right" id="nav_right">
       <div class="nav_flex">
         <div class="mobile_search">
-          <input type="text" name="search" placeholder="Search..">
-          <button class="btn">Find</button>
+        <form action="find.php" method="GET">
+            <input type="text" id="search" name="search" placeholder="Search term..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+            <button type="submit" class="btn">Find</button>
+           
+          </form>
         </div>
-        <div class="links"> 
+        <div class="links">
           <a href="">About us</a>
-            <a href="#">Renters</a>
-            <a href="#">Hosts</a>
-            <a href="faq.php">FAQ</a>
-            <a href="resources.php">Resources</a>
-            <a href="contactus.php">Contact Us</a>
-          </div>
-        
+          <a href="#">Renters</a>
+          <a href="#">Hosts</a>
+          <a href="faq.php">FAQ</a>
+          <a href="resources.php">Resources</a>
+          <a href="contactus.php">Contact Us</a>
+        </div>
+
 
         <div class="login"><?php if ($user_id != '') { ?>
             <li class=" dropdown-login">

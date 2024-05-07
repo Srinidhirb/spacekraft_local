@@ -188,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </div>
         <div class="heading-small">Space showcase</div>
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="" method="post" enctype="multipart/form-data" id="form">
             <label for="spacetypes">Space Use</label>
             <div class="spacetype-container" id="spacetypes">
                 <div class="spacetype-options">

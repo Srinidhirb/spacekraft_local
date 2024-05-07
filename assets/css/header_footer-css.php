@@ -300,3 +300,8 @@ height:143px;
 padding:0 20px ;
 }
 }
+.close-icon{
+    position: absolute;
+    top:0px;
+    right:10%;
+}

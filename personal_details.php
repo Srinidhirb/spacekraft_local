@@ -216,6 +216,9 @@ $conn->close();
     <link rel="website icon" href="assets/img/Logo Icon 16_16.svg">
     <link rel="stylesheet" href="assets/css/header_footer-css.php">
     <link rel="stylesheet" href="assets/css/stylelist.php">
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -255,7 +258,12 @@ $conn->close();
             </div>
         </div>
         <div class="heading-small">Personal Details</div>
-        <form method="post">
+        <form method="post" id="form">
+            <label for="you_are">You are  <span class="red">*</span></label>
+            <div class="you_are" id="you_are" >
+                <button>Owner</button>
+                <button>Agent</button>
+            </div>
             <label for="full_name">Full Name <span class="red">*</span> </label>
             <input type="text" name="full_name" id="full_name" placeholder="Enter your full name" value="<?php echo isset($_SESSION['full_name']) ? $_SESSION['full_name'] : ''; ?>" required>
 

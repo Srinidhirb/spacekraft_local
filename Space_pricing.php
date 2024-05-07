@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php
     include 'header.php';
     ?>
-    <div class="add-listing">
+    <div class="add-listing" id="form">
         <h1 class="name-center">List a Space</h1>
 
         <div class="step-diagram">
@@ -110,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
         </div>
         <div class="heading-small">Space pricing</div>
-        <form action="" method="post" id="list2" onsubmit="return false;">
+        <form action="" method="post" id="list2" onsubmit="return false;" >
         <!-- List2 Form -->
         <div class="duration-container">
             <div class="duration-input">
