@@ -231,7 +231,7 @@
   .nav-flex {
     display: flex;
     justify-content: center;
-    gap: 40px;
+
     
   }
 
