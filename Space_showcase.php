@@ -354,10 +354,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <div class="button-container">
                 <button type="button" class="back-btn" onclick="goToStep1()">Back</button>
-                <button type="submit" class="next-btn">Next</button>
+                <button type="submit" class="next-btn" value="Submit" id="submitBtn">Next</button>
             </div>
         </form>
     </div>
+    <script>
+    document.getElementById('submitBtn').addEventListener('click', function(event) {
+        const amenities = document.querySelectorAll('input[name="amenities[]"]:checked');
+        if (amenities.length === 0) {
+            alert("Please select at least one amenity.");
+            event.preventDefault(); // Prevent form submission
+        }
+    });
+</script>
+
 
     <script>
         function goToStep1() {
