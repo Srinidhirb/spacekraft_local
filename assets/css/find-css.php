@@ -369,7 +369,7 @@ padding: 10px;
 border: none;
 cursor: pointer;
 border-radius: 5px;
-margin-top: auto;
+
 /* Align the button to the bottom */
 }
 

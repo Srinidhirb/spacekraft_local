@@ -269,23 +269,30 @@
   header input[type=text] {
     width: 170px;
     padding: 10px;
-
+    height: auto;
+    margin: 0;
+    border: none;
+    background-color: #F4F1F1;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
   }
 
   /* When the input field gets focus, change its width to 100% */
   header input[type=text]:focus {
-    width: 70%;
+    width: 20%;
+    border: none;
   }
 
   .search_bar_input {
-    display: none;
+    
 
     gap: 20px;
     position: absolute;
-    top: 20%;
-    width: 20%;
+    top: 100%;
+    right: -100%;
+    width: 100%;
+    background-color: #F4F1F1;
+    transition: right 0.4s ease-in-out;
   }
 
   .search_bar_input.visible {
@@ -305,7 +312,8 @@
     align-items: center;
     justify-content: center;
   }
-  .mobile_search form{
+
+  .mobile_search form {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -327,7 +335,26 @@
     width: 130px;
     text-align: center;
   }
-
+  .quick_search{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+  }
+  .btn_flex{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+  .quick_search span{
+    font-size: 1rem;
+    color: #000000;
+    font-weight: bold;
+  }
   /* CSS for hamburger icon */
 </style>
 <header>
@@ -354,10 +381,18 @@
           </div>
         </div>
         <div class="search_bar_input" id="search_bar_input">
-          <form action="find.php" method="GET">
-            <input type="text" id="search" name="search" placeholder="Search term..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
-            <button type="submit" class="btn">Find</button>
-            <div class="close-icon" onclick="closeSearch()">&#10005;</div>
+          <form action="find.php" method="GET" style="width: 100%;" >
+            <div class="quick_search">
+              <span>Where?</span>
+
+              <input type="text" id="search" name="search" placeholder="Enter a city or location" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+              <button type="submit"  class="btn btn_flex">Search <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 7H14M9 1L14.2929 6.29289C14.6834 6.68342 14.6834 7.31658 14.2929 7.70711L9 13" stroke="#FDFDFD" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </button>
+              <div class="close-icon" onclick="closeSearch()">&#10005;</div>
+            </div>
+           
           </form>
         </div>
 
@@ -367,12 +402,12 @@
         function display() {
           document.getElementById("find_button");
           {
-            document.getElementById('search_bar_input').style.display = "flex";
+            document.getElementById('search_bar_input').style.right = "0px";
           }
         }
 
         function closeSearch() {
-          document.getElementById('search_bar_input').style.display = "none";
+          document.getElementById('search_bar_input').style.right = "-100%";
         }
       </script>
 
@@ -433,10 +468,10 @@
     <div class="nav_right" id="nav_right">
       <div class="nav_flex">
         <div class="mobile_search">
-        <form action="find.php" method="GET">
+          <form action="find.php" method="GET">
             <input type="text" id="search" name="search" placeholder="Search term..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
             <button type="submit" class="btn">Find</button>
-           
+
           </form>
         </div>
         <div class="links">

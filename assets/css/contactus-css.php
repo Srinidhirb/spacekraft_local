@@ -120,7 +120,7 @@ font-weight: 500;
 cursor: pointer;
 transition: all 0.2s;
 width: auto;
-margin-bottom: 2%;
+
 text-align: center;
 }
 
