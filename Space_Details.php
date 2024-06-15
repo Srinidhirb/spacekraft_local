@@ -94,16 +94,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div class="circle disabled">2</div>
                 <span class="disabled" > Space Showcase<span>
             </div>
+           
             <div class="diagram">
                 <div class="circle disabled">3</div>
-                <span class="disabled" > Availability Date<span>
-            </div>
-            <div class="diagram">
-                <div class="circle disabled">4</div>
                 <span class="disabled" > Space Pricing<span>
             </div>
             <div class="diagram">
-                <div class="circle1 disabled">5</div>
+                <div class="circle1 disabled">4</div>
                 <span class="disabled" > Personal Details<span>
             </div>
         </div>

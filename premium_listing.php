@@ -14,9 +14,15 @@ if (isset($_COOKIE['user_id'])) {
   <title>Premium Listing</title>
   <link rel="stylesheet" href="assets/css/header_footer-css.php">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     .center_display {
       width: 100%;
-      margin: 86px 0 76px;
+      margin: 86px 0 56px;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -73,12 +79,14 @@ if (isset($_COOKIE['user_id'])) {
 
     .cards .card {
       width: 168px;
+    
     }
 
     td,
     th {
       /* Add a solid border around each cell */
-      padding: 16px;
+
+      height: 60px;
       /* Add some padding inside each cell */
       /* Center align text within cells */
       text-align: center;
@@ -108,8 +116,9 @@ if (isset($_COOKIE['user_id'])) {
       display: flex;
       flex-direction: column;
       align-items: center;
-
-      padding: 0 0 32px 0;
+      height: 240px;
+      padding: 34px;
+      
     }
 
     .packages {
@@ -147,7 +156,7 @@ if (isset($_COOKIE['user_id'])) {
       cursor: pointer;
       width: 136px;
       height: 40px;
-      padding: 10px 24px 10px 24px;
+      padding: 10px 44px 10px 44px;
       gap: 8px;
       border-radius: 6px;
       opacity: 0px;
@@ -194,15 +203,18 @@ if (isset($_COOKIE['user_id'])) {
         width: 98%;
       }
     }
-    .rectangle{
+
+    .rectangle {
       position: absolute;
       border: 2px solid black;
       display: block;
       content: "";
     }
-    .mobile_pricing{
+
+    .mobile_pricing {
       display: none;
     }
+
     .custom-container {
       display: flex;
       align-items: center;
@@ -276,7 +288,7 @@ if (isset($_COOKIE['user_id'])) {
     .custom-get-started-btn {
       border: 2px solid #031B64;
       color: white;
-      background:  #031B64;
+      background: #031B64;
       padding: 8px 25px;
       border-radius: 20px;
       text-decoration: none;
@@ -288,25 +300,41 @@ if (isset($_COOKIE['user_id'])) {
       background: transparent;
       color: #031B64;
     }
+
     @media screen and (max-width:1000px) {
-      .pricing{
+      .pricing {
         display: none;
 
       }
-      .mobile_pricing{
+
+      .mobile_pricing {
         display: block;
       }
-      
+
     }
+
+   
+    th:nth-child(3),td:nth-child(3) {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+tr:first-child td:nth-child(3) {
+    border-top: 2px solid #000;
+    padding: 10px 0;
+}
+tr:nth-child(7) td:nth-child(3) {
+    border-bottom: 2px solid #000;
+    padding: 40px 0;
+}
   </style>
 </head>
 
 <body>
   <?php include 'header.php' ?>
   <div class="center_display">
-    <span>Choose a plan and start your listing</span>
-    <p>Lorem ipsum dolor sit amet consectetur. In vitae condimentum placerat aliquet adipiscing nec ut
-      amet. A arcu</p>
+    <span>Unlock new revenue streams! </span>
+    <p>Choose a plan and list your retail space.</p>
   </div>
 
   <div class="pricing">
@@ -315,46 +343,36 @@ if (isset($_COOKIE['user_id'])) {
         <td> </td>
         <td>
           <div class="card">
-           <div class="rectangle"></div>
+
             <span class="packages">Basic </span>
-            <span class="package-des">Lorem ipsum dolor sit amet consectetur.</span>
+
             <span class="price">Free</span>
-            <a href="Space_listed.php"> <span class="button"> Get Started</span></a>
+            <a href="Space_listed.php"> <span class="button"> Continue</span></a>
           </div>
         </td>
-        <td>
-          <div class="card ">
-            
+        <td >
+          <div class="card border_no_bottom">
+
             <span class="packages">Pro</span>
-            <span class="package-des">Lorem ipsum dolor sit amet consectetur.</span>
+
             <span class="price"><svg width="13" height="16" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0.125 0.500043C0.125 0.500043 1.86764 0.500043 3.625 0.500043M8.125 16.5L1.125 9.50004C1.125 9.50004 2.625 9.50004 3.625 9.50004C4.625 9.50004 9.125 9.56183 9.125 5.00004C9.125 0.438253 4.625 0.500043 3.625 0.500043M12.125 0.500043C12.125 0.500043 6.55393 0.500043 3.625 0.500043M0.125 4.50004H12.125" stroke="#717579" stroke-width="1.5" />
               </svg>
-              1000 <span class="duration"> / month</span></span>
-            <a href="Space_listed"> <span class="button"> Choose Plan</span></a>
+              499 <span class="duration"> / month</span></span>
+            <a href="Space_listed"> <span class="button"> Pay</span></a>
           </div>
         </td>
         <td>
           <div class="card card">
-           
+
             <span class="packages">Plus</span>
-            <span class="package-des">Lorem ipsum dolor sit amet consectetur.</span>
-            <span class="price"><svg width="13" height="16" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0.125 0.500043C0.125 0.500043 1.86764 0.500043 3.625 0.500043M8.125 16.5L1.125 9.50004C1.125 9.50004 2.625 9.50004 3.625 9.50004C4.625 9.50004 9.125 9.56183 9.125 5.00004C9.125 0.438253 4.625 0.500043 3.625 0.500043M12.125 0.500043C12.125 0.500043 6.55393 0.500043 3.625 0.500043M0.125 4.50004H12.125" stroke="#717579" stroke-width="1.5" />
-              </svg>
-              2000 <span class="duration"> / month</span></span>
-            <a href="#"> <span class="button"> Choose Plan</span></a>
+
+            <span class="price">
+              Customisable</span>
+            <a href="#"> <span class="button"> Contact</span></a>
           </div>
         </td>
-        <td>
-          <div class="card card ">
-           
-            <span class="packages">Enterprise</span>
-            <span class="package-des">Lorem ipsum dolor sit amet consectetur.</span>
-            <span class="price">Let's chat</span>
-            <a href="#"> <span class="button"> Contact us </span></a>
-          </div>
-        </td>
+
       </tr>
       <tr>
         <td> <span class="main_heading">Basic Features</span>
@@ -363,7 +381,7 @@ if (isset($_COOKIE['user_id'])) {
             <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
           </svg>
         </td>
-        <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <td class="border_no_left_right"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
           </svg>
         </td>
@@ -371,17 +389,14 @@ if (isset($_COOKIE['user_id'])) {
             <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
           </svg>
         </td>
-        <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
-          </svg>
-        </td>
+
       </tr>
       <tr>
         <td> <span class="main_heading"> Plan validity </span></td>
         <td> <span class="plan_validity"> Free Lifetime </span></td>
-        <td> <span class="plan_validity"> 30 days free </span></td>
+        <td class="border_no_left_right"> <span class="plan_validity"> 30 days free </span></td>
         <td> <span class="plan_validity"> 60 days free </span></td>
-        <td> <span class="plan_validity"> 90 days free </span></td>
+
       </tr>
       <tr>
         <td class="width"> <span class="main_heading"> Visiblity in top slots </span></td>
@@ -389,16 +404,14 @@ if (isset($_COOKIE['user_id'])) {
             <path d="M13 1L1 13M13 13L1 1.00001" stroke="#A1AEBE" stroke-width="2" stroke-linecap="round" />
           </svg>
         </td>
-        <td><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <td class="border_no_left_right"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 1L1 13M13 13L1 1.00001" stroke="#A1AEBE" stroke-width="2" stroke-linecap="round" />
           </svg>
         </td>
         <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
           </svg></td>
-        <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
-          </svg></td>
+
       </tr>
       <tr>
         <td> <span class="main_heading"> Invoice based billing </span></td>
@@ -406,15 +419,13 @@ if (isset($_COOKIE['user_id'])) {
             <path d="M13 1L1 13M13 13L1 1.00001" stroke="#A1AEBE" stroke-width="2" stroke-linecap="round" />
           </svg>
         </td>
-        <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <td class="border_no_left_right"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
           </svg></td>
         <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
           </svg></td>
-        <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
-          </svg></td>
+
       </tr>
       <tr>
         <td> <span class="main_heading"> 24/7 Support </span></td>
@@ -422,15 +433,13 @@ if (isset($_COOKIE['user_id'])) {
             <path d="M13 1L1 13M13 13L1 1.00001" stroke="#A1AEBE" stroke-width="2" stroke-linecap="round" />
           </svg>
         </td>
-        <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <td class="border_no_left_right"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
           </svg></td>
         <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
           </svg></td>
-        <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
-          </svg></td>
+
       </tr>
       <tr>
         <td> <span class="main_heading"> Social Media promotion </span></td>
@@ -438,95 +447,93 @@ if (isset($_COOKIE['user_id'])) {
             <path d="M13 1L1 13M13 13L1 1.00001" stroke="#A1AEBE" stroke-width="2" stroke-linecap="round" />
           </svg>
         </td>
-        <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <td class="border_no_top"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
           </svg></td>
         <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
           </svg></td>
-        <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
-          </svg></td>
+
       </tr>
     </table>
   </div>
   <div class="mobile_pricing">
-  <div class="custom-container">
+    <div class="custom-container">
 
-<div class="custom-card-group">
-  <div class="custom-pricing-card">
+      <div class="custom-card-group">
+        <div class="custom-pricing-card">
 
-    <span>Basic</span>
-    <h4 class="custom-price">Free</h4>
-    <ul class="custom-package-list">
-      <li> Basic Features
-      </li>
-      <li>Plan Validity - Free Lifetime</li>
-      <li> <strike> Visiblity in top slots</strike></li>
-      <li><strike>Invoice based billing</strike></li>
-      <li><strike>24/7 Support</strike></li>
-      <li><strike>Social Media promotion</strike></li>
+          <span>Basic</span>
+          <h4 class="custom-price">Free</h4>
+          <ul class="custom-package-list">
+            <li> Basic Features
+            </li>
+            <li>Plan Validity - Free Lifetime</li>
+            <li> <strike> Visiblity in top slots</strike></li>
+            <li><strike>Invoice based billing</strike></li>
+            <li><strike>24/7 Support</strike></li>
+            <li><strike>Social Media promotion</strike></li>
 
-    </ul>
-    <a href="Space_listed.php" class="custom-get-started-btn">Get Started</a>
-  </div>
-  <div class="custom-pricing-card">
-    <span>Pro</span>
-    <h4 class="custom-price">₹ 1000 / month</h4>
-    <ul class="custom-package-list">
-      <li>Basic Features</li>
-      <li>Plan Validity - 30 days free</li>
-      <li><strike> Visiblity in top slots</strike></li>
-      <li>Invoice based billing</li>
-      <li>24/7 Support</li>
-      <li>Social Media promotion</li>
-    </ul>
-    <a href="#" class="custom-get-started-btn">Choose Plan</a>
-  </div>
-  <div class="custom-pricing-card">
-    <span>Plus</span>
-    <h4 class="custom-price">₹ 2000 / month</h4>
-    <ul class="custom-package-list">
-      <li>Basic Features</li>
-      <li>Plan Validity - 60 days free</li>
-      <li>Visiblity in top slots</li>
-      <li>Invoice based billing</li>
-      <li>24/7 Support</li>
-      <li>Social Media promotion</li>
-    </ul>
-    <a href="#" class="custom-get-started-btn">Choose Plan</a>
-  </div>
-  <div class="custom-pricing-card">
-    <span>Enterprise</span>
-    <h4 class="custom-price">Let's Chat</h4>
-    <ul class="custom-package-list">
-      <li>Basic Features</li>
-      <li>Plan Validity - 90 days free</li>
-      <li>Visiblity in top slots</li>
-      <li>Invoice based billing</li>
-      <li>24/7 Support</li>
-      <li>Social Media promotion</li>
-    </ul>
-    <a href="#" class="custom-get-started-btn">Get Started</a>
-  </div>
-</div>
-</div>
+          </ul>
+          <a href="Space_listed.php" class="custom-get-started-btn">Get Started</a>
+        </div>
+        <div class="custom-pricing-card">
+          <span>Pro</span>
+          <h4 class="custom-price">₹ 1000 / month</h4>
+          <ul class="custom-package-list">
+            <li>Basic Features</li>
+            <li>Plan Validity - 30 days free</li>
+            <li><strike> Visiblity in top slots</strike></li>
+            <li>Invoice based billing</li>
+            <li>24/7 Support</li>
+            <li>Social Media promotion</li>
+          </ul>
+          <a href="#" class="custom-get-started-btn">Choose Plan</a>
+        </div>
+        <div class="custom-pricing-card">
+          <span>Plus</span>
+          <h4 class="custom-price">₹ 2000 / month</h4>
+          <ul class="custom-package-list">
+            <li>Basic Features</li>
+            <li>Plan Validity - 60 days free</li>
+            <li>Visiblity in top slots</li>
+            <li>Invoice based billing</li>
+            <li>24/7 Support</li>
+            <li>Social Media promotion</li>
+          </ul>
+          <a href="#" class="custom-get-started-btn">Choose Plan</a>
+        </div>
+        <div class="custom-pricing-card">
+          <span>Enterprise</span>
+          <h4 class="custom-price">Let's Chat</h4>
+          <ul class="custom-package-list">
+            <li>Basic Features</li>
+            <li>Plan Validity - 90 days free</li>
+            <li>Visiblity in top slots</li>
+            <li>Invoice based billing</li>
+            <li>24/7 Support</li>
+            <li>Social Media promotion</li>
+          </ul>
+          <a href="#" class="custom-get-started-btn">Get Started</a>
+        </div>
+      </div>
+    </div>
   </div>
   <?php include 'footer.php' ?>
   <script>
-  const cards = document.querySelectorAll('.card');
-  const rows = document.querySelectorAll('tr');
+    const cards = document.querySelectorAll('.card');
+    const rows = document.querySelectorAll('tr');
 
-  cards.forEach((card, index) => {
-    card.addEventListener('mouseenter', () => {
-      rows[index + 1].classList.add('hovered');
-    });
+    cards.forEach((card, index) => {
+      card.addEventListener('mouseenter', () => {
+        rows[index + 1].classList.add('hovered');
+      });
 
-    card.addEventListener('mouseleave', () => {
-      rows[index + 1].classList.remove('hovered');
+      card.addEventListener('mouseleave', () => {
+        rows[index + 1].classList.remove('hovered');
+      });
     });
-  });
-</script>
+  </script>
 
 
 </body>

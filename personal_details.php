@@ -244,12 +244,7 @@ $conn->close();
                     </svg></div>
                 <span> Space Showcase<span>
             </div>
-            <div class="diagram">
-                <div class="circle-finished enabled "><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M26.6667 9.3335L12.9429 23.0574C12.4222 23.5781 11.5779 23.5781 11.0572 23.0574L5.33337 17.3335" stroke="#FBFBFB" stroke-width="3" stroke-linecap="round" />
-                    </svg></div>
-                <span class=""> Availability Date<span>
-            </div>
+           
             <div class="diagram">
                 <div class="circle-finished enabled "><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M26.6667 9.3335L12.9429 23.0574C12.4222 23.5781 11.5779 23.5781 11.0572 23.0574L5.33337 17.3335" stroke="#FBFBFB" stroke-width="3" stroke-linecap="round" />
@@ -257,7 +252,7 @@ $conn->close();
                 <span class=""> Space Pricing<span>
             </div>
             <div class="diagram">
-                <div class="circle1 disabled">5</div>
+                <div class="circle1 disabled">4</div>
                 <span class="disabled"> Personal Details<span>
             </div>
         </div>

@@ -123,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $_SESSION['SpaceTypes'] = $spaceTypesString;
 
     // Set the next step
-    echo '<script>window.location.href = "Availability_Date.php";</script>';
+    echo '<script>window.location.href = "space_pricing.php";</script>';
 
     exit();
 }
@@ -174,16 +174,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div class="circle ">2</div>
                 <span> Space Showcase<span>
             </div>
+            
             <div class="diagram">
                 <div class="circle disabled">3</div>
-                <span class="disabled"> Availability Date<span>
-            </div>
-            <div class="diagram">
-                <div class="circle disabled">4</div>
                 <span class="disabled"> Space Pricing<span>
             </div>
             <div class="diagram">
-                <div class="circle1 disabled">5</div>
+                <div class="circle1 disabled">4</div>
                 <span class="disabled"> Personal Details<span>
             </div>
         </div>

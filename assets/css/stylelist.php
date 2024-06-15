@@ -631,7 +631,7 @@ margin:4px 0 0  4px;
 width: 100%;
 margin: 48px auto 0 0;
 display: flex;
-justify-content: space-around;
+justify-content: space-evenly;
 align-items: center;
 position: relative;
 /* Needed for positioning the lines */
@@ -692,20 +692,14 @@ color:#031B64;
 
 /* Add lines */
 .circle::after {
-content: '';
-position: absolute;
-
-width: 96px;
-/* Width of the line */
-height: 2px;
-/* Height of the line */
-background-color: #A1AEBE;
-top: 50%;
-/* Position the line in the middle vertically */
-left: calc(100% + 0px);
-/* Adjust based on the spacing between circles */
-transform: translateY(-1px);
-/* Adjust based on the line thickness */
+    content: '';
+    position: absolute;
+    width: 112px;
+    height: 2px;
+    background-color: #A1AEBE;
+    top: 50%;
+    left: calc(100% + 0px);
+    transform: translateY(-1px);
 }
 .circle-finished::after {
 content: '';
