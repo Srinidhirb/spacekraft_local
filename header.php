@@ -277,12 +277,7 @@
     transition: width 0.4s ease-in-out;
   }
 
-  /* When the input field gets focus, change its width to 100% */
-  header input[type=text]:focus {
-    width: 20%;
-    border: none;
-  }
-
+  
   .search_bar_input {
     
 

@@ -188,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // Execute the statement
         if ($stmt->execute()) {
             // Insert successful
-            echo '<script>window.location.href = "premium_listing";</script>';
+            echo '<script>window.location.href = "premium_listing.php";</script>';
             session_destroy();
             exit();
         } else {

@@ -59,35 +59,7 @@ if (isset($_GET['spaceId'])) {
         $selectedYear = $row['selected_year'];
         $selectedMonth = $row['selected_month'];
         $selectedDates = explode(' ,', $row['selected_dates']);
-        $selectedDays = [];
-        $selectedDatesString = implode(', ', $selectedDates);
-
-        // Explode the comma-separated string into an array of dates
-        $datesArray = explode(', ', $selectedDatesString);
-
-        // Loop through each date and extract the day part
-        foreach ($datesArray as $dateString) {
-            $parts = explode('-', $dateString); // Split the date into parts
-            $day = intval($parts[0]); // Extract the day part
-            $selectedDays[] = $day; // Add the extracted day to the array
-            $month = intval($parts[1]); // Extract the month part
-            $year = intval($parts[2]); // Extract the year part
-            $selectedMonths[] = $month; // Add the extracted month to the array
-            $selectedYears[] = $year;
-        }
-        $uniqueMonths = array_unique($selectedMonths);
-        $uniqueYears = array_unique($selectedYears);
-
-        // Assuming you only want to display the first month and year
-        $firstMonth = reset($uniqueMonths); // Get the first month
-        $firstYear = reset($uniqueYears); // Get the first year
-
-        // Convert the array of selected days into a comma-separated string
-        $selectedDaysString = implode(',', $selectedDays);
-
-        // Encode the array of selected days into JSON format
-        $selectedDaysJSON = json_encode($selectedDays);
-
+        
         $minDuration = $row['min_duration'];
         $minDurationUnit = $row['min_duration_unit'];
         $maxDuration = $row['max_duration'];
@@ -416,7 +388,27 @@ if (isset($_GET['spaceId'])) {
                     padding: 10px 20px;
                 }
 
+                .calendar-header {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-bottom: 10px;
+                }
 
+                .calendar-body {
+                    display: grid;
+                    grid-template-columns: repeat(7, 1fr);
+                }
+
+                .calendar-day {
+                    padding: 10px;
+                    text-align: center;
+                    border-radius: 50%;
+                }
+
+                .selected-date {
+                    background-color: #0093FF;
+                }
 
                 .abt p {
 
@@ -485,7 +477,7 @@ if (isset($_GET['spaceId'])) {
                     font-size: 16px;
                     font-weight: 400;
                     line-height: 19.2px;
-                    cursor: pointer;
+
 
                 }
 
@@ -558,44 +550,22 @@ if (isset($_GET['spaceId'])) {
                     }
 
                     .price_btn button {
-                      
+                        width: 70%;
                         margin: 0 auto;
                     }
 
 
                 }
 
-                #calendar {
-                    width: 300px;
-                    margin: 20px auto;
+                .dummy-selected-date {
+                    background-color: #f39c12 !important;
+                    color: #fff !important;
                 }
 
-                #calendar table {
-                    border-collapse: collapse;
-                }
-
-                .calendar-th,
-                .calendar-td {
-                    padding: 10px;
-                    text-align: center;
-
-                }
-
-
-
-                .calendar-td {
-                    cursor: pointer;
-                }
-
-                .calendar-td.selected {
-                    background-color: #007bff;
+                .selected-date {
+                    /* Styles for selected dates */
+                    background-color: #3498db;
                     color: #fff;
-                }
-
-                .special-date {
-                    background-color: #031B64;
-                    color: #ffffff;
-                    border-radius: 50%;
                 }
             </style>
         </head>
@@ -664,7 +634,7 @@ if (isset($_GET['spaceId'])) {
                                     // Generate the Google Maps link
                                     $mapsLink = "https://www.google.com/maps/search/?api=1&query={$encodedAddress}";
                                     ?> <a href="<?php echo $mapsLink; ?>" target="_blank">
-                                        <p><?php echo " $spaceAddress1, $city - $pinCode"; ?></p>
+                                        <p><?php echo "$spaceAddress1, $city - $pinCode"; ?></p>
                                     </a></p>
                             </span>
                             <span> <i class="fas fa-expand-arrows-alt"></i>
@@ -689,7 +659,7 @@ if (isset($_GET['spaceId'])) {
                 <div class="float">
                     <div class="float_left">
                         <div class="space_name">
-                            <div class="s_name"><?php echo $spaceName;   ?></div>
+                            <div class="s_name"><?php echo $spaceName; ?></div>
                             <div class="s_share">
                                 <div class="buttons">
                                     <button class="main-button">
@@ -699,11 +669,11 @@ if (isset($_GET['spaceId'])) {
                                     </button>
 
                                     <button class="whatsapp-button button" style="transition-delay: 0s, 0s, 0s; transition-property: translate, background, box-shadow;">
-                                        <a href="whatsapp://send?text=<?php echo urlencode($current_url); ?>" data-action="share/whatsapp/share">
+                                    <a href="whatsapp://send?text=<?php echo urlencode( $current_url); ?>" data-action="share/whatsapp/share">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" height="30" width="30">
                                                 <path d="M19.001 4.908A9.817 9.817 0 0 0 11.992 2C6.534 2 2.085 6.448 2.08 11.908c0 1.748.458 3.45 1.321 4.956L2 22l5.255-1.377a9.916 9.916 0 0 0 4.737 1.206h.005c5.46 0 9.908-4.448 9.913-9.913A9.872 9.872 0 0 0 19 4.908h.001ZM11.992 20.15A8.216 8.216 0 0 1 7.797 19l-.3-.18-3.117.818.833-3.041-.196-.314a8.2 8.2 0 0 1-1.258-4.381c0-4.533 3.696-8.23 8.239-8.23a8.2 8.2 0 0 1 5.825 2.413 8.196 8.196 0 0 1 2.41 5.825c-.006 4.55-3.702 8.24-8.24 8.24Zm4.52-6.167c-.247-.124-1.463-.723-1.692-.808-.228-.08-.394-.123-.556.124-.166.246-.641.808-.784.969-.143.166-.29.185-.537.062-.247-.125-1.045-.385-1.99-1.23-.738-.657-1.232-1.47-1.38-1.716-.142-.247-.013-.38.11-.504.11-.11.247-.29.37-.432.126-.143.167-.248.248-.413.082-.167.043-.31-.018-.433-.063-.124-.557-1.345-.765-1.838-.2-.486-.404-.419-.557-.425-.142-.009-.309-.009-.475-.009a.911.911 0 0 0-.661.31c-.228.247-.864.845-.864 2.067 0 1.22.888 2.395 1.013 2.56.122.167 1.742 2.666 4.229 3.74.587.257 1.05.408 1.41.523.595.19 1.13.162 1.558.1.475-.072 1.464-.6 1.673-1.178.205-.58.205-1.075.142-1.18-.061-.104-.227-.165-.475-.29Z"></path>
                                             </svg>
-                                        </a>
+                                        </a>    
                                     </button>
 
                                     <button class="twitter-button button" style="transition-delay: 0.2s, 0s, 0.2s; transition-property: translate, background, box-shadow;">
@@ -738,66 +708,12 @@ if (isset($_GET['spaceId'])) {
                             <div class="calendar1">
                                 <span>Availability</span>
                                 <div class="calendar">
-                                    <div id="calendar"></div>
-                                    <script>
-                                        document.addEventListener('DOMContentLoaded', function() {
-                                            const calendar = document.getElementById('calendar');
+                                    <div class="calendar-header">
 
-                                            function generateCalendar() {
-                                                const today = new Date();
-                                                const year = today.getFullYear();
-                                                const month = today.getMonth();
-                                                const daysInMonth = new Date(year, month + 1, 0).getDate();
-                                                const firstDayOfMonth = new Date(year, month, 1).getDay();
-                                                const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                                        <h2 id="currentMonthYear"></h2>
 
-                                                // Extracted dates from the database
-                                                const selectedDays = <?php echo $selectedDaysJSON; ?>;
-
-                                                let html = `<table>`;
-                                                html += `<tr><th colspan="7" class="calendar-th">${monthNames[month]} ${year}</th></tr>`;
-
-                                                html += `<tr>`;
-
-                                                let dayCounter = 0;
-                                                for (let i = 0; i < firstDayOfMonth; i++) {
-                                                    html += `<td class="calendar-td"></td>`;
-                                                    dayCounter++;
-                                                }
-
-                                                for (let day = 1; day <= daysInMonth; day++) {
-                                                    if (dayCounter % 7 === 0) {
-                                                        html += `</tr><tr>`;
-                                                    }
-
-                                                    // Check if the current day is a special date
-                                                    const isSpecialDate = selectedDays.includes(day);
-
-                                                    // Add different background color for special dates
-                                                    if (isSpecialDate) {
-                                                        html += `<td class="calendar-td special-date">${day}</td>`;
-                                                    } else {
-                                                        html += `<td class="calendar-td">${day}</td>`;
-                                                    }
-
-                                                    dayCounter++;
-                                                }
-
-                                                html += `</tr></table>`;
-                                                calendar.innerHTML = html;
-
-                                                const cells = document.querySelectorAll('#calendar .calendar-td');
-                                                cells.forEach(cell => {
-                                                    cell.addEventListener('click', function() {
-                                                        cells.forEach(cell => cell.classList.remove('selected'));
-                                                        this.classList.add('selected');
-                                                    });
-                                                });
-                                            }
-
-                                            generateCalendar();
-                                        });
-                                    </script>
+                                    </div>
+                                    <div class="calendar-body" id="calendarBody"></div>
                                 </div>
                             </div>
                             <hr>
@@ -900,65 +816,33 @@ if (isset($_GET['spaceId'])) {
                     </div>
                     <div class="float_right">
                         <div class="price_box">
-                            <div class="price_text"> Prices starting from :
-                                <?php
-                                // Array to store prices with their types
-                                $prices = array();
+                            <div class="price_text"> Prices starting from : <?php
+                                                                            // Array to store prices with their types
+                                                                            $prices = array();
 
-                                // Add prices to the array with their types if they exist
-                                if ($spaceDailyPrice) {
-                                    $prices['Day'] = $spaceDailyPrice;
-                                }
-                                if ($spaceWeeklyPrice) {
-                                    $prices['Week'] = $spaceWeeklyPrice;
-                                }
-                                if ($spaceMonthlyPrice) {
-                                    $prices['Month'] = $spaceMonthlyPrice;
-                                }
+                                                                            // Add prices to the array with their types if they exist
+                                                                            if ($spaceDailyPrice) {
+                                                                                $prices['Day'] = $spaceDailyPrice;
+                                                                            }
+                                                                            if ($spaceWeeklyPrice) {
+                                                                                $prices['Week'] = $spaceWeeklyPrice;
+                                                                            }
+                                                                            if ($spaceMonthlyPrice) {
+                                                                                $prices['Month'] = $spaceMonthlyPrice;
+                                                                            }
 
-                                // Check if prices are available
-                                if (empty($prices)) {
-                                    echo "No price available";
-                                } else {
-                                    // Find the lowest price
-                                    $lowestPrice = min($prices);
+                                                                            // Find the lowest price
+                                                                            $lowestPrice = min($prices);
 
-                                    // Find the type of pricing corresponding to the lowest price
-                                    $lowestPriceType = array_search($lowestPrice, $prices);
+                                                                            // Find the type of pricing corresponding to the lowest price
+                                                                            $lowestPriceType = array_search($lowestPrice, $prices);
 
-                                    // Display the lowest price with its type
-                                    echo '&#8377;' . number_format($lowestPrice) . ' /' . $lowestPriceType;
-                                }
-                                ?>
+                                                                            // Display the lowest price with its type
+                                                                            echo '&#8377;' . number_format($lowestPrice) . ' /' . $lowestPriceType;
+                                                                            ?>
                             </div>
-
-                            <div class="price_btn " onclick="contactOwner('<?php echo $row['user_id']; ?>')" > <button> Send Enquiry </button></div>
+                            <div class="price_btn "> <button> Send Enquiry </button></div>
                         </div>
-                        <script>
-                function contactOwner(userId) {
-                    // Fetch contact information of the owner based on the user ID
-                    console.log('Contact Owner button clicked for user ID:', userId);
-                    window.location.href = 'contact-owner.php?userId=' + userId;
-                }
-
-                async function fetchContactInfo(userId) {
-                    try {
-                        // Use AJAX or fetch API to make a request to a server-side script
-                        const response = await fetch(`get_owner_info.php?userId=${userId}`);
-
-                        const data = await response.json();
-
-                        // Display the contact information
-                        if (data.success) {
-                            alert(`Owner Name: ${data.ownerName}\nOwner Email: ${data.ownerEmail}\nOwner Number: ${data.ownerNumber}`);
-                        } else {
-                            alert(data.message);
-                        }
-                    } catch (error) {
-                        console.error('Error:', error);
-                    }
-                }
-            </script>
                     </div>
                 </div>
             </div>
@@ -966,7 +850,104 @@ if (isset($_GET['spaceId'])) {
             include 'footer.php';
             ?>
 
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    // Your JavaScript code
+                    const currentDate = new Date();
+                    let currentMonth = currentDate.getMonth();
+                    let currentYear = currentDate.getFullYear();
+                    let selectedDate = null;
+                    let selectedDates = <?php echo json_encode($selectedDates); ?>; // Array to store selected dates retrieved from PHP
 
+                    // Dummy selected dates
+                    const dummySelectedDates = [""];
+
+                    const prevMonthBtn = document.getElementById("prevMonth");
+                    const nextMonthBtn = document.getElementById("nextMonth");
+                    const currentMonthYear = document.getElementById("currentMonthYear");
+                    const calendarBody = document.getElementById("calendarBody");
+
+                    // Modify generateCalendar function to mark selected dates
+                    function generateCalendar(month, year) {
+                        calendarBody.innerHTML = "";
+
+                        const firstDay = new Date(year, month, 1);
+                        const lastDay = new Date(year, month + 1, 0);
+                        const startingDay = firstDay.getDay();
+
+                        currentMonthYear.textContent = new Intl.DateTimeFormat("en-US", {
+                            month: "long",
+                            year: "numeric",
+                        }).format(firstDay);
+
+                        for (let i = 0; i < startingDay; i++) {
+                            const prevMonthDate = new Date(year, month, -startingDay + i + 1);
+                            const dayDiv = document.createElement("div");
+                            dayDiv.textContent = prevMonthDate.getDate();
+                            dayDiv.classList.add("calendar-day", "prev-month");
+                            calendarBody.appendChild(dayDiv);
+                        }
+
+                        for (let i = 1; i <= lastDay.getDate(); i++) {
+                            const dayDiv = document.createElement("div");
+                            dayDiv.textContent = i;
+                            dayDiv.classList.add("calendar-day");
+
+                            // Check if the current date is in the selectedDates array
+                            const currentDate = new Date(year, month, i);
+                            // Check if the current date is in the selectedDates array
+                            const isoDateString = currentDate.toISOString().split('T')[0]; // Get the date in ISO format
+                            if (selectedDates.includes(isoDateString)) {
+                                dayDiv.classList.add("selected-date");
+                            }
+
+                            // Check if the current date is in the dummySelectedDates array
+                            if (dummySelectedDates.includes(isoDateString)) {
+                                dayDiv.classList.add("dummy-selected-date");
+                            }
+
+
+                            calendarBody.appendChild(dayDiv);
+                        }
+                    }
+
+                    generateCalendar(currentMonth, currentYear);
+
+                    function setSelectedDate(date) {
+                        selectedDate = date;
+                        generateCalendar(currentMonth, currentYear);
+                    }
+
+                    prevMonthBtn.addEventListener("click", function() {
+                        if (currentMonth === 0) {
+                            currentMonth = 11;
+                            currentYear--;
+                        } else {
+                            currentMonth--;
+                        }
+                        generateCalendar(currentMonth, currentYear);
+                    });
+
+                    nextMonthBtn.addEventListener("click", function() {
+                        if (currentMonth === 11) {
+                            currentMonth = 0;
+                            currentYear++;
+                        } else {
+                            currentMonth++;
+                        }
+                        generateCalendar(currentMonth, currentYear);
+                    });
+
+                    calendarBody.addEventListener("click", function(event) {
+                        const dayDiv = event.target;
+                        if (!dayDiv.classList.contains("calendar-day")) return;
+
+                        const day = parseInt(dayDiv.textContent);
+                        const selectedDay = new Date(currentYear, currentMonth, day);
+                        setSelectedDate(selectedDay);
+                    });
+                });
+            </script>
 
         </body>
 

@@ -121,7 +121,7 @@ $conn->close();
                         <ul class="nav__ul">
                             <li>Enter Your mail</li>
                             <li>
-                                <input style="width: 169px; height: 23px;" class="mail" type="email" name="email" >
+                                <input style="width: 169px; height: 23px;" class="mail" type="email" name="email" required>
                             </li>
                             <li>
                                 <button class="sub_button" type="submit">Submit</button>

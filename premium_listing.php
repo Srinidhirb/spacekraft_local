@@ -319,7 +319,7 @@ if (isset($_COOKIE['user_id'])) {
             <span class="packages">Basic </span>
             <span class="package-des">Lorem ipsum dolor sit amet consectetur.</span>
             <span class="price">Free</span>
-            <a href="#"> <span class="button"> Get Started</span></a>
+            <a href="Space_listed.php"> <span class="button"> Get Started</span></a>
           </div>
         </td>
         <td>
@@ -468,7 +468,7 @@ if (isset($_COOKIE['user_id'])) {
       <li><strike>Social Media promotion</strike></li>
 
     </ul>
-    <a href="#" class="custom-get-started-btn">Get Started</a>
+    <a href="Space_listed.php" class="custom-get-started-btn">Get Started</a>
   </div>
   <div class="custom-pricing-card">
     <span>Pro</span>

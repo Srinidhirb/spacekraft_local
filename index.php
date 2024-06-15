@@ -1,3 +1,4 @@
+
 <?php
 // Include your database connection file
 @include 'connect.php';
@@ -137,7 +138,7 @@ if (isset($_GET['City'])) {
         <hr class="hr">
 
         <select class="search-input" id="typeInput">
-          <option value="">Type</option>
+          <option value="">Space Use</option>
           <option value="Art Gallery">Art Gallery</option>
           <option value="Banquet">Banquet</option>
           <option value="Kiosk">Kiosk</option>
