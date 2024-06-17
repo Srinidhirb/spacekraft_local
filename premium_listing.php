@@ -323,7 +323,7 @@ tr:first-child td:nth-child(3) {
     border-top: 2px solid #000;
     padding: 10px 0;
 }
-tr:nth-child(7) td:nth-child(3) {
+tr:nth-child(9) td:nth-child(3) {
     border-bottom: 2px solid #000;
     padding: 40px 0;
 }
@@ -375,31 +375,59 @@ tr:nth-child(7) td:nth-child(3) {
 
       </tr>
       <tr>
-        <td> <span class="main_heading">Basic Features</span>
-        </td>
-        <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
+        <td> <span class="main_heading"> Plan validity </span></td>
+        <td> <span class="plan_validity"> 1 Month </span></td>
+        <td class="border_no_left_right"> <span class="plan_validity"> 1 Month </span></td>
+        <td> <span class="plan_validity"> 1 Year </span></td>
+
+      </tr>
+      <tr>
+        <td> <span class="main_heading"> Visiblity </span></td>
+        <td> <span class="plan_validity"> Standard visiblity </span></td>
+        <td class="border_no_left_right"> <span class="plan_validity">3x More visiblity </span></td>
+        <td> <span class="plan_validity"> 10x More visiblity </span></td>
+
+      </tr>
+      <tr>
+        <td> <span class="main_heading"> Social Media Promotion </span></td>
+        <td><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 1L1 13M13 13L1 1.00001" stroke="#A1AEBE" stroke-width="2" stroke-linecap="round" />
           </svg>
         </td>
         <td class="border_no_left_right"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
-          </svg>
-        </td>
+          </svg></td>
         <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
+          </svg></td>
+
+      </tr>
+      <tr>
+        <td> <span class="main_heading"> Premium </span></td>
+        <td><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 1L1 13M13 13L1 1.00001" stroke="#A1AEBE" stroke-width="2" stroke-linecap="round" />
           </svg>
         </td>
+        <td class="border_no_left_right"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
+          </svg></td>
+        <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
+          </svg></td>
 
       </tr>
       <tr>
-        <td> <span class="main_heading"> Plan validity </span></td>
-        <td> <span class="plan_validity"> Free Lifetime </span></td>
-        <td class="border_no_left_right"> <span class="plan_validity"> 30 days free </span></td>
-        <td> <span class="plan_validity"> 60 days free </span></td>
+        <td> <span class="main_heading"> Leads </span></td>
+        <td><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 1L1 13M13 13L1 1.00001" stroke="#A1AEBE" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </td>
+        <td> <span class="plan_validity"> Upto 5 Leads </span></td>
+        <td> <span class="plan_validity"> Unlimited Leads  </span></td>
 
       </tr>
       <tr>
-        <td class="width"> <span class="main_heading"> Visiblity in top slots </span></td>
+        <td class="width"> <span class="main_heading"> Dedicated Relationship Manager </span></td>
         <td><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 1L1 13M13 13L1 1.00001" stroke="#A1AEBE" stroke-width="2" stroke-linecap="round" />
           </svg>
@@ -414,47 +442,35 @@ tr:nth-child(7) td:nth-child(3) {
 
       </tr>
       <tr>
-        <td> <span class="main_heading"> Invoice based billing </span></td>
+        <td class="width"> <span class="main_heading"> Verified Status </span></td>
         <td><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 1L1 13M13 13L1 1.00001" stroke="#A1AEBE" stroke-width="2" stroke-linecap="round" />
           </svg>
         </td>
-        <td class="border_no_left_right"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
-          </svg></td>
+        <td class="border_no_left_right"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 1L1 13M13 13L1 1.00001" stroke="#A1AEBE" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </td>
         <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
           </svg></td>
 
       </tr>
       <tr>
-        <td> <span class="main_heading"> 24/7 Support </span></td>
-        <td> <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <td class="width"> <span class="main_heading"> Property Photoshoot </span></td>
+        <td><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 1L1 13M13 13L1 1.00001" stroke="#A1AEBE" stroke-width="2" stroke-linecap="round" />
           </svg>
         </td>
-        <td class="border_no_left_right"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
-          </svg></td>
+        <td class="border_no_left_right"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 1L1 13M13 13L1 1.00001" stroke="#A1AEBE" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </td>
         <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
           </svg></td>
 
-      </tr>
-      <tr>
-        <td> <span class="main_heading"> Social Media promotion </span></td>
-        <td> <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 1L1 13M13 13L1 1.00001" stroke="#A1AEBE" stroke-width="2" stroke-linecap="round" />
-          </svg>
-        </td>
-        <td class="border_no_top"><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
-          </svg></td>
-        <td><svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 1L5.28033 8.71967C4.98744 9.01256 4.51256 9.01256 4.21967 8.71967L1 5.5" stroke="#031B64" stroke-width="2" stroke-linecap="round" />
-          </svg></td>
-
-      </tr>
+     
     </table>
   </div>
   <div class="mobile_pricing">
