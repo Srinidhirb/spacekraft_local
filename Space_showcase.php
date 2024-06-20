@@ -174,7 +174,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div class="circle ">2</div>
                 <span> Space Showcase<span>
             </div>
-            
+
             <div class="diagram">
                 <div class="circle disabled">3</div>
                 <span class="disabled"> Space Pricing<span>
@@ -216,21 +216,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
-    var checkboxes = document.querySelectorAll('.spacetype-checkbox');
+                    var checkboxes = document.querySelectorAll('.spacetype-checkbox');
 
-    checkboxes.forEach(function(checkbox) {
-        checkbox.addEventListener('change', function() {
-            localStorage.setItem(checkbox.id, checkbox.checked);
-        });
-    });
+                    checkboxes.forEach(function(checkbox) {
+                        checkbox.addEventListener('change', function() {
+                            localStorage.setItem(checkbox.id, checkbox.checked);
+                        });
+                    });
 
-    // Load checkbox states from localStorage
-    checkboxes.forEach(function(checkbox) {
-        var isChecked = localStorage.getItem(checkbox.id) === 'true';
-        checkbox.checked = isChecked;
-    });
-});
-
+                    // Load checkbox states from localStorage
+                    checkboxes.forEach(function(checkbox) {
+                        var isChecked = localStorage.getItem(checkbox.id) === 'true';
+                        checkbox.checked = isChecked;
+                    });
+                });
             </script>
 
             <label for="space_area">Space Area <span class="red">*</span> (in Sq.ft)</label>
@@ -356,14 +355,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </form>
     </div>
     <script>
-    document.getElementById('submitBtn').addEventListener('click', function(event) {
-        const amenities = document.querySelectorAll('input[name="amenities[]"]:checked');
-        if (amenities.length === 0) {
-            alert("Please select at least one amenity.");
-            event.preventDefault(); // Prevent form submission
-        }
-    });
-</script>
+        document.getElementById('submitBtn').addEventListener('click', function(event) {
+            const amenities = document.querySelectorAll('input[name="amenities[]"]:checked');
+            if (amenities.length === 0) {
+                alert("Please select at least one amenity.");
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    </script>
 
 
     <script>
@@ -425,8 +424,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
 
             // Display the file name
-           
-        
     </script>
 
 </body>

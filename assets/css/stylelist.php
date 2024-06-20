@@ -705,7 +705,7 @@ color:#031B64;
 content: '';
 position: absolute;
 
-width: 96px;
+width: 116px;
 /* Width of the line */
 height: 2px;
 /* Height of the line */

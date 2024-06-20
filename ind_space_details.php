@@ -233,7 +233,7 @@ if (isset($_GET['spaceId'])) {
                                 1000</span>
                         </div>
                         <hr class="hr">
-                        <h2>Space use</h2>
+                        <!-- <h2>Space use</h2>
                         <div class="space-use">
                             <div class="space-item">
                                 <span>👜</span>
@@ -247,7 +247,7 @@ if (isset($_GET['spaceId'])) {
                                 <span>🎬</span>
                                 <p>Film shoots</p>
                             </div>
-                        </div>
+                        </div> -->
                         <hr class="hr">
                         <div class="about">
                             <span class="abt">About space</span>
@@ -451,7 +451,7 @@ if (isset($_GET['spaceId'])) {
                                 </span>
                                 <input type="text" class="date-input" placeholder="End Date">
                             </div>
-                            <button class="enquiry-button">Send Enquiry</button>
+                           <a href="Enquiry_form.php"> <button class="enquiry-button">Send Enquiry</button></a>
                         </div>
 
                         <script>
