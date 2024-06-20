@@ -300,3 +300,355 @@ height:143px;
 padding:0 20px ;
 }
 }
+
+* {
+    padding: 0;
+    margin: 0;
+  }
+
+  header {
+    height: 64px;
+    background-color: #ffffff;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Adjust the z-index as needed */
+
+  }
+
+  .header {
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+  }
+
+  .logo_search {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .logo_search img {
+    width: 198px;
+    height: 23px;
+  }
+
+  .search_bar {
+    display: flex;
+    cursor: pointer;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 0 24px;
+
+  }
+
+  .search_bar span {
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    text-align: left;
+    color: #222222;
+    margin: 0 0 0 12px;
+  }
+
+  .dropdown_listing {
+    width: 296px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .dropdown {
+    cursor: pointer;
+    width: 94px;
+    display: flex;
+    align-items: center;
+  }
+
+  .dropdown span {
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: left;
+
+    color: #222222;
+  }
+
+  .btn {
+    width: auto;
+
+    padding: 9px 16px 9px 16px;
+    gap: 8px;
+    border-radius: 6px;
+    opacity: 0px;
+    background-color: #031B64;
+    color: #ffffff;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    color: #222222 !important;
+    background-color: #4AE9E9;
+  }
+
+  .login {
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: left;
+    color: #222222;
+    margin: 0 24px 0 0;
+    cursor: pointer;
+  }
+
+  .btn span {
+
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    text-align: left;
+
+  }
+
+  .nav_right {
+    display: none;
+    position: absolute;
+
+    padding: 20px;
+    gap: 30px;
+    top: 64px;
+    right: 0%;
+    width: 80%;
+    height: 90vh;
+    background-color: #ffffff;
+    transition: all 3s ease-in-out;
+  }
+
+  .open,
+  .close {
+    display: none;
+  }
+
+  .nav_flex {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .dropdown_display {
+    display: none;
+    width: 140px;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    height: 180px;
+    background-color: #FBFBFB;
+    position: absolute;
+    top: 43px;
+    right: 217px;
+  }
+
+  .dropdown_display a {
+    width: 100%;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dropdown_display a:hover {
+    background-color: #E7E7E7;
+  }
+
+  .dropdown:hover .dropdown_display {
+    display: block;
+  }
+
+  .dropdown-login {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 87%;
+    right: 0;
+    width: 100px !important;
+    height: 106px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 0px;
+    z-index: 100;
+  }
+
+  .dropdown-menu hr {
+
+    width: 92%;
+  }
+
+  .dropdown-login:hover .dropdown-menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .login li {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none !important;
+    /* Remove default list item marker */
+  }
+
+  .dropdown-menu li:hover {
+    background-color: #E7E7E7;
+  }
+
+  .nav-flex {
+    display: flex;
+    justify-content: center;
+
+
+  }
+
+  @media (max-width: 890px) {
+    .dropdown-menu {
+      top: 0;
+      left: 100%;
+      min-width: 150px;
+      /* Adjust as needed */
+    }
+  }
+
+  @media screen and (max-width:680px) {
+
+    .dropdown_listing {
+      display: none;
+    }
+
+    .open {
+      display: block;
+      cursor: pointer;
+    }
+
+    .header {
+      padding: 0 40px 0 20px;
+    }
+
+    .logo_search .search_bar {
+      display: none;
+    }
+
+
+  }
+
+  header input[type=text] {
+    width: 170px;
+    padding: 10px;
+    height: auto;
+    margin: 0;
+    border: none;
+    background-color: #F4F1F1;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  }
+
+  
+  .search_bar_input {
+    
+
+    gap: 20px;
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    width: 100%;
+    background-color: #F4F1F1;
+    transition: right 0.4s ease-in-out;
+  }
+
+  .search_bar_input.visible {
+    display: flex;
+
+  }
+
+  #find_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile_search {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile_search form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav_flex .links {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 28px;
+  }
+
+  .nav_flex .login li {
+    justify-content: start;
+  }
+
+  .nav_flex .btn {
+    width: 130px;
+    text-align: center;
+  }
+  .quick_search{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+  }
+  .btn_flex{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+  .quick_search span{
+    font-size: 1rem;
+    color: #000000;
+    font-weight: bold;
+  }

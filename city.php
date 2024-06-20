@@ -191,89 +191,10 @@ if (isset($_GET['City'])) {
     <link rel="stylesheet" href="assets\css\find-css.php">
     <link rel="stylesheet" href="assets\css\header_footer-css.php">
     <link rel="stylesheet" href="assets\css\find-css.php">
-    <!-- Include additional stylesheets or meta tags as needed -->
-<!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-WXVP8RTRY0"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-WXVP8RTRY0'); </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WXVP8RTRY0"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-WXVP8RTRY0'); </script>
     <style>
-        /* Add your specific styles here */
-        .city {
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .city-title {
-
-            padding: 20px;
-            color: var(--Text-title, #222222);
-            font-family: Lato;
-            font-size: 36px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: normal;
-            text-align: center;
-        }
-
-        .Abt {
-            padding: 24px 48px;
-            color: var(--Text-title, #222222);
-            font-family: Lato;
-            font-size: 24px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 22px;
-            /* 91.667% */
-        }
-
-        .Abt p {
-            padding: 24px 48px 10px 88px;
-            
-            color: #222222;
-            font-family: Lato;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 28.8px;
-
-            /* 120% */
-
-        }
-
-        @media (max-width: 768px) {
-            /* Adjust styles for smaller screens */
-
-            .city-title {
-                font-size: 28px;
-            }
-
-            .Abt {
-                font-size: 18px;
-            }
-
-            .Abt p {
-                font-size: 18px;
-                line-height: 24px;
-                    padding: 10px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            /* Further adjust styles for even smaller screens */
-
-            .city-title {
-                font-size: 24px;
-            }
-
-            .Abt {
-                font-size: 16px;
-            }
-
-            .Abt p {
-                font-size: 16px;
-                line-height: 20px;
-            }
-        }
+       
+       
 
         .bg {
             width: 100%;
@@ -286,6 +207,7 @@ if (isset($_GET['City'])) {
 
         }
     </style>
+    <link rel="stylesheet" href="assets\css\faq-css.php">
 </head>
 
 <body>

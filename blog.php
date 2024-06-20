@@ -4,7 +4,7 @@
 include 'connect.php';
 
 // Check if the article id is set in the URL
-if(isset($_GET['id'])) {
+if (isset($_GET['id'])) {
     $article_id = $_GET['id'];
 
     // Fetch article details based on the id
@@ -12,7 +12,7 @@ if(isset($_GET['id'])) {
     $result = mysqli_query($conn, $selectQuery);
 
     // Check if article exists
-    if(mysqli_num_rows($result) > 0) {
+    if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
     } else {
         echo "Article not found!";
@@ -43,19 +43,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Redirect back to the article page or show a success message
     echo '<script>window.location.href = "blog1.php";</script>';
-    
+
     exit();
 }
 
 // Fetch comments from the database
 $selectCommentsQuery = "SELECT * FROM comments";
 $commentsResult = mysqli_query($conn, $selectCommentsQuery);
+$sql = "SELECT id, title, description, image, date FROM blogs ORDER BY RAND() LIMIT 2";
+$result = $conn->query($sql);
+
+$conn->close();
 ?>
 
-// Fetch comments from the database
-$selectQuery = "SELECT * FROM comments";
-$result = mysqli_query($conn, $selectQuery);
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,7 +76,16 @@ $result = mysqli_query($conn, $selectQuery);
     <link rel="stylesheet" href="assets\css\header_footer-css.php">
 
     <link rel="stylesheet" href="assets\css\blog-css.php">
-    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-WXVP8RTRY0"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-WXVP8RTRY0'); </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WXVP8RTRY0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-WXVP8RTRY0');
+    </script>
 </head>
 
 <body>
@@ -84,8 +94,8 @@ $result = mysqli_query($conn, $selectQuery);
 
     <section>
         <article>
-        <h2><?php echo $row['title']; ?></h2><br>
-        <p class="article-description"><?php echo $row['description']; ?></p>
+            <h2><?php echo $row['title']; ?></h2><br>
+            <p class="article-description"><?php echo $row['description']; ?></p>
             <!-- Add these lines inside the <section> tag, after the article content -->
             <div class="share-section">
                 <h3>Share this article:</h3> <br>
@@ -109,9 +119,9 @@ $result = mysqli_query($conn, $selectQuery);
                     <input type="submit" value="Submit Comment">
                 </form>
 
-                </div>
-               
-            
+            </div>
+
+
 
 
             </div>
@@ -119,21 +129,28 @@ $result = mysqli_query($conn, $selectQuery);
         </article>
         <h4 style="text-align: center;">RELATED BLOG</h4>
         <div class="related-blogs">
+    <?php
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<div class='blog-box'>";
+            echo "<h3>" . htmlspecialchars($row["title"]) . "</h3>"; // Output title safely
+            
+            // Truncate description to 150 characters
+            $description = htmlspecialchars($row["description"]);
+            if (strlen($description) > 150) {
+                $description = substr($description, 0, 150) . '...';
+            }
+            echo "<p>" . $description . "</p>"; // Output truncated description safely
+            
+            echo "<a href='blog.php?id=" . $row["id"] . "'>Read More</a>"; // Assuming 'blog.php' is your blog detail page
+            echo "</div>";
+        }
+    } else {
+        echo "No related blogs found.";
+    }
+    ?>
+</div>
 
-            <div class="blog-box">
-                <h3>The Rise of Pop-Up Culture in India: A Closer Look at Pop-Up Spaces</h3>
-                <p>In recent years, India has witnessed a flourishing of the pop-up culture, a trend that's transforming the retail and business landscape. Pop-up events, shops, and experiences are temporary, yet impactful, providing a fresh and dynamic approach to traditional retail. One of the crucial catalysts behind this burgeoning movement is the availability of short-term rental spaces. Let's delve into the compelling world of pop-up culture and the pivotal role short-term rentals play in its success.</p>
-                <a href="blog2.php">Read More</a>
-            </div>
-
-            <div class="blog-box">
-                <h3>Pop-Up Shop Strategies And Marketing Tactics for Success in the Indian Business Landscape</h3>
-                <p>In the bustling landscape of Indian commerce, where innovation and dynamism reign supreme, the phenomenon of pop-up shops has emerged as a game-changer. Pop-up shops are temporary retail spaces that offer a unique and engaging shopping experience to customers. This trend has gained significant traction in recent years, proving to be a potent strategy for businesses to boost brand visibility, drive sales, and test the market. Let's unravel the essential strategies and marketing tactics to ensure a successful pop-up venture in India.
-                </p>
-                <a href="blog3.php">Read More</a>
-            </div>
-        </div>
-        <!-- More articles go here -->
     </section>
 
     <?php include 'footer.php' ?>

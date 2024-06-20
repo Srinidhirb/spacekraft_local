@@ -1,29 +1,45 @@
 <?php
 @include 'connect.php';
+
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Prepare and bind parameters
-    $stmt = $conn->prepare("INSERT INTO blogs (title, description, image, date) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $title, $description, $image, $date);
-    // Set parameters and execute
     $title = $_POST['blogTitle'];
     $description = $_POST['blogDescription'];
     $image = basename($_FILES["blogImage"]["name"]);
     $date = $_POST['blogDate'];
+
     // Upload image
     $target_dir = "uploads/";
-    $target_file = $target_dir . basename($_FILES["blogImage"]["name"]);
-    move_uploaded_file($_FILES["blogImage"]["tmp_name"], $target_file);
-    // Execute SQL
-    if ($stmt->execute() === TRUE) {
-        echo "Blog uploaded successfully.";
+    $target_file = $target_dir . $image;
+    
+    // Check if image file is a actual image or fake image
+    $check = getimagesize($_FILES["blogImage"]["tmp_name"]);
+    if($check !== false) {
+        if (move_uploaded_file($_FILES["blogImage"]["tmp_name"], $target_file)) {
+            // Prepare and bind
+            $imagePath = "uploads/" . $image; // Relative path to store in the database
+            $stmt = $conn->prepare("INSERT INTO blogs (title, description, image, date) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $title, $description, $imagePath, $date);
+
+            // Execute SQL
+            if ($stmt->execute() === TRUE) {
+                echo "Blog uploaded successfully.";
+            } else {
+                echo "Error: " . $stmt->error;
+            }
+            $stmt->close();
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
     } else {
-        echo "Error: " . $stmt->error;
+        echo "File is not an image.";
     }
-    $stmt->close();
+
     $conn->close();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -83,9 +99,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     button[type="submit"]:hover {
         background-color: #0056b3;
     }
+    .back_btn{
+        position: absolute;
+        top: 40px;
+        left: 40px;
+    }
     </style>
 </head>
 <body>
+    <a class="back_btn" href="abc.php"> Back to Dashboard </a>
     <h1>Upload a New Blog</h1>
     <form action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
