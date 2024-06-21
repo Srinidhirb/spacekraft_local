@@ -61,18 +61,28 @@
 
 
     <div class="dropdown_listing">
+      <div class="nav_selector"><a href="premium_listing.php"> <span> Pricing</span> </a></div>
+      <div class="nav_selector"><a href="resources.php"> <span> Resources</span> </a>
+      </div>
+      <div class="nav_selector">  <a href="faq.php"><span> FAQ</span> </a>
+      </div>
+      <div class="nav_selector"> <a href="contactus.php"><span>  Contact Us</span> </a>
+      </div>
       <div class="dropdown"> <span> About us</span> &nbsp; <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18 10L12.7071 15.2929C12.3166 15.6834 11.6834 15.6834 11.2929 15.2929L6 10" stroke="#222222" stroke-width="2" stroke-linecap="round" />
         </svg>
         <div class="dropdown_display">
-          <a href="#">Renters</a>
-          <a href="#">Hosts</a>
-          <a href="faq.php">FAQ</a>
-          <a href="resources.php">Resources</a>
-          <a href="contactus.php">Contact Us</a>
+         
+          <ul class="dropdown-menu" style="height: auto; top:2%;" >
+          <a href="host.php"><li>Hosts</li></a>
+              
+              <hr>
+              <a href="#"><li>Renters</li></a>
+            </ul>
+         
         </div>
       </div>
-
+   
       <div class="login"><?php if ($user_id != '') { ?>
           <li class=" dropdown-login">
             <a href="user-profile.php"><svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -119,7 +129,7 @@
         <div class="links">
           <a href="">About us</a>
           <a href="#">Renters</a>
-          <a href="#">Hosts</a>
+          <a href="host.php">Hosts</a>
           <a href="faq.php">FAQ</a>
           <a href="resources.php">Resources</a>
           <a href="contactus.php">Contact Us</a>

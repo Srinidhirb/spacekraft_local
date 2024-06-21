@@ -358,10 +358,11 @@ padding:0 20px ;
   }
 
   .dropdown_listing {
-    width: 296px;
+   
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    gap:24px;
     transition: all 0.2s ease-in-out;
   }
 
@@ -406,7 +407,7 @@ padding:0 20px ;
     line-height: 16px;
     text-align: left;
     color: #222222;
-    margin: 0 24px 0 0;
+ 
     cursor: pointer;
   }
 
@@ -447,16 +448,10 @@ padding:0 20px ;
 
   .dropdown_display {
     display: none;
-    width: 140px;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
-    height: 180px;
-    background-color: #FBFBFB;
+   
     position: absolute;
-    top: 43px;
-    right: 217px;
+    top: 39px;
+    right: 237px;
   }
 
   .dropdown_display a {
@@ -499,6 +494,22 @@ padding:0 20px ;
     width: 92%;
   }
 
+  .dropdown:hover .dropdown-menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+  }
   .dropdown-login:hover .dropdown-menu {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -545,31 +556,43 @@ padding:0 20px ;
       /* Adjust as needed */
     }
   }
+  @media screen and (min-width:975px){
+    .open {
+      display: none !important;
+      cursor: pointer;
+    }
 
-  @media screen and (max-width:680px) {
-
+  }
+  @media screen and (max-width:975px) {
     .dropdown_listing {
       display: none;
     }
-
+    .logo_search .search_bar {
+      display: none;
+    }
     .open {
       display: block;
       cursor: pointer;
     }
+  }
+ 
+
+  @media screen and (max-width:680px) {
+
+    
+  
 
     .header {
       padding: 0 40px 0 20px;
     }
 
-    .logo_search .search_bar {
-      display: none;
-    }
-
+    
 
   }
 
   header input[type=text] {
-    width: 170px;
+    max-width:170px;
+    width: 100%;
     padding: 10px;
     height: auto;
     margin: 0;

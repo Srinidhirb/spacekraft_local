@@ -79,7 +79,7 @@ flex-wrap: wrap;
 justify-content: space-between;
 gap: 10px;
 
-max-width: 1180px;
+max-width: 1195px;
 margin: 0 auto;
 }
 
@@ -96,8 +96,8 @@ margin: 0 0 8px 0;
 }
 
 .right-section {
-flex: 1;
-padding: 20px;
+flex: 0;
+
 background-color: #fff;
 border-radius: 8px;
 
@@ -152,11 +152,11 @@ color: #555;
 
 @media (max-width: 768px) {
 .container {
-    flex-direction: column;
+flex-direction: column;
 }
 
 .right-section {
-    margin-top: 20px;
+margin-top: 20px;
 }
 }
 
@@ -236,13 +236,13 @@ font-weight: 600;
 
 @media (max-width: 768px) {
 .space-item {
-    width: calc(50% - 20px);
+width: calc(50% - 20px);
 }
 }
 
 @media (max-width: 480px) {
 .space-item {
-    width: 100%;
+width: 100%;
 }
 }
 
@@ -251,6 +251,8 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 width: 100%;
+gap:15px;
+flex-wrap: wrap-reverse;
 margin: 0 0 10px 0;
 }
 
@@ -306,25 +308,25 @@ align-items: center;
 
 @media screen and (max-width: 576px) {
 table.responsive-table tr {
-    display: block;
+display: block;
 
 }
 
 table.responsive-table tr:last-child {
-    margin-bottom: 0;
+margin-bottom: 0;
 }
 
 table.responsive-table td {
-    display: inline-block;
+display: inline-block;
 
-    box-sizing: border-box;
+box-sizing: border-box;
 
-    vertical-align: top;
+vertical-align: top;
 }
 
 .svg_amei {
-    margin-bottom: 10px;
-    /* Add spacing between rows */
+margin-bottom: 10px;
+/* Add spacing between rows */
 }
 }
 
@@ -408,7 +410,8 @@ text-decoration: underline;
 border: 1px solid #999999;
 border-radius: 5px;
 padding: 20px;
-width: 330px;
+max-width:314px;
+width: 100%;
 height: 210px;
 font-family: Arial, sans-serif;
 }
@@ -510,87 +513,87 @@ align-items: center;
 
 @media (max-width: 1238px) {
 .large-image {
-    max-width: 770px;
-    width: 100%;
+max-width: 770px;
+width: 100%;
 
 
 }
 
 .container {
-    max-width: 1080px;
+max-width: 1080px;
 }
 }
 
 @media (max-width: 1138px) {
 .large-image {
-    max-width: 670px;
-    width: 100%;
+max-width: 670px;
+width: 100%;
 
 
 }
 
 .container {
-    max-width: 980px;
+max-width: 980px;
 }
 }
 
 @media (max-width: 1038px) {
 .large-image {
-    max-width: 570px;
-    width: 100%;
+max-width: 570px;
+width: 100%;
 
 
 }
 
 .container {
-    max-width: 880px;
+max-width: 880px;
 }
 }
 
 @media (max-width: 938px) {
 .large-image {
-    padding: 0 20px;
-    width: 100%;
-    max-width: 900px;
+padding: 0 20px;
+width: 100%;
+max-width: 900px;
 
 
 }
 
 .container {
-    max-width: 880px;
-    width: 100%;
-    padding: 0 20px;
+max-width: 880px;
+width: 100%;
+padding: 0 20px;
 }
 
 .small-images {
-    flex-direction: row;
+flex-direction: row;
 }
 
 .gallery-container {
-    justify-content: start;
+justify-content: start;
 }
 }
 
 @media (max-width: 768px) {
 .gallery-container {
-    flex-direction: column;
+flex-direction: column;
 }
 
 .avai_amin table td {
-    padding: 16px 16px 10px 0px;
+padding: 16px 16px 10px 0px;
 }
 
 .large-image,
 .small-images {
-    flex: 1;
+flex: 1;
 }
 
 .small-images {
-    flex-direction: row;
+flex-direction: row;
 }
 
 .small-images img {
-    width: 50%;
+width: 50%;
 }
 }
 
@@ -607,9 +610,9 @@ font-family: sans-serif;
 font-variant: small-caps;
 font-weight: 900;
 background: conic-gradient(#FE983B 0 25%,
-        #031B64 25% 50%,
-        #4AE9E9  50% 75%,
-        #FE983B 75%);
+#031B64 25% 50%,
+#4AE9E9 50% 75%,
+#FE983B 75%);
 background-size: 200% 200%;
 animation: animateBackground 4.5s ease-in-out infinite;
 color: transparent;
@@ -619,18 +622,40 @@ background-clip: text;
 
 @keyframes animateBackground {
 25% {
-    background-position: 0 100%;
+background-position: 0 100%;
 }
 
 50% {
-    background-position: 100% 100%;
+background-position: 100% 100%;
 }
 
 75% {
-    background-position: 100% 0%;
+background-position: 100% 0%;
 }
 
 100% {
-    background-position: 0 0;
+background-position: 0 0;
 }
+}
+
+@media screen and (max-width:1141px){
+    .left-section {
+flex: 0.5;
+
+}
+.enquiry-container{
+    max-width:280px;
+}
+}
+@media screen and (max-width:1038px){
+    .left-section {
+flex: 3;
+
+}
+}
+@media screen and (max-width:508px){
+    .share_fav {
+        width:100%;
+        justify-content:end;
+    }
 }

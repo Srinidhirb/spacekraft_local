@@ -74,7 +74,7 @@ ob_end_flush(); // Flush output buffer
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-WXVP8RTRY0"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-WXVP8RTRY0'); </script>
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="assets\css\login-css.php">
+   <link rel="stylesheet" href="assets\css\login_logout-css.php">
    <link rel="stylesheet" href="assets\css\header_footer-css.php">
    
 </head>

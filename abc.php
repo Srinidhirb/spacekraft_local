@@ -87,6 +87,7 @@ $conn->close();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="website icon " href="assets\img\Logo Icon 16_16.svg">
   <title>Blog Dashboard</title>
   <style>
     /* styles.css */

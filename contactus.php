@@ -36,9 +36,20 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="website icon " href="assets\img\Logo Icon 16_16.svg">
-    <title>Contact Us</title>
+    <title>SpaceKraft - List Your Retail Space for Short-Term Rental</title>
+    <meta name="description" content="India’s first short term rental platform helps you generate new revenue streams renting your empty retail spaces. List your retail space now and grow!">
     <link rel="stylesheet" href="assets\css\header_footer-css.php">
-    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-WXVP8RTRY0"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-WXVP8RTRY0'); </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WXVP8RTRY0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-WXVP8RTRY0');
+    </script>
     <link rel="stylesheet" href="assets\css\contactus-css.php">
 </head>
 
@@ -98,7 +109,7 @@ $conn->close();
                 <div class="px">Short term rentals</div>
             </div>
             <h5>Turn your commercial space into hot property!</h5>
-            <a href="Space_Details.php">  <span class="l-s" id="typingEffect"><i class="fa-regular fa-hand-point-right"></i> </span></a>
+            <a href="Space_Details.php"> <span class="l-s" id="typingEffect"><i class="fa-regular fa-hand-point-right"></i> </span></a>
 
         </div>
         <div class="center">
@@ -137,16 +148,16 @@ $conn->close();
         </div>
     </div>
     <div id="popup" class="popup">
-    <div class="popup-content">
-        <span class="close-popup" onclick="closePopup()">&times;</span>
-        <p id="popup-message"></p>
-        <div class="popup-buttons">
-            <button onclick="window.location.href='index.php'">Home</button>
-            <button onclick="window.location.href='find.php'">Find</button>
-            
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">&times;</span>
+            <p id="popup-message"></p>
+            <div class="popup-buttons">
+                <button onclick="window.location.href='index.php'">Home</button>
+                <button onclick="window.location.href='find.php'">Find</button>
+
+            </div>
         </div>
     </div>
-</div>
 
     <script>
         // Check if the confirmation message is not empty
@@ -169,7 +180,7 @@ $conn->close();
             popup.style.display = 'none';
         }
     </script>
-<script>
+    <script>
         // Text to be typed
         var textToType = "List Your Space";
         var typingSpeed = 100; // Typing speed in milliseconds

@@ -1,4 +1,3 @@
-
 <?php
 // Include your database connection file
 @include 'connect.php';
@@ -97,8 +96,8 @@ if (isset($_GET['City'])) {
     gtag('config', 'G-WXVP8RTRY0');
   </script>
 
-
-  <title>SpaceKraft</title>
+  <title>SpaceKraft - List Your Retail Space for Short-Term Rental</title>
+  <meta name="description" content="India’s first short term rental platform helps you generate new revenue streams renting your empty retail spaces. List your retail space now and grow!">
 </head>
 
 <body>

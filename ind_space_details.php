@@ -132,7 +132,7 @@ if (isset($_GET['spaceId'])) {
             <div id="loader">
                
                 <div class="loader">
-                    SpaceKraft
+                    Spacekraft
                 </div>
             </div>
             <div id="main-content" style="display:none;">
