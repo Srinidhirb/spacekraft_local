@@ -257,7 +257,10 @@ if (isset($_GET['City'])) {
   </div>
   <script>
     function redirectToSpace(spaceId) {
-      window.location.href = 'ind_space_details.php?spaceId=' + spaceId;
+      // Encode spaceId in Base64
+      var encodedSpaceId = btoa(spaceId);
+      // Redirect to the encoded URL
+      window.location.href = 'ind_space_details.php?spaceId=' + encodedSpaceId;
     }
   </script>
   <!-- Swiper JS -->

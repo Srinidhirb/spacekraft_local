@@ -12,12 +12,12 @@ if (isset($_COOKIE['user_id'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Premium Listing</title>
-
+  <link rel="stylesheet" href="assets/css/header_footer-css.php">
   <link rel="stylesheet" href="assets/css/premium_listing-css.php">
 </head>
 
 <body>
-  <
+  <?php include 'header.php' ?>
   <div class="center_display">
     <span>Unlock new revenue streams! </span>
     <p>Choose a plan and list your retail space.</p>
@@ -33,7 +33,7 @@ if (isset($_COOKIE['user_id'])) {
             <span class="packages">Basic </span>
 
             <span class="price">Free</span>
-            <a href="Space_listed.php"> <span class="button"> Continue</span></a>
+            <a href="#"> <span class="button"> Continue</span></a>
           </div>
         </td>
         <td>
@@ -45,7 +45,7 @@ if (isset($_COOKIE['user_id'])) {
                 <path d="M0.125 0.500043C0.125 0.500043 1.86764 0.500043 3.625 0.500043M8.125 16.5L1.125 9.50004C1.125 9.50004 2.625 9.50004 3.625 9.50004C4.625 9.50004 9.125 9.56183 9.125 5.00004C9.125 0.438253 4.625 0.500043 3.625 0.500043M12.125 0.500043C12.125 0.500043 6.55393 0.500043 3.625 0.500043M0.125 4.50004H12.125" stroke="#717579" stroke-width="1.5" />
               </svg>
               499 <span class="duration"> / month</span></span>
-            <a href="Space_listed"> <span class="button"> Pay</span></a>
+            <a href="#"> <span class="button"> Pay</span></a>
           </div>
         </td>
         <td>
@@ -177,7 +177,7 @@ if (isset($_COOKIE['user_id'])) {
             <li><strike>Social Media promotion</strike></li>
 
           </ul>
-          <a href="Space_listed.php" class="custom-get-started-btn">Get Started</a>
+          <a href="#" class="custom-get-started-btn">Get Started</a>
         </div>
         <div class="custom-pricing-card">
           <span>Pro</span>
@@ -221,7 +221,7 @@ if (isset($_COOKIE['user_id'])) {
       </div>
     </div>
   </div>
-
+  <?php include 'footer.php' ?>
   <script>
     const cards = document.querySelectorAll('.card');
     const rows = document.querySelectorAll('tr');

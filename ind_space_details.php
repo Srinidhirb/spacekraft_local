@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (isset($_COOKIE['user_id'])) {
+    $user_id = $_COOKIE['user_id'];
+} else {
+    $user_id = '';
+}
 
 @include 'connect.php';
 
@@ -8,12 +14,6 @@ function getCurrentURL()
     $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
     $url = $protocol . "://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     return $url;
-}
-
-if (isset($_COOKIE['user_id'])) {
-    $user_id = $_COOKIE['user_id'];
-} else {
-    $user_id = '';
 }
 
 $array_amenities = array(
@@ -32,9 +32,35 @@ $array_amenities = array(
     "Table",
     "Water access"
 );
+
 // Check if spaceId is provided in the URL query string
 if (isset($_GET['spaceId'])) {
-    $spaceId = $_GET['spaceId'];
+    // Decode the spaceId
+    $spaceId = base64_decode($_GET['spaceId']);
+
+
+
+    // Check if this spaceId has already been clicked by this user
+    $clickedCookieName = 'clicked_' . $spaceId;
+    if (!isset($_SESSION[$clickedCookieName]) && !isset($_COOKIE[$clickedCookieName])) {
+        // Update the click count
+        $updateClickCount = "UPDATE combined_list SET click_count = click_count + 1 WHERE id = ?";
+        $stmt = $conn->prepare($updateClickCount);
+        $stmt->bind_param("i", $spaceId);
+        $stmt->execute();
+
+        // Set the cookie and session variable to mark this space as clicked
+        setcookie($clickedCookieName, '1', time() + (86400 * 30), "/"); // 30 days expiration
+        $_SESSION[$clickedCookieName] = '1';
+    }
+
+    // Fetch space details
+    $sql = "SELECT * FROM combined_list WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $spaceId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $spaceDetails = $result->fetch_assoc();
 
     // Retrieve details for the specified spaceId
     $sql = "SELECT * FROM combined_list WHERE id = $spaceId";
@@ -59,34 +85,6 @@ if (isset($_GET['spaceId'])) {
         $selectedYear = $row['selected_year'];
         $selectedMonth = $row['selected_month'];
         $selectedDates = explode(' ,', $row['selected_dates']);
-        $selectedDays = [];
-        $selectedDatesString = implode(', ', $selectedDates);
-
-        // Explode the comma-separated string into an array of dates
-        $datesArray = explode(', ', $selectedDatesString);
-
-        // Loop through each date and extract the day part
-        foreach ($datesArray as $dateString) {
-            $parts = explode('-', $dateString); // Split the date into parts
-            $day = intval($parts[0]); // Extract the day part
-            $selectedDays[] = $day; // Add the extracted day to the array
-            $month = intval($parts[1]); // Extract the month part
-            $year = intval($parts[2]); // Extract the year part
-            $selectedMonths[] = $month; // Add the extracted month to the array
-            $selectedYears[] = $year;
-        }
-        $uniqueMonths = array_unique($selectedMonths);
-        $uniqueYears = array_unique($selectedYears);
-
-        // Assuming you only want to display the first month and year
-        $firstMonth = reset($uniqueMonths); // Get the first month
-        $firstYear = reset($uniqueYears); // Get the first year
-
-        // Convert the array of selected days into a comma-separated string
-        $selectedDaysString = implode(',', $selectedDays);
-
-        // Encode the array of selected days into JSON format
-        $selectedDaysJSON = json_encode($selectedDays);
 
         $minDuration = $row['min_duration'];
         $minDurationUnit = $row['min_duration_unit'];
@@ -100,6 +98,7 @@ if (isset($_GET['spaceId'])) {
 
         // Get the current URL
         $current_url = getCurrentURL();
+
 ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -122,7 +121,7 @@ if (isset($_GET['spaceId'])) {
                 gtag('js', new Date());
                 gtag('config', 'G-WXVP8RTRY0');
             </script>
-           <link rel="stylesheet" href="assets\css\individual_space-css.php">
+            <link rel="stylesheet" href="assets\css\individual_space-css.php">
         </head>
 
         <body>
@@ -130,7 +129,7 @@ if (isset($_GET['spaceId'])) {
             include 'header.php';
             ?>
             <div id="loader">
-               
+
                 <div class="loader">
                     Spacekraft
                 </div>
@@ -230,7 +229,8 @@ if (isset($_GET['spaceId'])) {
                                     <path d="M2.9095 13.1718C2.56793 12.4286 2.56793 11.5714 2.9095 10.8282C4.4906 7.38843 7.96659 5 12.0004 5C16.0343 5 19.5102 7.38843 21.0913 10.8282C21.4329 11.5714 21.4329 12.4286 21.0913 13.1718C19.5102 16.6116 16.0343 19 12.0004 19C7.96659 19 4.4906 16.6116 2.9095 13.1718Z" stroke="#4A494B" stroke-width="1.5" />
                                     <path d="M15.0004 12C15.0004 13.6569 13.6573 15 12.0004 15C10.3436 15 9.00042 13.6569 9.00042 12C9.00042 10.3431 10.3436 9 12.0004 9C13.6573 9 15.0004 10.3431 15.0004 12Z" stroke="#4A494B" stroke-width="1.5" />
                                 </svg>
-                                1000</span>
+                                <p> <?php echo $spaceDetails['click_count']; ?></p>
+                            </span>
                         </div>
                         <hr class="hr">
                         <!-- <h2>Space use</h2>
@@ -444,14 +444,50 @@ if (isset($_GET['spaceId'])) {
                                 }
                                 ?></h1>
                             <div class="date-range">
-                                <input type="text" class="date-input" placeholder="Start Date">
-                                <span class="separator"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <input type="text" id="start-date" class="date-input" placeholder="Start (y/m/d)">
+                                <span class="separator">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M7.5 4.5L11.4697 8.46967C11.7626 8.76256 11.7626 9.23744 11.4697 9.53033L7.5 13.5" stroke="#999999" stroke-width="1.5" stroke-linecap="round" />
                                     </svg>
                                 </span>
-                                <input type="text" class="date-input" placeholder="End Date">
+                                <input type="text" id="end-date" class="date-input" placeholder="End (y/m/d)">
                             </div>
-                           <a href="Enquiry_form.php"> <button class="enquiry-button">Send Enquiry</button></a>
+                            <a href="Enquiry_form.php" id="enquiry-link">
+                                <button id="send-enquiry-btn" class="enquiry-button">Send Enquiry</button>
+                            </a>
+
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    // Selecting the elements
+                                    const startDateInput = document.getElementById('start-date');
+                                    const endDateInput = document.getElementById('end-date');
+                                    const sendEnquiryBtn = document.getElementById('send-enquiry-btn');
+                                    const enquiryLink = document.getElementById('enquiry-link');
+
+                                    // Adding click event listener to the button
+                                    sendEnquiryBtn.addEventListener('click', function(event) {
+                                        event.preventDefault(); // Prevent the default form submission behavior
+
+                                        // Retrieve the values from input fields
+                                        const startDate = startDateInput.value;
+                                        const endDate = endDateInput.value;
+                                        const referringUrl = window.location.href; // Get the current URL
+
+                                        // Check if start date and end date are not empty
+                                        if (startDate.trim() !== '' && endDate.trim() !== '') {
+                                            // Store the dates and referring URL in local storage
+                                            localStorage.setItem('startDate', startDate);
+                                            localStorage.setItem('endDate', endDate);
+                                            localStorage.setItem('referringUrl', referringUrl);
+
+                                            // Redirect to the enquiry page
+                                            window.location.href = enquiryLink.href;
+                                        } else {
+                                            alert('Please enter both start and end dates.');
+                                        }
+                                    });
+                                });
+                            </script>
                         </div>
 
                         <script>

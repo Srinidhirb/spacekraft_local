@@ -61,7 +61,7 @@
 
 
     <div class="dropdown_listing">
-      <div class="nav_selector"><a href="premium_listing.php"> <span> Pricing</span> </a></div>
+      <div class="nav_selector"><a href="pricing.php"> <span> Pricing</span> </a></div>
       <div class="nav_selector"><a href="resources.php"> <span> Resources</span> </a>
       </div>
       <div class="nav_selector">  <a href="faq.php"><span> FAQ</span> </a>

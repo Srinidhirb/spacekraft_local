@@ -1,16 +1,15 @@
 <?php
 session_start();
 
-// Add your authentication logic here
+// Check if admin is logged in
 if (!isset($_SESSION["admin_logged_in"]) || $_SESSION["admin_logged_in"] !== true) {
     // Redirect to the admin login page if not logged in
     echo '<script>window.location.href = "admin_login.php";</script>';
-   
     exit();
 }
 
 // Include your database connection file
-@include 'connect.php';
+include 'connect.php';
 
 // Set the number of entries to display per page
 $entriesPerPage = 10;
@@ -21,24 +20,25 @@ $pageNumber = isset($_GET['page']) ? intval($_GET['page']) : 1;
 // Calculate the starting entry index for the current page
 $startIndex = ($pageNumber - 1) * $entriesPerPage;
 
-// Check if $conn is not null before using it
-if ($conn) {
-    // Fetch data from the admin review table with pagination
-    $sql = "SELECT * FROM admin_review_table LIMIT $startIndex, $entriesPerPage";
-    $result = $conn->query($sql);
+// Fetch data from the enquiries table with pagination
+$sqlEnquiries = "SELECT * FROM enquiries LIMIT $startIndex, $entriesPerPage";
+$resultEnquiries = $conn->query($sqlEnquiries);
 
-    if (!$result) {
-        // Handle query execution error
-        echo "Error executing query: " . $conn->error;
-        exit();
-    }
-} else {
-    // Handle the case where $conn is null (database connection issue)
-    echo "Error: Database connection issue.";
+if (!$resultEnquiries) {
+    // Handle query execution error for enquiries
+    echo "Error executing enquiries query: " . $conn->error;
     exit();
 }
 
-// Display the data in a table with options for approval, rejection, or editing
+// Fetch data from the admin review table with pagination
+$sqlAdminReview = "SELECT * FROM admin_review_table LIMIT $startIndex, $entriesPerPage";
+$resultAdminReview = $conn->query($sqlAdminReview);
+
+if (!$resultAdminReview) {
+    // Handle query execution error for admin review
+    echo "Error executing admin review query: " . $conn->error;
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,11 +46,8 @@ if ($conn) {
 
 <head>
     <meta charset="UTF-8">
-    <link rel="website icon " href="assets\img\Logo Icon 16_16.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Review</title>
-    <!-- Include your stylesheets and scripts here -->
-    <!-- Add any additional styling or scripts as needed -->
     <style>
         table {
             width: 100%;
@@ -89,111 +86,191 @@ if ($conn) {
         .pagination a:hover:not(.active) {
             background-color: #ddd;
         }
+
+        .button-container {
+            margin-bottom: 20px;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
 
-    <h2>Admin Review</h2>
+    <div class="button-container">
+        <button onclick="showEnquiries()">Enquiries</button>
+        <button onclick="showAdminReview()">Admin Review</button>
+    </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Space Name</th>
-                <th>Project Type</th>
-                <th>Space Type</th>
-                <th>Space Address 1</th>
-                <th>Space Address 2</th>
-                <th>City</th>
-                <th>Pin Code</th>
-                <th>Space Area</th>
-                <th>Description</th>
-                <th>Images</th>
-                <th>Amenities</th>
-                <th>Min Duration</th>
-                <th>Min Duration Unit</th>
-                <th>Max Duration</th>
-                <th>Max Duration Unit</th>
-                <th>Selected Year</th>
-                <th>Selected Month</th>
-                <th>Selected Dates</th>
-                <th>Daily Price</th>
-                <th>Weekly Price</th>
-                <th>Monthly Price</th>
-                <th>Maintenance</th>
-                <th>Security Deposit</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            // Example: Loop through each row in the result set
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
-                echo "<td>{$row['id']}</td>";
-                echo "<td>{$row['SpaceName']}</td>";
-                echo "<td>{$row['projectType']}</td>";
-                echo "<td>{$row['SpaceType']}</td>";
-                echo "<td>{$row['SpaceAddress1']}</td>";
-                echo "<td>{$row['SpaceAddress2']}</td>";
-                echo "<td>{$row['City']}</td>";
-                echo "<td>{$row['PinCode']}</td>";
-                echo "<td>{$row['SpaceArea']}</td>";
-                echo "<td>{$row['Description']}</td>";
-                echo "<td>";
-
-                // Display images without slider
-                $imagePaths = explode(',', $row['images']);
-                foreach ($imagePaths as $imagePath) {
-                    $imageSrc = "http://spacekraft.in/{$imagePath}";
-                    echo "<img src='{$imageSrc}' alt='Space Image' style='max-width: 100px; max-height: 100px;'>";
-                    echo "<br>";
-                    echo "Image Source: {$imageSrc}";
-                    echo "<br>";
+    <div id="enquiries-table" style="display: none;">
+        <h2>Enquiries</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>Mobile Number</th>
+                    <th>Project Description</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Referring URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // Loop through each row in the enquiries result set
+                while ($row = $resultEnquiries->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>{$row['id']}</td>";
+                    echo "<td>{$row['full_name']}</td>";
+                    echo "<td>{$row['mobile_number']}</td>";
+                    echo "<td>{$row['project_description']}</td>";
+                    echo "<td>{$row['start_date']}</td>";
+                    echo "<td>{$row['end_date']}</td>";
+                    echo "<td>{$row['referring_url']}</td>";
+                    echo "</tr>";
                 }
+                ?>
+            </tbody>
+        </table>
 
-                echo "</td>";
-                echo "<td>{$row['Amenities']}</td>";
-                echo "<td>{$row['min_duration']}</td>";
-                echo "<td>{$row['min_duration_unit']}</td>";
-                echo "<td>{$row['max_duration']}</td>";
-                echo "<td>{$row['max_duration_unit']}</td>";
-                echo "<td>{$row['selected_year']}</td>";
-                echo "<td>{$row['selected_month']}</td>";
-                echo "<td>{$row['selected_dates']}</td>";
-                echo "<td>{$row['DailyPrice']}</td>";
-                echo "<td>{$row['WeeklyPrice']}</td>";
-                echo "<td>{$row['MonthlyPrice']}</td>";
-                echo "<td>{$row['Maintenance']}</td>";
-                echo "<td>{$row['SecurityDeposit']}</td>";
+        <!-- Pagination for Enquiries -->
+        <div class="pagination">
+            <?php
+            // Calculate the total number of pages for enquiries
+            $sqlTotalEnquiries = "SELECT COUNT(*) AS total FROM enquiries";
+            $resultTotalEnquiries = $conn->query($sqlTotalEnquiries);
+            $rowTotalEnquiries = $resultTotalEnquiries->fetch_assoc();
+            $totalPagesEnquiries = ceil($rowTotalEnquiries['total'] / $entriesPerPage);
 
-                echo "<td>
-                        <a href='approve.php?id={$row['id']}&action=approve'>Approve</a>
-                        <a href='approve.php?id={$row['id']}&action=reject'>Reject</a>
-                      </td>";
-                echo "</tr>";
+            // Generate pagination links for enquiries
+            for ($i = 1; $i <= $totalPagesEnquiries; $i++) {
+                $activeClassEnquiries = ($i == $pageNumber) ? 'active' : '';
+                echo "<a href='admin.php?page={$i}' class='{$activeClassEnquiries}'>Enquiries Page {$i}</a>";
             }
             ?>
-        </tbody>
-    </table>
-
-    <!-- Pagination -->
-    <div class="pagination">
-        <?php
-        // Calculate the total number of pages
-        $sqlTotal = "SELECT COUNT(*) AS total FROM admin_review_table";
-        $resultTotal = $conn->query($sqlTotal);
-        $rowTotal = $resultTotal->fetch_assoc();
-        $totalPages = ceil($rowTotal['total'] / $entriesPerPage);
-
-        // Generate pagination links
-        for ($i = 1; $i <= $totalPages; $i++) {
-            $activeClass = ($i == $pageNumber) ? 'active' : '';
-            echo "<a href='admin.php?page={$i}' class='{$activeClass}'>{$i}</a>";
-        }
-        ?>
+        </div>
     </div>
+
+    <div id="admin-review-table">
+        <h2>Admin Review</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Space Name</th>
+                    <th>Project Type</th>
+                    <th>Space Type</th>
+                    <th>Space Address 1</th>
+                    <th>Space Address 2</th>
+                    <th>City</th>
+                    <th>Pin Code</th>
+                    <th>Space Area</th>
+                    <th>Description</th>
+                    <th>Images</th>
+                    <th>Amenities</th>
+                    <th>Min Duration</th>
+                    <th>Min Duration Unit</th>
+                    <th>Max Duration</th>
+                    <th>Max Duration Unit</th>
+                    <th>Selected Year</th>
+                    <th>Selected Month</th>
+                    <th>Selected Dates</th>
+                    <th>Daily Price</th>
+                    <th>Weekly Price</th>
+                    <th>Monthly Price</th>
+                    <th>Maintenance</th>
+                    <th>Security Deposit</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // Loop through each row in the admin review result set
+                while ($row = $resultAdminReview->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>{$row['id']}</td>";
+                    echo "<td>{$row['SpaceName']}</td>";
+                    echo "<td>{$row['projectType']}</td>";
+                    echo "<td>{$row['SpaceType']}</td>";
+                    echo "<td>{$row['SpaceAddress1']}</td>";
+                    echo "<td>{$row['SpaceAddress2']}</td>";
+                    echo "<td>{$row['City']}</td>";
+                    echo "<td>{$row['PinCode']}</td>";
+                    echo "<td>{$row['SpaceArea']}</td>";
+                    echo "<td>{$row['Description']}</td>";
+                    echo "<td>";
+
+                    // Display images without slider
+                    $imagePaths = explode(',', $row['images']);
+                    foreach ($imagePaths as $imagePath) {
+                        $imageSrc = "http://spacekraft.in/{$imagePath}";
+                        echo "<img src='{$imageSrc}' alt='Space Image' style='max-width: 100px; max-height: 100px;'>";
+                        echo "<br>";
+                        echo "Image Source: {$imageSrc}";
+                        echo "<br>";
+                    }
+
+                    echo "</td>";
+                    echo "<td>{$row['Amenities']}</td>";
+                    echo "<td>{$row['min_duration']}</td>";
+                    echo "<td>{$row['min_duration_unit']}</td>";
+                    echo "<td>{$row['max_duration']}</td>";
+                    echo "<td>{$row['max_duration_unit']}</td>";
+                    echo "<td>{$row['selected_year']}</td>";
+                    echo "<td>{$row['selected_month']}</td>";
+                    echo "<td>{$row['selected_dates']}</td>";
+                    echo "<td>{$row['DailyPrice']}</td>";
+                    echo "<td>{$row['WeeklyPrice']}</td>";
+                    echo "<td>{$row['MonthlyPrice']}</td>";
+                    echo "<td>{$row['Maintenance']}</td>";
+                    echo "<td>{$row['SecurityDeposit']}</td>";
+
+                    echo "<td>
+                            <a href='approve.php?id={$row['id']}&action=approve'>Approve</a>
+                            <a href='approve.php?id={$row['id']}&action=reject'>Reject</a>
+                          </td>";
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+
+        <!-- Pagination for Admin Review -->
+        <div class="pagination">
+            <?php
+            // Calculate the total number of pages for admin review
+            $sqlTotalAdminReview = "SELECT COUNT(*) AS total FROM admin_review_table";
+            $resultTotalAdminReview = $conn->query($sqlTotalAdminReview);
+            $rowTotalAdminReview = $resultTotalAdminReview->fetch_assoc();
+            $totalPagesAdminReview = ceil($rowTotalAdminReview['total'] / $entriesPerPage);
+
+            // Generate pagination links for admin review
+            for ($i = 1; $i <= $totalPagesAdminReview; $i++) {
+                $activeClassAdminReview = ($i == $pageNumber) ? 'active' : '';
+                echo "<a href='admin.php?page={$i}' class='{$activeClassAdminReview}'>Admin Review Page {$i}</a>";
+            }
+            ?>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript function to show Enquiries table and hide Admin Review table
+        function showEnquiries() {
+            document.getElementById('enquiries-table').style.display = 'block';
+            document.getElementById('admin-review-table').style.display = 'none';
+        }
+
+        // JavaScript function to show Admin Review table and hide Enquiries table
+        function showAdminReview() {
+            document.getElementById('enquiries-table').style.display = 'none';
+            document.getElementById('admin-review-table').style.display = 'block';
+        }
+    </script>
 
 </body>
 
