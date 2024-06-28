@@ -122,6 +122,10 @@ if (isset($_GET['spaceId'])) {
                 gtag('config', 'G-WXVP8RTRY0');
             </script>
             <link rel="stylesheet" href="assets\css\individual_space-css.php">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+            <style>
+
+            </style>
         </head>
 
         <body>
@@ -154,14 +158,125 @@ if (isset($_GET['spaceId'])) {
                             // Handle multiple images
                             // Display up to 2 additional images starting from index 1
                             for ($i = 1; $i < min(3, count($imagePaths)); $i++) {
-                                echo '<img src="http://spacekraft.in/' . $imagePaths[$i] . '"  alt="Small Image ' . ($i + 1) . '">';
+                                if ($i == 2) {
+                                    // For the third image, wrap it in a div with absolute positioning
+                                    echo '<div class="absolute-container" onclick="View_all()">';
+                                    echo '<img src="http://spacekraft.in/' . $imagePaths[$i] . '"  alt="Small Image ' . ($i + 1) . '">';
+                                    echo '<svg width="65" height="54" viewBox="0 0 65 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M22.5 3.6C22.5 3.03995 22.5 2.75992 22.609 2.54601C22.7049 2.35785 22.8578 2.20487 23.046 2.10899C23.2599 2 23.5399 2 24.1 2H28.9C29.4601 2 29.7401 2 29.954 2.10899C30.1422 2.20487 30.2951 2.35785 30.391 2.54601C30.5 2.75992 30.5 3.03995 30.5 3.6V8.4C30.5 8.96005 30.5 9.24008 30.391 9.45399C30.2951 9.64215 30.1422 9.79513 29.954 9.89101C29.7401 10 29.4601 10 28.9 10H24.1C23.5399 10 23.2599 10 23.046 9.89101C22.8578 9.79513 22.7049 9.64215 22.609 9.45399C22.5 9.24008 22.5 8.96005 22.5 8.4V3.6Z" stroke="#FDFDFD" stroke-width="2"/>
+                                            <path d="M22.5 15.6C22.5 15.0399 22.5 14.7599 22.609 14.546C22.7049 14.3578 22.8578 14.2049 23.046 14.109C23.2599 14 23.5399 14 24.1 14H28.9C29.4601 14 29.7401 14 29.954 14.109C30.1422 14.2049 30.2951 14.3578 30.391 14.546C30.5 14.7599 30.5 15.0399 30.5 15.6V20.4C30.5 20.9601 30.5 21.2401 30.391 21.454C30.2951 21.6422 30.1422 21.7951 29.954 21.891C29.7401 22 29.4601 22 28.9 22H24.1C23.5399 22 23.2599 22 23.046 21.891C22.8578 21.7951 22.7049 21.6422 22.609 21.454C22.5 21.2401 22.5 20.9601 22.5 20.4V15.6Z" stroke="#FDFDFD" stroke-width="2"/>
+                                            <path d="M34.5 3.6C34.5 3.03995 34.5 2.75992 34.609 2.54601C34.7049 2.35785 34.8578 2.20487 35.046 2.10899C35.2599 2 35.5399 2 36.1 2H40.9C41.4601 2 41.7401 2 41.954 2.10899C42.1422 2.20487 42.2951 2.35785 42.391 2.54601C42.5 2.75992 42.5 3.03995 42.5 3.6V8.4C42.5 8.96005 42.5 9.24008 42.391 9.45399C42.2951 9.64215 42.1422 9.79513 41.954 9.89101C41.7401 10 41.4601 10 40.9 10H36.1C35.5399 10 35.2599 10 35.046 9.89101C34.8578 9.79513 34.7049 9.64215 34.609 9.45399C34.5 9.24008 34.5 8.96005 34.5 8.4V3.6Z" stroke="#FDFDFD" stroke-width="2"/>
+                                            <path d="M34.5 15.6C34.5 15.0399 34.5 14.7599 34.609 14.546C34.7049 14.3578 34.8578 14.2049 35.046 14.109C35.2599 14 35.5399 14 36.1 14H40.9C41.4601 14 41.7401 14 41.954 14.109C42.1422 14.2049 42.2951 14.3578 42.391 14.546C42.5 14.7599 42.5 15.0399 42.5 15.6V20.4C42.5 20.9601 42.5 21.2401 42.391 21.454C42.2951 21.6422 42.1422 21.7951 41.954 21.891C41.7401 22 41.4601 22 40.9 22H36.1C35.5399 22 35.2599 22 35.046 21.891C34.8578 21.7951 34.7049 21.6422 34.609 21.454C34.5 21.2401 34.5 20.9601 34.5 20.4V15.6Z" stroke="#FDFDFD" stroke-width="2"/>
+                                            <path d="M12.249 37.076L6.993 50H5.274L0.018 37.076H1.548C1.716 37.076 1.851 37.118 1.953 37.202C2.061 37.286 2.142 37.394 2.196 37.526L5.688 46.31C5.772 46.526 5.853 46.763 5.931 47.021C6.015 47.279 6.09 47.549 6.156 47.831C6.216 47.549 6.282 47.279 6.354 47.021C6.426 46.763 6.504 46.526 6.588 46.31L10.071 37.526C10.113 37.406 10.188 37.301 10.296 37.211C10.41 37.121 10.548 37.076 10.71 37.076H12.249ZM15.3385 40.856V50H13.5835V40.856H15.3385ZM15.6715 38.03C15.6715 38.192 15.6385 38.348 15.5725 38.498C15.5065 38.642 15.4165 38.771 15.3025 38.885C15.1945 38.993 15.0655 39.08 14.9155 39.146C14.7655 39.206 14.6095 39.236 14.4475 39.236C14.2855 39.236 14.1325 39.206 13.9885 39.146C13.8445 39.08 13.7155 38.993 13.6015 38.885C13.4935 38.771 13.4065 38.642 13.3405 38.498C13.2805 38.348 13.2505 38.192 13.2505 38.03C13.2505 37.862 13.2805 37.706 13.3405 37.562C13.4065 37.412 13.4935 37.283 13.6015 37.175C13.7155 37.061 13.8445 36.974 13.9885 36.914C14.1325 36.848 14.2855 36.815 14.4475 36.815C14.6095 36.815 14.7655 36.848 14.9155 36.914C15.0655 36.974 15.1945 37.061 15.3025 37.175C15.4165 37.283 15.5065 37.412 15.5725 37.562C15.6385 37.706 15.6715 37.862 15.6715 38.03ZM23.9365 44.411C23.9365 44.063 23.8855 43.742 23.7835 43.448C23.6875 43.154 23.5435 42.899 23.3515 42.683C23.1595 42.467 22.9255 42.299 22.6495 42.179C22.3735 42.059 22.0555 41.999 21.6955 41.999C20.9575 41.999 20.3755 42.212 19.9495 42.638C19.5295 43.064 19.2625 43.655 19.1485 44.411H23.9365ZM25.3855 48.695C25.1695 48.947 24.9205 49.166 24.6385 49.352C24.3565 49.532 24.0565 49.679 23.7385 49.793C23.4205 49.907 23.0905 49.991 22.7485 50.045C22.4125 50.099 22.0795 50.126 21.7495 50.126C21.1195 50.126 20.5345 50.021 19.9945 49.811C19.4605 49.595 18.9955 49.283 18.5995 48.875C18.2095 48.461 17.9035 47.951 17.6815 47.345C17.4655 46.733 17.3575 46.031 17.3575 45.239C17.3575 44.603 17.4565 44.012 17.6545 43.466C17.8525 42.914 18.1345 42.434 18.5005 42.026C18.8725 41.618 19.3255 41.297 19.8595 41.063C20.3935 40.829 20.9935 40.712 21.6595 40.712C22.2175 40.712 22.7305 40.805 23.1985 40.991C23.6725 41.171 24.0805 41.435 24.4225 41.783C24.7645 42.131 25.0315 42.56 25.2235 43.07C25.4215 43.58 25.5205 44.162 25.5205 44.816C25.5205 45.086 25.4905 45.269 25.4305 45.365C25.3705 45.455 25.2595 45.5 25.0975 45.5H19.1035C19.1215 46.046 19.1995 46.523 19.3375 46.931C19.4755 47.333 19.6645 47.669 19.9045 47.939C20.1505 48.209 20.4415 48.41 20.7775 48.542C21.1135 48.674 21.4885 48.74 21.9025 48.74C22.2925 48.74 22.6285 48.695 22.9105 48.605C23.1985 48.515 23.4445 48.419 23.6485 48.317C23.8585 48.209 24.0325 48.11 24.1705 48.02C24.3145 47.93 24.4405 47.885 24.5485 47.885C24.6925 47.885 24.8035 47.939 24.8815 48.047L25.3855 48.695ZM40.0184 40.856L37.0754 50H35.6714C35.5034 50 35.3894 49.889 35.3294 49.667L33.4034 43.709C33.3554 43.559 33.3134 43.412 33.2774 43.268C33.2414 43.118 33.2084 42.968 33.1784 42.818C33.1244 43.13 33.0494 43.433 32.9534 43.727L31.0004 49.667C30.9404 49.889 30.8114 50 30.6134 50H29.2814L26.3294 40.856H27.7154C27.8534 40.856 27.9674 40.889 28.0574 40.955C28.1534 41.021 28.2164 41.105 28.2464 41.207L29.8934 46.823C29.9474 47.051 29.9954 47.273 30.0374 47.489C30.0794 47.705 30.1184 47.921 30.1544 48.137C30.2084 47.921 30.2654 47.705 30.3254 47.489C30.3914 47.273 30.4574 47.051 30.5234 46.823L32.3504 41.171C32.3804 41.069 32.4374 40.988 32.5214 40.928C32.6054 40.862 32.7074 40.829 32.8274 40.829H33.5924C33.7244 40.829 33.8324 40.862 33.9164 40.928C34.0064 40.988 34.0664 41.069 34.0964 41.171L35.8784 46.823C35.9444 47.051 36.0074 47.276 36.0674 47.498C36.1274 47.714 36.1814 47.933 36.2294 48.155C36.2654 47.939 36.3074 47.723 36.3554 47.507C36.4034 47.285 36.4574 47.057 36.5174 46.823L38.1914 41.207C38.2214 41.105 38.2814 41.021 38.3714 40.955C38.4674 40.889 38.5754 40.856 38.6954 40.856H40.0184ZM52.3174 45.185L50.4004 40.172C50.2624 39.83 50.1244 39.398 49.9864 38.876C49.9204 39.134 49.8514 39.374 49.7794 39.596C49.7134 39.818 49.6474 40.016 49.5814 40.19L47.6734 45.185H52.3174ZM56.1064 50H54.6304C54.4624 50 54.3244 49.958 54.2164 49.874C54.1084 49.79 54.0304 49.682 53.9824 49.55L52.8394 46.553H47.1424L45.9994 49.55C45.9574 49.664 45.8794 49.769 45.7654 49.865C45.6514 49.955 45.5134 50 45.3514 50H43.8754L49.0234 37.076H50.9584L56.1064 50ZM59.1248 36.716V50H57.3608V36.716H59.1248ZM63.4314 36.716V50H61.6674V36.716H63.4314Z" fill="white"/>
+                                          </svg>';
+
+                                    echo '</div>';
+                                } else {
+                                    echo '<img src="http://spacekraft.in/' . $imagePaths[$i] . '"  alt="Small Image ' . ($i + 1) . '">';
+                                }
                             }
                         }
                         ?>
                     </div>
+                    <script>
+                        function View_all() {
+                            var x = document.getElementById("more_image");
+                            if (x.style.display === "none") {
+                                x.style.display = "block";
+                            } else {
+                                x.style.display = "none";
+                            }
+                        }
+                    </script>
                 </div>
+                <div class="more_image" id="more_image" style="display: none;">
+                    <div class="image">
+                        <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+                            <div class="swiper-wrapper">
+                                <?php
+                                // Check if there are images available
+                                if ($spaceImg !== "N/A") {
+                                    // Handle multiple images
+                                    $imagePaths = explode(',', $spaceImg);
 
+                                    // Display each image in the slideshow
+                                    for ($i = 0; $i < min(4, count($imagePaths)); $i++) {
+                                        echo '<div class="swiper-slide contain">';
+                                        echo '<img class="listing-image" src="http://spacekraft.in/' . $imagePaths[$i] . '" height="200" alt="">';
+                                        echo '</div>';
+                                    }
+                                }
+                                ?>
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                        <div thumbsSlider="" class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                <?php
+                                // Check if there are images available
+                                if ($spaceImg !== "N/A") {
+                                    // Handle multiple images
+                                    $imagePaths = explode(',', $spaceImg);
 
+                                    // Display each image in the thumbnail slideshow
+                                    for ($i = 0; $i < min(4, count($imagePaths)); $i++) {
+                                        echo '<div class="swiper-slide">';
+                                        echo '<img class="listing-image" src="http://spacekraft.in/' . $imagePaths[$i] . '" height="200" alt="">';
+                                        echo '</div>';
+                                    }
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="more_img_close_icon" onclick="close_more()">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="20" r="20" fill="#CDCECF" />
+                            <path d="M28 12L12 28M28 28L12 12" stroke="#111111" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+
+                    </div>
+                    <script>
+                        function close_more() {
+                            var x = document.getElementById("more_image");
+                            if (x.style.display === "block") {
+                                x.style.display = "none";
+                            } else {
+                                x.style.display = "block";
+                            }
+                        }
+                    </script>
+                </div>
+                <div class="mobile_image_gallary">
+
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+                <!-- Initialize Swiper -->
+                <script>
+                    var swiper = new Swiper(".mySwiper", {
+                        loop: true,
+
+                        spaceBetween: 10,
+                        slidesPerView: 4,
+                        freeMode: true,
+                        watchSlidesProgress: true,
+                    });
+                    var swiper2 = new Swiper(".mySwiper2", {
+                        loop: true,
+
+                        spaceBetween: 10,
+                        navigation: {
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
+                        },
+                        thumbs: {
+                            swiper: swiper,
+                        },
+                    });
+                </script>
 
                 <div class="container">
                     <div class="left-section">
@@ -406,13 +521,66 @@ if (isset($_GET['spaceId'])) {
                             ?>
                             <script>
                                 function redirectToSpace(spaceId) {
-                                    window.location.href = 'ind_space_details.php?spaceId=' + spaceId;
+                                    // Encode spaceId in Base64
+                                    var encodedSpaceId = btoa(spaceId);
+                                    // Redirect to the encoded URL
+                                    window.location.href = 'ind_space_details.php?spaceId=' + encodedSpaceId;
                                 }
                             </script>
                         </div>
                     </div>
+                    <div class="mobile_price_fixed">
+                        <div class="pricing-enquiry-container">
+                            <div class="pricing-enquiry-title">
+                                <p>Prices starting from</p>
+                                <h1>
+                                    <?php
+                                    // Array to store prices with their types
+                                    $prices = array();
+
+                                    // Add prices to the array with their types if they exist
+                                    if ($spaceDailyPrice) {
+                                        $prices['Day'] = $spaceDailyPrice;
+                                    }
+                                    if ($spaceWeeklyPrice) {
+                                        $prices['Week'] = $spaceWeeklyPrice;
+                                    }
+                                    if ($spaceMonthlyPrice) {
+                                        $prices['Month'] = $spaceMonthlyPrice;
+                                    }
+
+                                    // Check if prices are available
+                                    if (empty($prices)) {
+                                        echo "No price available";
+                                    } else {
+                                        // Find the lowest price
+                                        $lowestPrice = min($prices);
+
+                                        // Find the type of pricing corresponding to the lowest price
+                                        $lowestPriceType = array_search($lowestPrice, $prices);
+
+                                        // Display the lowest price with its type
+                                        echo '&#8377;' . number_format($lowestPrice) . ' /' . $lowestPriceType;
+                                    }
+                                    ?>
+                                </h1>
+                            </div>
+                            <div class="date-picker-range">
+                                <input type="text" id="start-date" class="date-picker-input" placeholder="Start date (y/m/d)" required>
+                                <span class="date-picker-separator">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7.5 4.5L11.4697 8.46967C11.7626 8.76256 11.7626 9.23744 11.4697 9.53033L7.5 13.5" stroke="#999999" stroke-width="1.5" stroke-linecap="round" />
+                                    </svg>
+                                </span>
+                                <input type="text" id="end-date" class="date-picker-input" placeholder="End date (y/m/d)" required>
+                            </div>
+                            <a href="Enquiry_form.php" id="enquiry-link">
+                                <button id="send-enquiry-btn" class="enquiry-button">Send Enquiry</button>
+                            </a>
+                        </div>
+                    </div>
                     <div class="right-section">
-                        <div class="enquiry-container">
+                        <div class="enquiry-container" id="price-enquiry-container">
                             <p>Prices starting from</p>
                             <h1><?php
                                 // Array to store prices with their types
@@ -444,19 +612,86 @@ if (isset($_GET['spaceId'])) {
                                 }
                                 ?></h1>
                             <div class="date-range">
-                                <input type="text" id="start-date" class="date-input" placeholder="Start (y/m/d)">
+                                <input type="text" id="start-date" class="date-input" placeholder="Start (y/m/d)" required>
                                 <span class="separator">
                                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M7.5 4.5L11.4697 8.46967C11.7626 8.76256 11.7626 9.23744 11.4697 9.53033L7.5 13.5" stroke="#999999" stroke-width="1.5" stroke-linecap="round" />
                                     </svg>
                                 </span>
-                                <input type="text" id="end-date" class="date-input" placeholder="End (y/m/d)">
+                                <input type="text" id="end-date" class="date-input" placeholder="End (y/m/d)" required>
                             </div>
                             <a href="Enquiry_form.php" id="enquiry-link">
                                 <button id="send-enquiry-btn" class="enquiry-button">Send Enquiry</button>
                             </a>
 
+                        </div>
+                        <div class="sticky-container" id="sticky-container">
+                            <div class="sticky-content">
+                                <div class="pricing-enquiry-container">
+                                    <div class="pricing-enquiry-title">
+                                        <p>Prices starting from</p>
+                                        <h1>
+                                            <?php
+                                            // Array to store prices with their types
+                                            $prices = array();
+
+                                            // Add prices to the array with their types if they exist
+                                            if ($spaceDailyPrice) {
+                                                $prices['Day'] = $spaceDailyPrice;
+                                            }
+                                            if ($spaceWeeklyPrice) {
+                                                $prices['Week'] = $spaceWeeklyPrice;
+                                            }
+                                            if ($spaceMonthlyPrice) {
+                                                $prices['Month'] = $spaceMonthlyPrice;
+                                            }
+
+                                            // Check if prices are available
+                                            if (empty($prices)) {
+                                                echo "No price available";
+                                            } else {
+                                                // Find the lowest price
+                                                $lowestPrice = min($prices);
+
+                                                // Find the type of pricing corresponding to the lowest price
+                                                $lowestPriceType = array_search($lowestPrice, $prices);
+
+                                                // Display the lowest price with its type
+                                                echo '&#8377;' . number_format($lowestPrice) . ' /' . $lowestPriceType;
+                                            }
+                                            ?>
+                                        </h1>
+                                    </div>
+                                    <div class="date-picker-range">
+                                        <input type="text" id="start-date" class="date-picker-input" placeholder="Start date (y/m/d)" required>
+                                        <span class="date-picker-separator">
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.5 4.5L11.4697 8.46967C11.7626 8.76256 11.7626 9.23744 11.4697 9.53033L7.5 13.5" stroke="#999999" stroke-width="1.5" stroke-linecap="round" />
+                                            </svg>
+                                        </span>
+                                        <input type="text" id="end-date" class="date-picker-input" placeholder="End date (y/m/d)" required>
+                                    </div>
+                                    <a href="Enquiry_form.php" id="enquiry-link">
+                                        <button id="send-enquiry-btn" class="enquiry-button">Send Enquiry</button>
+                                    </a>
+                                </div>
+                            </div>
                             <script>
+                                const priceEnquiryContainer = document.getElementById('price-enquiry-container');
+                                const stickyContainer = document.getElementById('sticky-container');
+
+                                // Set the specific height value after which the box should become sticky
+                                const stickyHeight = 550; // Replace 300 with the height value you want
+
+                                window.addEventListener('scroll', function() {
+                                    if (window.pageYOffset > stickyHeight) {
+                                        priceEnquiryContainer.style.display = "none";
+                                        stickyContainer.classList.add('sticky');
+                                    } else {
+                                        priceEnquiryContainer.style.display = "block";
+                                        stickyContainer.classList.remove('sticky');
+                                    }
+                                });
                                 document.addEventListener('DOMContentLoaded', function() {
                                     // Selecting the elements
                                     const startDateInput = document.getElementById('start-date');
@@ -464,6 +699,7 @@ if (isset($_GET['spaceId'])) {
                                     const sendEnquiryBtn = document.getElementById('send-enquiry-btn');
                                     const enquiryLink = document.getElementById('enquiry-link');
 
+                                    
                                     // Adding click event listener to the button
                                     sendEnquiryBtn.addEventListener('click', function(event) {
                                         event.preventDefault(); // Prevent the default form submission behavior
@@ -490,31 +726,7 @@ if (isset($_GET['spaceId'])) {
                             </script>
                         </div>
 
-                        <script>
-                            function contactOwner(userId) {
-                                // Fetch contact information of the owner based on the user ID
-                                console.log('Contact Owner button clicked for user ID:', userId);
-                                window.location.href = 'contact-owner.php?userId=' + userId;
-                            }
-
-                            async function fetchContactInfo(userId) {
-                                try {
-                                    // Use AJAX or fetch API to make a request to a server-side script
-                                    const response = await fetch(`get_owner_info.php?userId=${userId}`);
-
-                                    const data = await response.json();
-
-                                    // Display the contact information
-                                    if (data.success) {
-                                        alert(`Owner Name: ${data.ownerName}\nOwner Email: ${data.ownerEmail}\nOwner Number: ${data.ownerNumber}`);
-                                    } else {
-                                        alert(data.message);
-                                    }
-                                } catch (error) {
-                                    console.error('Error:', error);
-                                }
-                            }
-                        </script>
+                        
 
                         <script>
                             document.addEventListener("DOMContentLoaded", function() {

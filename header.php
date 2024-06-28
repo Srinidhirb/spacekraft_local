@@ -77,7 +77,7 @@
           <a href="host.php"><li>Hosts</li></a>
               
               <hr>
-              <a href="#"><li>Renters</li></a>
+              <a href="renters.php"><li>Renters</li></a>
             </ul>
          
         </div>
@@ -128,7 +128,8 @@
         </div>
         <div class="links">
           <a href="">About us</a>
-          <a href="#">Renters</a>
+          <a href="pricing.php">  Pricing </a>
+          <a href="renters.php">Renters</a>
           <a href="host.php">Hosts</a>
           <a href="faq.php">FAQ</a>
           <a href="resources.php">Resources</a>
