@@ -185,6 +185,7 @@ if (!$resultAdminReview) {
                     <th>Monthly Price</th>
                     <th>Maintenance</th>
                     <th>Security Deposit</th>
+                    <th>payment_type</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -229,6 +230,7 @@ if (!$resultAdminReview) {
                     echo "<td>{$row['MonthlyPrice']}</td>";
                     echo "<td>{$row['Maintenance']}</td>";
                     echo "<td>{$row['SecurityDeposit']}</td>";
+                    echo "<td>{$row['payment_type']}</td>";
 
                     echo "<td>
                             <a href='approve.php?id={$row['id']}&action=approve'>Approve</a>

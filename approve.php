@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['id']) && isset($_GET['a
             SpaceArea, Description, images, Amenities,
             min_duration, min_duration_unit, max_duration, max_duration_unit,
             selected_year, selected_month, selected_dates,
-            DailyPrice, WeeklyPrice, MonthlyPrice, Maintenance, SecurityDeposit)
+            DailyPrice, WeeklyPrice, MonthlyPrice, Maintenance, SecurityDeposit,payment_type)
             VALUES (
             '{$row['user_id']}',
             '{$row['SpaceName']}',
@@ -46,7 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['id']) && isset($_GET['a
             '{$row['WeeklyPrice']}',
             '{$row['MonthlyPrice']}',
             '{$row['Maintenance']}',
-            '{$row['SecurityDeposit']}')";
+            '{$row['SecurityDeposit']}',
+            '{$row['payment_type']}')";
 
             if ($conn->query($sqlMove) === TRUE) {
                 // Remove the data from the admin review table after approval
@@ -88,7 +89,9 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET['id']) && isset($_GET['a
             '{$row['WeeklyPrice']}',
             '{$row['MonthlyPrice']}',
             '{$row['Maintenance']}',
-            '{$row['SecurityDeposit']}')";
+            '{$row['SecurityDeposit']}',
+            '{$row['payment_type']}')";
+
 
             if ($conn->query($sqlMove) === TRUE) {
                 // Remove the data from the admin review table after rejection
