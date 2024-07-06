@@ -36,7 +36,7 @@ if (isset($_COOKIE['user_id'])) {
             <a href="#"> <span class="button"> Continue</span></a>
           </div>
         </td>
-        <td>
+        <td  >
           <div class="card border_no_bottom">
 
             <span class="packages">Pro</span>
@@ -54,7 +54,7 @@ if (isset($_COOKIE['user_id'])) {
             <span class="packages">Plus</span>
 
             <span class="price">
-              Customisable</span>
+            Custom </span>
             <a href="#"> <span class="button"> Contact</span></a>
           </div>
         </td>

@@ -125,7 +125,7 @@ if (isset($_GET['spaceId'])) {
             <link rel="stylesheet" href="assets\css\individual_space-css.php">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
             <style>
-                
+
             </style>
         </head>
 
@@ -316,7 +316,7 @@ if (isset($_GET['spaceId'])) {
                         // Modal popup for all images
                         echo '<div id="imageModal" class="modal">';
                         echo '<div class="modal-content">';
-                       
+
                         echo '<div class="gallery">';
                         echo '<span class="close_gallary" id="close_ga" onclick="close_mob_gal()">&times;</span>';
                         for ($i = 0; $i < count($imagePaths); $i++) {
@@ -329,7 +329,7 @@ if (isset($_GET['spaceId'])) {
                         echo '</div>';
                     }
                     ?>
-                    
+
 
                 </div>
                 <script>
@@ -358,7 +358,8 @@ if (isset($_GET['spaceId'])) {
                             modal.style.display = "none";
                         }
                     }
-                    function close_mob_gal(){
+
+                    function close_mob_gal() {
                         modal.style.display = "none";
                     }
                 </script>
@@ -391,7 +392,7 @@ if (isset($_GET['spaceId'])) {
 
                 <div class="container">
                     <div class="left-section">
-                        <div class="space_name_share_button"  >
+                        <div class="space_name_share_button">
                             <span class="space_name"><?php echo $spaceName;   ?></span>
                             <div class="share_fav lap">
                                 <button class="share" onclick="sharePage()"><svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -458,28 +459,28 @@ if (isset($_GET['spaceId'])) {
                                 <p> <?php echo $spaceDetails['click_count']; ?></p>
                             </span>
                         </div>
-                        <div class="share_fav">
-                                <button class="share" onclick="sharePage()"><svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M27.9129 17.3603C28.2384 17.0813 28.4011 16.9418 28.4607 16.7758C28.5131 16.6301 28.5131 16.4708 28.4607 16.3251C28.4011 16.1591 28.2384 16.0196 27.9129 15.7406L16.6186 6.05973C16.0583 5.57947 15.7781 5.33934 15.5409 5.33346C15.3348 5.32834 15.1379 5.41891 15.0076 5.57874C14.8577 5.76266 14.8577 6.13164 14.8577 6.8696V12.5966C12.0115 13.0946 9.40652 14.5368 7.47067 16.7023C5.36016 19.0631 4.19271 22.1184 4.19106 25.2851V26.1011C5.59018 24.4156 7.33707 23.0525 9.31207 22.105C11.0533 21.2697 12.9356 20.7749 14.8577 20.6445V26.2313C14.8577 26.9692 14.8577 27.3382 15.0076 27.5221C15.1379 27.682 15.3348 27.7725 15.5409 27.7674C15.7781 27.7615 16.0583 27.5214 16.6186 27.0411L27.9129 17.3603Z" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg> </button>
-                                <script>
-                                    async function sharePage() {
-                                        await navigator.share({
-                                            title: document.title,
-                                            url: window.location.href
-                                        })
-                                    }
-                                </script>
-                                <div class="fav">
-                                    <a href="#" class="favorites-button">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9938 5.91615C10.1944 3.81913 7.19377 3.25504 4.93923 5.17528C2.68468 7.09552 2.36727 10.3061 4.13778 12.5771C5.60984 14.4654 10.0648 18.4478 11.5249 19.7368C11.6882 19.881 11.7699 19.9531 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9531 12.2994 19.881 12.4628 19.7368C13.9229 18.4478 18.3778 14.4654 19.8499 12.5771C21.6204 10.3061 21.3417 7.07532 19.0484 5.17528C16.7551 3.27524 13.7933 3.81913 11.9938 5.91615Z" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
+                        <div class="share_fav" id="mobile_share" >
+                            <button class="share" onclick="sharePage()"><svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M27.9129 17.3603C28.2384 17.0813 28.4011 16.9418 28.4607 16.7758C28.5131 16.6301 28.5131 16.4708 28.4607 16.3251C28.4011 16.1591 28.2384 16.0196 27.9129 15.7406L16.6186 6.05973C16.0583 5.57947 15.7781 5.33934 15.5409 5.33346C15.3348 5.32834 15.1379 5.41891 15.0076 5.57874C14.8577 5.76266 14.8577 6.13164 14.8577 6.8696V12.5966C12.0115 13.0946 9.40652 14.5368 7.47067 16.7023C5.36016 19.0631 4.19271 22.1184 4.19106 25.2851V26.1011C5.59018 24.4156 7.33707 23.0525 9.31207 22.105C11.0533 21.2697 12.9356 20.7749 14.8577 20.6445V26.2313C14.8577 26.9692 14.8577 27.3382 15.0076 27.5221C15.1379 27.682 15.3348 27.7725 15.5409 27.7674C15.7781 27.7615 16.0583 27.5214 16.6186 27.0411L27.9129 17.3603Z" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg> </button>
+                            <script>
+                                async function sharePage() {
+                                    await navigator.share({
+                                        title: document.title,
+                                        url: window.location.href
+                                    })
+                                }
+                            </script>
+                            <div class="fav">
+                                <a href="#" class="favorites-button">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.9938 5.91615C10.1944 3.81913 7.19377 3.25504 4.93923 5.17528C2.68468 7.09552 2.36727 10.3061 4.13778 12.5771C5.60984 14.4654 10.0648 18.4478 11.5249 19.7368C11.6882 19.881 11.7699 19.9531 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9531 12.2994 19.881 12.4628 19.7368C13.9229 18.4478 18.3778 14.4654 19.8499 12.5771C21.6204 10.3061 21.3417 7.07532 19.0484 5.17528C16.7551 3.27524 13.7933 3.81913 11.9938 5.91615Z" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
 
-                                        <span> Save to favorites</span>
-                                    </a>
-                                </div>
+                                    <span> Save to favorites</span>
+                                </a>
                             </div>
+                        </div>
                         <hr class="hr">
                         <!-- <h2>Space use</h2>
                         <div class="space-use">
@@ -662,7 +663,7 @@ if (isset($_GET['spaceId'])) {
                             </script>
                         </div>
                     </div>
-                    <div class="mobile_price_fixed">
+                    <div id="priceContainer" class="mobile_price_fixed">
                         <div class="pricing-enquiry-container">
                             <div class="pricing-enquiry-title">
                                 <p>Prices starting from</p>
@@ -712,6 +713,32 @@ if (isset($_GET['spaceId'])) {
                             </a>
                         </div>
                     </div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            var priceContainer = document.getElementById("priceContainer");
+                            var showAfterHeight = 300; // Adjust this value to the desired scroll height
+
+                            function checkScroll() {
+                                if (window.innerWidth < 1044) {
+                                    if (window.scrollY > showAfterHeight) {
+                                        priceContainer.style.display = "flex";
+                                    } else {
+                                        priceContainer.style.display = "none";
+                                    }
+                                } else {
+                                    priceContainer.style.display = "none";
+                                }
+                            }
+
+                            window.addEventListener("scroll", checkScroll);
+                            window.addEventListener("resize", checkScroll);
+
+                            // Initial check
+                            checkScroll();
+                        });
+                    </script>
+
+
                     <div class="right-section">
                         <div class="enquiry-container" id="price-enquiry-container">
                             <p>Prices starting from</p>

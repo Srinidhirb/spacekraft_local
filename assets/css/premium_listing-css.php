@@ -307,6 +307,7 @@ $color = 'blue';
 
     th:nth-child(3),
     td:nth-child(3) {
+      display:none;
       border-left: 2px solid black;
       border-right: 2px solid black;
     }

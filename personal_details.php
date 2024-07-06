@@ -109,7 +109,7 @@ $conn->close();
             <input type="text" name="number" id="number" placeholder="Enter your mobile number" maxlength="10" minlength="10" value="<?php echo isset($_SESSION['number']) ? $_SESSION['number'] : ''; ?>" required>
 
             <label for="otp">Enter Verification Code (OTP) <span class="red">*</span> </label>
-            <input type="text" name="otp" id="otp" placeholder="Enter the OTP" maxlength="4" required>
+            <input  type="text" name="otp" id="otp" placeholder="Enter the OTP" maxlength="4" required>
 
             <span class="left">OTP will be sent to your mobile number for verification</span>
             <a class="resend" href="#">Resend code</a>

@@ -123,6 +123,17 @@
       </a>
     </div>
   </div>
+  <section class="trusted-by">
+        <span> <img src="assets/trusted_logo/trust.png" alt="" width="40px" height="40px"> <h2> Trusted Partners</h2></span>
+        <div class="logos">
+        <a class="logo-container" href="https://hermoneytalks.com/" target="_blank" > <img  src="assets/trusted_logo/herm.png" alt="Company 3 Logo"></a>
+            <a class="logo-container" href="https://www.linkedin.com/company/gold-leaf-hospitality-consulting/?originalSubdomain=in" target="_blank" > <img  src="assets/trusted_logo/gold_leaf.jpeg" alt="Company 2 Logo"></a>
+            <a class="logo-container" href="https://anibee.in" target="_blank" > <img  src="assets/trusted_logo/anibee.jpg" alt="Company 1 Logo"></a>
+
+            <a class="logo-container" href="https://raissa.in" target="_blank" > <img  src="assets/trusted_logo/raissa.jpg" alt="Company 4 Logo"></a> 
+            
+        </div>
+    </section>
   <?php include 'footer.php' ?>
 </body>
 

@@ -38,11 +38,13 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-       
+
     </style>
 </head>
 
 <body>
+
+   
     <footer>
         <div class="footer">
             <div class="first-div">
@@ -60,18 +62,18 @@ $conn->close();
                 <div class="helpfull">
                     <span class="footer-heading">Helpful Links</span>
                     <ul>
-                        <li>  <a href="terms.php"> <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.24951 1.5L6.74951 7L1.24951 12.5" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                            Terms of use </li></a>
-                        <li> <a href="privacy.php">  <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.24951 1.5L6.74951 7L1.24951 12.5" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                            Privacy Policy </li></a>
-                        <li> <a href="resources.php">  <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M1.24951 1.5L6.74951 7L1.24951 12.5" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                            Resources</li></a>
+                        <li> <a href="terms.php"> <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.24951 1.5L6.74951 7L1.24951 12.5" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                Terms of use </li></a>
+                        <li> <a href="privacy.php"> <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.24951 1.5L6.74951 7L1.24951 12.5" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                Privacy Policy </li></a>
+                        <li> <a href="resources.php"> <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.24951 1.5L6.74951 7L1.24951 12.5" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                Resources</li></a>
                     </ul>
                 </div>
             </div>
@@ -140,10 +142,10 @@ $conn->close();
         </div>
     </footer>
     <script>
-    if (window.history.replaceState) {
-        window.history.replaceState(null, null, window.location.href)
-    }
-</script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href)
+        }
+    </script>
 </body>
 
 </html>
