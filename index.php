@@ -166,7 +166,7 @@ if (isset($_GET['City'])) {
 
         <button class="btn right block" onclick="performSearch()">Search</button>
       </div>
-      <button style="margin-left: 2%;" class='search-round' onclick="performSearch()"><svg width="64" height="65" viewBox="0 0 64 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <button style="margin-left: 2%; cursor:pointer;" class='search-round' onclick="performSearch()"><svg width="64" height="65" viewBox="0 0 64 65" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect y="0.5" width="64" height="64" rx="6" fill="#031B64" />
           <g clip-path="url(#clip0_3259_17454)">
             <path d="M42.2929 44.2071C42.6834 44.5976 43.3166 44.5976 43.7071 44.2071C44.0976 43.8166 44.0976 43.1834 43.7071 42.7929L42.2929 44.2071ZM38.1176 30.5588C38.1176 35.0096 34.5096 38.6176 30.0588 38.6176V40.6176C35.6142 40.6176 40.1176 36.1142 40.1176 30.5588H38.1176ZM30.0588 38.6176C25.6081 38.6176 22 35.0096 22 30.5588H20C20 36.1142 24.5035 40.6176 30.0588 40.6176V38.6176ZM22 30.5588C22 26.1081 25.6081 22.5 30.0588 22.5V20.5C24.5035 20.5 20 25.0035 20 30.5588H22ZM30.0588 22.5C34.5096 22.5 38.1176 26.1081 38.1176 30.5588H40.1176C40.1176 25.0035 35.6142 20.5 30.0588 20.5V22.5ZM35.8223 37.7365L42.2929 44.2071L43.7071 42.7929L37.2365 36.3223L35.8223 37.7365Z" fill="#F0F0F0" />
