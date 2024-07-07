@@ -358,7 +358,7 @@ height:190px;
 }
 
 .card-body {
-padding: 20px 20px;
+padding: 10px 20px;
 text-align: justify;
 font-size: 18px;
 }
@@ -465,7 +465,7 @@ width: 100%;
 .card-header {
 display: flex;
 align-items: center;
-margin-bottom: 10px;
+
 }
 
 .user-info h4 {

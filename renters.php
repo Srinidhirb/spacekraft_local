@@ -276,7 +276,7 @@ if (isset($_COOKIE['user_id'])) {
     <div class="banner">
         <div class="banner-content">
             <h1>Carving Real-World Buzz For Your Brand?</h1>
-            <a href="#" class="button">Find Your Ideal Space</a>
+            <a href="find.php" class="button">Find Your Ideal Space</a>
         </div>
     </div>
     <div class="container">
