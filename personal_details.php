@@ -81,8 +81,8 @@ $conn->close();
                 <span class=""> Space Pricing<span>
             </div>
             <div class="diagram">
-                <div class="circle1 disabled">4</div>
-                <span class="disabled"> Personal Details<span>
+                <div class="circle1 ">4</div>
+                <span class=""> Personal Details<span>
             </div>
         </div>
         <div class="heading-small">Personal Details</div>

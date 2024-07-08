@@ -115,7 +115,7 @@ margin-top: 20px;
 .main{
 
 width: 100%;
-height: 100vh;
+height: 90vh;
 flex-shrink: 0;
 background: url('assets/img/bg-index.jpg');
 
@@ -311,7 +311,9 @@ box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
 }
 
 .right{
-margin-left:87%;
+  width: 100%;
+    margin: 13px 0;
+    font-size: 1rem;
 }
 /* Add additional styles as needed */
 
@@ -349,6 +351,7 @@ border: 1px solid #EEEEEE;
 margin-bottom: 50px;
 transition: 0.3s;
 cursor: pointer;
+transition:all 0.5s ease;
 }
 
 .card-header img {

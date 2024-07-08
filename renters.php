@@ -19,7 +19,7 @@ if (isset($_COOKIE['user_id'])) {
     <link rel="stylesheet" href="assets\css\header_footer-css.php">
     <style>
         body {
-            font-family: Arial, sans-serif;
+          
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -258,16 +258,7 @@ if (isset($_COOKIE['user_id'])) {
 
         }
 
-        .content a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background: #fff;
-            color: #000;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
+       
     </style>
 </head>
 
@@ -322,7 +313,7 @@ if (isset($_COOKIE['user_id'])) {
                 <h2>With SpaceKraft, <br> renting is a breeze!</h2>
                 <p>Forget long leases and confusing contracts. SpaceKraft is your secret weapon!</p>
                 <p>We're the easiest way to rent short-term retail spaces, pop-up shops, work studios, and more for your brand marketing. SpaceKraft is your secret weapon!</p>
-                <a href="#" class="button">Get Started</a>
+                <a href="find.php" class="button">Get Started</a>
             </div>
             <img src="assets/img/renters2.jpg" alt="Workspace">
         </div>
@@ -330,7 +321,7 @@ if (isset($_COOKIE['user_id'])) {
     <div class="marketing-space">
         <div class="content">
             <h1>Spark Instant Brand Buzz!</h1>
-            <p>Find your perfect marketing space now →</p>
+           <p> <a href="find.php">Find your perfect marketing space now →</a></p>
 
         </div>
     </div>

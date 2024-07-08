@@ -292,10 +292,11 @@ min-height: 222px;
 /* Set a minimum height for each container */
 display: flex;
 flex-direction: column;
+transition:all 0.5s ease;
 }
 .listing-container:hover {
-transform: scale(1.01);
-box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.1);
+transform: scale(1.03);
+box-shadow: 0 0 40px -10px rgba(0, 0, 0, 0.4);
 }
 .listing-image img {
 max-width: 100%;

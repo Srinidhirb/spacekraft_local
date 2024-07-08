@@ -131,7 +131,7 @@ if (!$resultAdminReview) {
                     echo "<td>{$row['project_description']}</td>";
                     echo "<td>{$row['start_date']}</td>";
                     echo "<td>{$row['end_date']}</td>";
-                    echo "<td>{$row['referring_url']}</td>";
+                    echo "<td><a href='{$row['referring_url']}' target='_blank'>{$row['referring_url']}</a></td>";
                     echo "</tr>";
                 }
                 ?>

@@ -107,7 +107,8 @@ if (isset($_GET['spaceId'])) {
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Responsive Image Gallery with Slider</title>
+            <title><?php  echo $spaceName; ?></title>
+
             <link rel="website icon " href="assets\img\Logo Icon 16_16.svg">
             <link rel="stylesheet" href="assets\css\header_footer-css.php">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -459,7 +460,7 @@ if (isset($_GET['spaceId'])) {
                                 <p> <?php echo $spaceDetails['click_count']; ?></p>
                             </span>
                         </div>
-                        <div class="share_fav" id="mobile_share" >
+                        <div class="share_fav" id="mobile_share">
                             <button class="share" onclick="sharePage()"><svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M27.9129 17.3603C28.2384 17.0813 28.4011 16.9418 28.4607 16.7758C28.5131 16.6301 28.5131 16.4708 28.4607 16.3251C28.4011 16.1591 28.2384 16.0196 27.9129 15.7406L16.6186 6.05973C16.0583 5.57947 15.7781 5.33934 15.5409 5.33346C15.3348 5.32834 15.1379 5.41891 15.0076 5.57874C14.8577 5.76266 14.8577 6.13164 14.8577 6.8696V12.5966C12.0115 13.0946 9.40652 14.5368 7.47067 16.7023C5.36016 19.0631 4.19271 22.1184 4.19106 25.2851V26.1011C5.59018 24.4156 7.33707 23.0525 9.31207 22.105C11.0533 21.2697 12.9356 20.7749 14.8577 20.6445V26.2313C14.8577 26.9692 14.8577 27.3382 15.0076 27.5221C15.1379 27.682 15.3348 27.7725 15.5409 27.7674C15.7781 27.7615 16.0583 27.5214 16.6186 27.0411L27.9129 17.3603Z" stroke="#222222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg> </button>
@@ -663,80 +664,7 @@ if (isset($_GET['spaceId'])) {
                             </script>
                         </div>
                     </div>
-                    <div id="priceContainer" class="mobile_price_fixed">
-                        <div class="pricing-enquiry-container">
-                            <div class="pricing-enquiry-title">
-                                <p>Prices starting from</p>
-                                <h1>
-                                    <?php
-                                    // Array to store prices with their types
-                                    $prices = array();
 
-                                    // Add prices to the array with their types if they exist
-                                    if ($spaceDailyPrice) {
-                                        $prices['Day'] = $spaceDailyPrice;
-                                    }
-                                    if ($spaceWeeklyPrice) {
-                                        $prices['Week'] = $spaceWeeklyPrice;
-                                    }
-                                    if ($spaceMonthlyPrice) {
-                                        $prices['Month'] = $spaceMonthlyPrice;
-                                    }
-
-                                    // Check if prices are available
-                                    if (empty($prices)) {
-                                        echo "No price available";
-                                    } else {
-                                        // Find the lowest price
-                                        $lowestPrice = min($prices);
-
-                                        // Find the type of pricing corresponding to the lowest price
-                                        $lowestPriceType = array_search($lowestPrice, $prices);
-
-                                        // Display the lowest price with its type
-                                        echo '&#8377;' . number_format($lowestPrice) . ' /' . $lowestPriceType;
-                                    }
-                                    ?>
-                                </h1>
-                            </div>
-                            <div class="date-picker-range">
-                                <input type="text" id="start-date" class="date-picker-input" placeholder="Start date (y/m/d)" required>
-                                <span class="date-picker-separator">
-                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M7.5 4.5L11.4697 8.46967C11.7626 8.76256 11.7626 9.23744 11.4697 9.53033L7.5 13.5" stroke="#999999" stroke-width="1.5" stroke-linecap="round" />
-                                    </svg>
-                                </span>
-                                <input type="text" id="end-date" class="date-picker-input" placeholder="End date (y/m/d)" required>
-                            </div>
-                            <a href="Enquiry_form.php" id="enquiry-link">
-                                <button id="send-enquiry-btn" class="enquiry-button">Send Enquiry</button>
-                            </a>
-                        </div>
-                    </div>
-                    <script>
-                        document.addEventListener("DOMContentLoaded", function() {
-                            var priceContainer = document.getElementById("priceContainer");
-                            var showAfterHeight = 300; // Adjust this value to the desired scroll height
-
-                            function checkScroll() {
-                                if (window.innerWidth < 1044) {
-                                    if (window.scrollY > showAfterHeight) {
-                                        priceContainer.style.display = "flex";
-                                    } else {
-                                        priceContainer.style.display = "none";
-                                    }
-                                } else {
-                                    priceContainer.style.display = "none";
-                                }
-                            }
-
-                            window.addEventListener("scroll", checkScroll);
-                            window.addEventListener("resize", checkScroll);
-
-                            // Initial check
-                            checkScroll();
-                        });
-                    </script>
 
 
                     <div class="right-section">
@@ -786,151 +714,99 @@ if (isset($_GET['spaceId'])) {
 
                         </div>
 
-                        <div class="sticky-container" id="sticky-container">
-                            <div class="sticky-content">
-                                <div class="pricing-enquiry-container">
-                                    <div class="pricing-enquiry-title">
-                                        <p>Prices starting from</p>
-                                        <h1>
-                                            <?php
-                                            // Array to store prices with their types
-                                            $prices = array();
-
-                                            // Add prices to the array with their types if they exist
-                                            if ($spaceDailyPrice) {
-                                                $prices['Day'] = $spaceDailyPrice;
-                                            }
-                                            if ($spaceWeeklyPrice) {
-                                                $prices['Week'] = $spaceWeeklyPrice;
-                                            }
-                                            if ($spaceMonthlyPrice) {
-                                                $prices['Month'] = $spaceMonthlyPrice;
-                                            }
-
-                                            // Check if prices are available
-                                            if (empty($prices)) {
-                                                echo "No price available";
-                                            } else {
-                                                // Find the lowest price
-                                                $lowestPrice = min($prices);
-
-                                                // Find the type of pricing corresponding to the lowest price
-                                                $lowestPriceType = array_search($lowestPrice, $prices);
-
-                                                // Display the lowest price with its type
-                                                echo '&#8377;' . number_format($lowestPrice) . ' /' . $lowestPriceType;
-                                            }
-                                            ?>
-                                        </h1>
-                                    </div>
-                                    <div class="date-picker-range">
-                                        <input type="text" id="start-date" class="date-picker-input" placeholder="Start date (y/m/d)" required>
-                                        <span class="date-picker-separator">
-                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M7.5 4.5L11.4697 8.46967C11.7626 8.76256 11.7626 9.23744 11.4697 9.53033L7.5 13.5" stroke="#999999" stroke-width="1.5" stroke-linecap="round" />
-                                            </svg>
-                                        </span>
-                                        <input type="text" id="end-date" class="date-picker-input" placeholder="End date (y/m/d)" required>
-                                    </div>
-                                    <a href="Enquiry_form.php" id="enquiry-link">
-                                        <button id="send-enquiry-btn" class="enquiry-button">Send Enquiry</button>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <script>
-                                const priceEnquiryContainer = document.getElementById('price-enquiry-container');
-                                const stickyContainer = document.getElementById('sticky-container');
-
-                                // Set the specific height value after which the box should become sticky
-                                const stickyHeight = 550; // Replace 300 with the height value you want
-
-                                window.addEventListener('scroll', function() {
-                                    if (window.pageYOffset > stickyHeight) {
-                                        priceEnquiryContainer.style.display = "none";
-                                        stickyContainer.classList.add('sticky');
-                                    } else {
-                                        priceEnquiryContainer.style.display = "block";
-                                        stickyContainer.classList.remove('sticky');
-                                    }
-                                });
-                                document.addEventListener('DOMContentLoaded', function() {
-                                    // Selecting the elements
-                                    const startDateInput = document.getElementById('start-date');
-                                    const endDateInput = document.getElementById('end-date');
-                                    const sendEnquiryBtn = document.getElementById('send-enquiry-btn');
-                                    const enquiryLink = document.getElementById('enquiry-link');
-
-
-                                    // Adding click event listener to the button
-                                    sendEnquiryBtn.addEventListener('click', function(event) {
-                                        event.preventDefault(); // Prevent the default form submission behavior
-
-                                        // Retrieve the values from input fields
-                                        const startDate = startDateInput.value;
-                                        const endDate = endDateInput.value;
-                                        const referringUrl = window.location.href; // Get the current URL
-
-                                        // Check if start date and end date are not empty
-                                        if (startDate.trim() !== '' && endDate.trim() !== '') {
-                                            // Store the dates and referring URL in local storage
-                                            localStorage.setItem('startDate', startDate);
-                                            localStorage.setItem('endDate', endDate);
-                                            localStorage.setItem('referringUrl', referringUrl);
-
-                                            // Redirect to the enquiry page
-                                            window.location.href = enquiryLink.href;
-                                        } else {
-                                            alert('Please enter both start and end dates.');
-                                        }
-                                    });
-                                });
-                            </script>
-                        </div>
-
 
 
                         <script>
-                            document.addEventListener("DOMContentLoaded", function() {
-                                const content = document.getElementById("content");
-                                const readMoreLink = document.getElementById("read-more");
+                            document.addEventListener('DOMContentLoaded', function() {
+                                // Selecting the elements
+                                const startDateInput = document.getElementById('start-date');
+                                const endDateInput = document.getElementById('end-date');
+                                const sendEnquiryBtn = document.getElementById('send-enquiry-btn');
+                                const enquiryLink = document.getElementById('enquiry-link');
+                                const enquiryContainer = document.getElementById('price-enquiry-container');
 
-                                // Split the content into words
-                                const fullText = content.innerHTML;
-                                const words = fullText.split(' ');
-
-                                // Determine the number of words to show initially
-                                const initialWordCount = 30;
-                                if (words.length > initialWordCount) {
-                                    const initialText = words.slice(0, initialWordCount).join(' ');
-                                    const remainingText = words.slice(initialWordCount).join(' ');
-
-                                    // Set the initial text and hide the remaining text
-                                    content.innerHTML = initialText + '<span id="dots">...</span><span id="more" style="display:none;"> ' + remainingText + '</span>';
-
-                                    // Add event listener to the read more link
-                                    readMoreLink.addEventListener("click", function(event) {
-                                        event.preventDefault();
-                                        const dots = document.getElementById("dots");
-                                        const moreText = document.getElementById("more");
-
-                                        if (dots.style.display === "none") {
-                                            dots.style.display = "inline";
-                                            readMoreLink.innerHTML = "Read more";
-                                            moreText.style.display = "none";
-                                        } else {
-                                            dots.style.display = "none";
-                                            readMoreLink.innerHTML = "Read less";
-                                            moreText.style.display = "inline";
-                                        }
-                                    });
-                                } else {
-                                    readMoreLink.style.display = "none"; // Hide the link if content is less than or equal to initialWordCount
+                                // Function to add sticky class
+                                function handleScroll() {
+                                    if (window.scrollY > 300) { // Change 300 to the scroll height at which you want it to be sticky
+                                        enquiryContainer.classList.add('sticky');
+                                    } else {
+                                        enquiryContainer.classList.remove('sticky');
+                                    }
                                 }
+
+                                // Adding scroll event listener
+                                window.addEventListener('scroll', handleScroll);
+
+                                // Adding click event listener to the button
+                                sendEnquiryBtn.addEventListener('click', function(event) {
+                                    event.preventDefault(); // Prevent the default form submission behavior
+
+                                    // Retrieve the values from input fields
+                                    const startDate = startDateInput.value;
+                                    const endDate = endDateInput.value;
+                                    const referringUrl = window.location.href; // Get the current URL
+
+                                    // Check if start date and end date are not empty
+                                    if (startDate.trim() !== '' && endDate.trim() !== '') {
+                                        // Store the dates and referring URL in local storage
+                                        localStorage.setItem('startDate', startDate);
+                                        localStorage.setItem('endDate', endDate);
+                                        localStorage.setItem('referringUrl', referringUrl);
+
+                                        // Redirect to the enquiry page
+                                        window.location.href = enquiryLink.href;
+                                    } else {
+                                        alert('Please enter both start and end dates.');
+                                    }
+                                });
                             });
                         </script>
+
                     </div>
+
+
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const content = document.getElementById("content");
+                            const readMoreLink = document.getElementById("read-more");
+
+                            // Split the content into words
+                            const fullText = content.innerHTML;
+                            const words = fullText.split(' ');
+
+                            // Determine the number of words to show initially
+                            const initialWordCount = 30;
+                            if (words.length > initialWordCount) {
+                                const initialText = words.slice(0, initialWordCount).join(' ');
+                                const remainingText = words.slice(initialWordCount).join(' ');
+
+                                // Set the initial text and hide the remaining text
+                                content.innerHTML = initialText + '<span id="dots">...</span><span id="more" style="display:none;"> ' + remainingText + '</span>';
+
+                                // Add event listener to the read more link
+                                readMoreLink.addEventListener("click", function(event) {
+                                    event.preventDefault();
+                                    const dots = document.getElementById("dots");
+                                    const moreText = document.getElementById("more");
+
+                                    if (dots.style.display === "none") {
+                                        dots.style.display = "inline";
+                                        readMoreLink.innerHTML = "Read more";
+                                        moreText.style.display = "none";
+                                    } else {
+                                        dots.style.display = "none";
+                                        readMoreLink.innerHTML = "Read less";
+                                        moreText.style.display = "inline";
+                                    }
+                                });
+                            } else {
+                                readMoreLink.style.display = "none"; // Hide the link if content is less than or equal to initialWordCount
+                            }
+                        });
+                    </script>
                 </div>
+
 
                 <?php include 'footer.php' ?>
                 <script src="script.js"></script>
