@@ -17,249 +17,8 @@ if (isset($_COOKIE['user_id'])) {
     <title>SpaceKraft</title>
     <link rel="website icon " href="assets\img\Logo Icon 16_16.svg">
     <link rel="stylesheet" href="assets\css\header_footer-css.php">
-    <style>
-        body {
-          
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .container {
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .container_header,
-        .features,
-        .main-content {
-            text-align: center;
-        }
-
-        .container_header h1 {
-            font-size: 2.86vw;
-            font-weight: 600;
-        }
-
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin-top: 56px;
-            align-items: center;
-        }
-
-        .feature {
-            flex: 1 1 200px;
-
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-            border-radius: 8px;
-            max-width: 300px;
-            box-sizing: border-box;
-        }
-
-        .feature img {
-            width: 50px;
-            height: 50px;
-        }
-
-        .feature h3 {
-            font-size: 1rem;
-            font-weight: bold;
-            color: #222222;
-        }
-
-        .feature p {
-            color: #8B8B8B;
-            font-size: 1rem;
-            font-weight: normal;
-        }
-
-        .main-content {
-            margin: 60px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .main-content .text {
-            display: flex;
-            max-width: 460px;
-            flex-direction: column;
-            align-items: start;
-            text-align: start;
-            gap: 24px;
-
-        }
-
-        .text h2 {
-            font-size: 2.86vW;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-            color: #222222;
-        }
-
-        .text p {
-            font-size: 1rem;
-            font-weight: normal;
-            color: #8B8B8B;
-        }
-
-        .main-content img {
-            max-width: 100%;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-
-        .button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #031B64;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.5s ease;
-        }
-        .button:hover{
-            background-color: #4AE9E9;
-            color: #000;
-        }
-        @media (min-width: 768px) {
-            .main-content {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-
-            .main-content .text {
-                flex: 1;
-                padding-right: 20px;
-            }
-        }
-
-        .banner {
-            margin: 65px 0 35px;
-            position: relative;
-            width: 100%;
-            height: 83vh;
-            /* Full height of the viewport */
-            background: url('assets/img/renters1.jpg') no-repeat center/cover;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-        }
-
-        .banner-content {
-
-            text-align: center;
-            position: absolute;
-            top: 65%;
-            left: 40%;
-            transform: translate(-30%, -40%);
-            color: white;
-        }
-
-        .banner-content h1 {
-            font-size: 2.86vw;
-            margin: 0;
-            font-weight: bold;
-        }
-
-        .banner-content .button {
-            display: inline-block;
-            text-transform: uppercase;
-            padding: 10px 20px;
-            font-weight: 600;
-            background-color: #031B64;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: all 0.5s ease;
-        }
-        .banner-content .button:hover{
-            background-color: #4AE9E9;
-            color: #000;
-        }
-        @media (max-width: 768px) {
-            .banner-content h1 {
-                font-size: 2rem;
-            }
-
-            .banner-content .button {
-                padding: 8px 16px;
-                font-size: 1rem;
-            }
-        }
-
-        .marketing-space {
-            position: relative;
-            width: 100%;
-            max-height: 480px;
-            height: 50vh;
-            background-image: url('assets/img/renters3.jpg');
-            /* Update path to your image */
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            margin: 0 0 70px 0;
-        }
-
-        .content {
-
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .content h1 {
-            font-size: 2.5em;
-            color: #fdfdfd;
-            font-weight: bold;
-            margin: 0;
-        }
-
-        .content p {
-            font-size: 1.2em;
-            margin: 24px auto;
-            color: #FBFBFB;
-            font-weight: normal;
-            position: relative;
-            max-width: 360px;
-
-
-        }
-
-        .content p::after {
-            content: "";
-
-            position: absolute;
-            
-            transform: translate(3%, -50%);
-            max-width: 340px;
-
-            width: 100%;
-            background-color: #FBFBFB;
-
-            top: 30px;
-            height: 1px;
-            left: 0;
-
-        }
-
-       
-    </style>
+    <link rel="stylesheet" href="assets\css\renters-css.php">
+    
 </head>
 
 <body>
@@ -321,19 +80,21 @@ if (isset($_COOKIE['user_id'])) {
     <div class="marketing-space">
         <div class="content">
             <h1>Spark Instant Brand Buzz!</h1>
-           <p> <a href="find.php">Find your perfect marketing space now →</a></p>
+            <p> <a href="find.php">Find your perfect marketing space now →</a></p>
 
         </div>
     </div>
     <section class="trusted-by">
-        <span> <img src="assets/trusted_logo/trust.png" alt="" width="40px" height="40px"> <h2> Trusted Partners</h2></span>
+        <span> <img src="assets/trusted_logo/trust.png" alt="" width="40px" height="40px">
+            <h2> Trusted By</h2>
+        </span>
         <div class="logos">
-        <a class="logo-container" href="https://hermoneytalks.com/" target="_blank" > <img  src="assets/trusted_logo/herm.png" alt="Company 3 Logo"></a>
-            <a class="logo-container" href="https://www.linkedin.com/company/gold-leaf-hospitality-consulting/?originalSubdomain=in" target="_blank" > <img  src="assets/trusted_logo/gold_leaf.jpeg" alt="Company 2 Logo"></a>
-            <a class="logo-container" href="https://anibee.in" target="_blank" > <img  src="assets/trusted_logo/anibee.jpg" alt="Company 1 Logo"></a>
+            <a class="logo-container" href="https://hermoneytalks.com/" target="_blank"> <img src="assets/trusted_logo/herm.png" alt="Company 3 Logo"></a>
+            <a class="logo-container" href="https://www.linkedin.com/company/gold-leaf-hospitality-consulting/?originalSubdomain=in" target="_blank"> <img src="assets/trusted_logo/gold_leaf.jpeg" alt="Company 2 Logo"></a>
+            <a class="logo-container" href="https://anibee.in" target="_blank"> <img src="assets/trusted_logo/anibee.jpg" alt="Company 1 Logo"></a>
 
-            <a class="logo-container" href="https://raissa.in" target="_blank" > <img  src="assets/trusted_logo/raissa.jpg" alt="Company 4 Logo"></a> 
-            
+            <a class="logo-container" href="https://raissa.in" target="_blank"> <img src="assets/trusted_logo/raissa.jpg" alt="Company 4 Logo"></a>
+
         </div>
     </section>
     <?php include 'footer.php' ?>

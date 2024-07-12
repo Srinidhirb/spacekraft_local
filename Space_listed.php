@@ -27,59 +27,7 @@
   <link rel="stylesheet" href="assets\css\Space_listed-css.php">
   <link rel="stylesheet" href="assets\css\header_footer-css.php">
   <style>
-    .container {
-      margin: 80px 0;
-      width: 100%;
-   
-      padding: 20px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      height: 50vh;
-    }
-
-    .confirmation {
-      text-align: center;
-      background-color: #fff;
-      padding: 20px;
-      height: 100%;
-      border-radius: 10px;
-      max-width: 730px;
-      margin-bottom: 20px;
-    }
-
-    .checkmark {
-      font-size: 50px;
-      color: green;
-    }
-
-    .confirmation h1 {
-      margin: 20px 0;
-      font-size: 24px;
-    }
-
-    .confirmation p.subtitle {
-      font-size: 16px;
-    padding: 0 41px;
-
-    width: 70%;
-    margin: 0 auto;
-    }
-
-    .confirmation p {
-      margin: 16px 0;
-      font-size: 14px;
-      color: #717579;
-    }
-    .right{
-      height: 100%;
-    }
-   @media screen and (max-width:1024px) {
-    .container {
-      flex-direction: column;
-      }
     
-   }
   </style>
 </head>
 

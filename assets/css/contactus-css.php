@@ -46,6 +46,7 @@ justify-content: space-between;
 input {
 width: 100%;
 height: 48px;
+padding: 0 0 0 16px;
 top: 32px;
 gap: 12px;
 
@@ -57,6 +58,7 @@ margin-bottom: 24px;
 
 input[type=email] {
 width: 100%;
+padding: 0 0 0 16px;
 border: 1px solid var(--Hover-pimary, #B8C0C2);
 height: 48px;
 margin-bottom: 3%;
@@ -66,6 +68,7 @@ margin-bottom: 3%;
 textarea {
 border: 1px solid var(--Hover-pimary, #B8C0C2);
 border-radius: 6px;
+
 width: 100%;
 resize: none;
 height:110px;

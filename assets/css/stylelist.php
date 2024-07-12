@@ -20,7 +20,9 @@ color: inherit;
 }
 
 
-
+select{
+                    background-color: #ffffff;
+                }
 
 
 /* Replace "input" with the actual selector for your input elements if needed */
@@ -739,7 +741,7 @@ margin: 127px 0px;
 
 
 @media screen and (max-width:470px) {
-.circle::after{
+.circle::after,.circle-finished::after {
 width: 60px;
 
 height: 2px;
@@ -768,14 +770,15 @@ input,label,select,textarea,.right,.label-container,.container,.right1,.right2,.
 width:90%;
 }
 .duration-container{
-    width:92%;
-    margin:0 auto;
+    width:90%;
+   
 }
 .file-label,.file-name{
     width:80%
 }
 .you_are{
     width:90%;
+    gap: 40px;
 }
 }
 

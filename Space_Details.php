@@ -116,6 +116,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
             </select>
+            <style>
+               
+            </style>
             <!-- Add this code to your form -->
             <label for="space_type">Space Type <span class="red">*</span></label>
             <select name="space_type" id="space_type" required onchange="checkSpaceType()">

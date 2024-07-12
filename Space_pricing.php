@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     echo '<script>window.location.href = "personal_details.php";</script>';
     exit();
 } else {
-    echo "Form not submitted";
+    echo "";
 }
 ?>
 
@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         </div>
         <div class="heading-small">Space pricing</div>
-        <form action="" method="post" id="list2" onsubmit="return validateDurationSelection();">
+        <form action="" method="post"  onsubmit="return validateDurationSelection();" id="form">
             <!-- List2 Form -->
             <div class="duration-container">
                 <div class="duration-input">

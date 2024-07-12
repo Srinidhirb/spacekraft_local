@@ -12,7 +12,7 @@ if (isset($_COOKIE['user_id'])) {
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    
+
 
     // Personal Details
     $you_are = $_POST['you_are'] ?? []; // Retrieve the array of selected values or an empty array if none are selected
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     echo '<script>window.location.href = "premium_listing.php";</script>';
     exit();
 } else {
-    echo "Form not submitted";
+    echo "";
 }
 
 
@@ -73,7 +73,7 @@ $conn->close();
                     </svg></div>
                 <span> Space Showcase<span>
             </div>
-           
+
             <div class="diagram">
                 <div class="circle-finished enabled "><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M26.6667 9.3335L12.9429 23.0574C12.4222 23.5781 11.5779 23.5781 11.0572 23.0574L5.33337 17.3335" stroke="#FBFBFB" stroke-width="3" stroke-linecap="round" />
@@ -81,8 +81,8 @@ $conn->close();
                 <span class=""> Space Pricing<span>
             </div>
             <div class="diagram">
-                <div class="circle1 ">4</div>
-                <span class=""> Personal Details<span>
+                <div class="circle1">4</div>
+                <span > Personal Details<span>
             </div>
         </div>
         <div class="heading-small">Personal Details</div>
@@ -90,14 +90,23 @@ $conn->close();
             <label for="you_are">You are <span class="red">*</span></label>
             <div class="you_are" id="you">
                 <label>
-                    <input type="checkbox" name="you_are[]" value="Owner">
+                    <input type="checkbox" name="you_are[]" value="Owner" onclick="selectOnlyThis(this)">
                     <span>Owner</span>
                 </label>
                 <label>
-                    <input type="checkbox" name="you_are[]" value="Agent">
+                    <input type="checkbox" name="you_are[]" value="Agent" onclick="selectOnlyThis(this)">
                     <span>Agent</span>
                 </label>
             </div>
+            <script>
+                function selectOnlyThis(checkbox) {
+                    var checkboxes = document.getElementsByName('you_are[]');
+                    checkboxes.forEach((item) => {
+                        if (item !== checkbox) item.checked = false;
+                    });
+                }
+            </script>
+
 
             <label for="full_name">Full Name <span class="red">*</span> </label>
             <input type="text" name="full_name" id="full_name" placeholder="Enter your full name" value="<?php echo isset($_SESSION['full_name']) ? $_SESSION['full_name'] : ''; ?>" required>
@@ -109,7 +118,7 @@ $conn->close();
             <input type="text" name="number" id="number" placeholder="Enter your mobile number" maxlength="10" minlength="10" value="<?php echo isset($_SESSION['number']) ? $_SESSION['number'] : ''; ?>" required>
 
             <label for="otp">Enter Verification Code (OTP) <span class="red">*</span> </label>
-            <input  type="text" name="otp" id="otp" placeholder="Enter the OTP" maxlength="4" required>
+            <input type="text" name="otp" id="otp" placeholder="Enter the OTP" maxlength="4" required>
 
             <span class="left">OTP will be sent to your mobile number for verification</span>
             <a class="resend" href="#">Resend code</a>

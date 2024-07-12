@@ -222,6 +222,7 @@ if (isset($_GET['City'])) {
 
     // Include the search bar outside of the conditional block
     include 'search.php';
+    
 
 
     // Check if there are any records for listings
@@ -231,9 +232,6 @@ if (isset($_GET['City'])) {
         echo "<div class='container'>";
         while ($row = $result->fetch_assoc()) {
             $spaceId = $row['id'];
-            $cityName = $row['City'];
-            $cityImg = $row['city_image'];
-            $cityDes = $row['city_description'];
             $spaceName = $row['SpaceName'];
             $spaceType = $row['SpaceType'];
             $spaceAddress1 = $row['SpaceAddress1'];
@@ -253,8 +251,6 @@ if (isset($_GET['City'])) {
             $amenities = explode(',', $row['Amenities']);
     ?>
             <div class="listing-container" onclick="redirectToSpace('<?php echo $spaceId; ?>')">
-               
-
                 <?php if ($spaceImg !== "N/A") : ?>
                     <?php
                     $imagePaths = explode(',', $spaceImg);
@@ -264,18 +260,9 @@ if (isset($_GET['City'])) {
                     <img class="listing-image" src="path/to/default/image.jpg" height="200" alt="Default Image">
                 <?php endif; ?>
 
-                <p class="info"><?php echo $spaceName; ?></p>
-                <p class="info1"><?php echo "$spaceAddress1, $city - $pinCode"; ?></p>
-
-                <?php
-                $displayPrice = $spaceMonthlyPrice ?: ($spaceDailyPrice ?: $spaceWeeklyPrice);
-
-                if ($displayPrice) {
-                    echo '<p class="info1"><strong> RS</strong> ' . number_format($displayPrice) . ' /' . ($spaceMonthlyPrice ? 'Monthly' : ($spaceDailyPrice ? 'Daily' : 'Weekly')) . '</p>';
-                } else {
-                    echo '<p class="info">Price not available</p>';
-                }
-                ?>
+                <p class="info"> <?php echo substr($spaceName, 0, 20); ?> <?php echo strlen($spaceName) > 20 ? "..." : ""; ?></p>
+                <p class="info1 "><?php echo " $city - $pinCode"; ?></p>
+                <p class="info2"> <?php echo substr($spaceArea, 0, 20); ?> <?php echo strlen($spaceArea) > 20 ? "..." : ""; ?>sq ft.</p>
             </div>
     <?php
         } // End of the while loop
@@ -304,8 +291,11 @@ if (isset($_GET['City'])) {
     <?php include 'footer.php'; ?>
     <!-- Include your additional scripts or JavaScript code here -->
     <script>
-    function redirectToSpace(spaceId) {
-        window.location.href = 'ind_space_details.php?spaceId=' + spaceId;
+   function redirectToSpace(spaceId) {
+      // Encode spaceId in Base64
+      var encodedSpaceId = btoa(spaceId);
+      // Redirect to the encoded URL
+      window.location.href = 'ind_space_details.php?spaceId=' + encodedSpaceId;
     }
 </script>
 </body>

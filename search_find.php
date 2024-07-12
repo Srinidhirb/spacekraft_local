@@ -68,10 +68,10 @@
                     ?>
                 </select>
                 <div class="custom-arrow"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M14.6665 9.16634C14.6665 11.1914 13.0249 12.833 10.9998 12.833C8.97479 12.833 7.33317 11.1914 7.33317 9.16634C7.33317 7.1413 8.97479 5.49967 10.9998 5.49967C13.0249 5.49967 14.6665 7.1413 14.6665 9.16634Z" stroke="#222222" stroke-width="2"/>
-<path d="M18.3332 9.16634C18.3332 13.2164 12.8332 20.1663 10.9998 20.1663C9.1665 20.1663 3.6665 13.2164 3.6665 9.16634C3.6665 5.11625 6.94975 1.83301 10.9998 1.83301C15.0499 1.83301 18.3332 5.11625 18.3332 9.16634Z" stroke="#222222" stroke-width="2"/>
-</svg>
-</div>
+                        <path d="M14.6665 9.16634C14.6665 11.1914 13.0249 12.833 10.9998 12.833C8.97479 12.833 7.33317 11.1914 7.33317 9.16634C7.33317 7.1413 8.97479 5.49967 10.9998 5.49967C13.0249 5.49967 14.6665 7.1413 14.6665 9.16634Z" stroke="#222222" stroke-width="2" />
+                        <path d="M18.3332 9.16634C18.3332 13.2164 12.8332 20.1663 10.9998 20.1663C9.1665 20.1663 3.6665 13.2164 3.6665 9.16634C3.6665 5.11625 6.94975 1.83301 10.9998 1.83301C15.0499 1.83301 18.3332 5.11625 18.3332 9.16634Z" stroke="#222222" stroke-width="2" />
+                    </svg>
+                </div>
             </div><br />
             <div class="custom-select">
                 <select name="duration" class="select-style" id="durationInput">
@@ -149,18 +149,18 @@
         </div>
 </form>
 <form method="get" action="" class='right-container'>
-<div class="custom-select">
-    <select class="select-style" name="sort_by" id="sort_by">
-        <option value="" selected disabled> Sort</option>
-        <option value="space_area_desc">Space Area (Largest to Smallest)</option>
-        <option value="space_area_asc">Space Area (Smallest to Largest)</option>
-        <option value="recently_listed">Recently Listed</option>
-    </select>
-    <div class="custom-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18 10L12.7071 15.2929C12.3166 15.6834 11.6834 15.6834 11.2929 15.2929L6 10" stroke="#222222" stroke-width="2" stroke-linecap="round" />
-                    </svg>
-                </div>
-            </div><br />
+    <div class="custom-select">
+        <select class="select-style" name="sort_by" id="sort_by">
+            <option value="" selected disabled> Sort</option>
+            <option value="space_area_desc">Space Area (Largest to Smallest)</option>
+            <option value="space_area_asc">Space Area (Smallest to Largest)</option>
+            <option value="recently_listed">Recently Listed</option>
+        </select>
+        <div class="custom-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 10L12.7071 15.2929C12.3166 15.6834 11.6834 15.6834 11.2929 15.2929L6 10" stroke="#222222" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </div>
+    </div><br />
     <button class="submit-button1" type="submit" name="sort_submit">Apply Sort</button>
 </form>
 </div>

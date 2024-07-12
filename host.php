@@ -30,6 +30,8 @@ if (isset($_COOKIE['user_id'])) {
             position: relative;
             color: #fff;
         }
+
+       
     </style>
 </head>
 
@@ -63,9 +65,9 @@ if (isset($_COOKIE['user_id'])) {
                 <p>List your retail space on Spacekraft and tap into a vast pool of potential renters, from established
                     brands to exciting new ventures.</p>
                 <a href="Space_Details.php"> <button>List your space <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 12H18M13 6L18.2929 11.2929C18.6834 11.6834 18.6834 12.3166 18.2929 12.7071L13 18" stroke="#222222" stroke-width="2" stroke-linecap="round" />
-                    </svg>
-                </button></a>
+                            <path d="M5 12H18M13 6L18.2929 11.2929C18.6834 11.6834 18.6834 12.3166 18.2929 12.7071L13 18" stroke="#222222" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </button></a>
             </div>
         </div>
         <section class="offers-section">
@@ -113,19 +115,21 @@ if (isset($_COOKIE['user_id'])) {
         <section class="host-hero-section">
             <div class="host-overlay">
                 <h1>Retail rentals have never been easier</h1>
-                <button>Get Started</button>
+                <a href="Space_Details.php"><button>Get Started</button></a>
             </div>
         </section>
     </div>
     <section class="trusted-by">
-        <span> <img src="assets/trusted_logo/trust.png" alt="" width="40px" height="40px"> <h2> Trusted Partners</h2></span>
+        <span> <img src="assets/trusted_logo/trust.png" alt="" width="40px" height="40px">
+            <h2> Trusted By</h2>
+        </span>
         <div class="logos">
-        <a class="logo-container" href="https://hermoneytalks.com/" target="_blank" > <img  src="assets/trusted_logo/herm.png" alt="Company 3 Logo"></a>
-            <a class="logo-container" href="https://www.linkedin.com/company/gold-leaf-hospitality-consulting/?originalSubdomain=in" target="_blank" > <img  src="assets/trusted_logo/gold_leaf.jpeg" alt="Company 2 Logo"></a>
-            <a class="logo-container" href="https://anibee.in" target="_blank" > <img  src="assets/trusted_logo/anibee.jpg" alt="Company 1 Logo"></a>
+            <a class="logo-container" href="https://hermoneytalks.com/" target="_blank"> <img src="assets/trusted_logo/herm.png" alt="Company 3 Logo"></a>
+            <a class="logo-container" href="https://www.linkedin.com/company/gold-leaf-hospitality-consulting/?originalSubdomain=in" target="_blank"> <img src="assets/trusted_logo/gold_leaf.jpeg" alt="Company 2 Logo"></a>
+            <a class="logo-container" href="https://anibee.in" target="_blank"> <img src="assets/trusted_logo/anibee.jpg" alt="Company 1 Logo"></a>
 
-            <a class="logo-container" href="https://raissa.in" target="_blank" > <img  src="assets/trusted_logo/raissa.jpg" alt="Company 4 Logo"></a> 
-            
+            <a class="logo-container" href="https://raissa.in" target="_blank"> <img src="assets/trusted_logo/raissa.jpg" alt="Company 4 Logo"></a>
+
         </div>
     </section>
     <?php include 'footer.php' ?>

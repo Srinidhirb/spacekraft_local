@@ -674,9 +674,13 @@ margin-top: 107px;
 
 
 .pagination {
-text-align: center;
-padding: 32px;
-padding-bottom: 72px;
+    text-align: center;
+    padding: 32px;
+    display: flex;
+    padding-bottom: 72px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .pagination a {
@@ -707,7 +711,7 @@ vertical-align: middle;
 }
 @media (max-width: 600px) {
 .pagination a {
-padding: 5px;
+    padding: 11px 15px;
 margin: 0 3px;
 width: auto;
 font-size: 12px;

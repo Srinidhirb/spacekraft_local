@@ -37,13 +37,13 @@ html {
 }
 
 .host_header h1 {
-    font-size: 32px;
+    font-size: 1.9rem;
     font-weight: bold;
     margin-bottom: 40px;
 }
 
 .host_header span {
-    font-size: 24px;
+    font-size: 1.4rem;
     color: #222222;
 }
 
