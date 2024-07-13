@@ -13,7 +13,137 @@ padding: 0;
 ul {
 list-style: none;
 }
+.file-item {
+                    margin-bottom: 5px;
+                }
 
+                .delete-button {
+                    margin-left: 10px;
+                    cursor: pointer;
+                }
+                .image_label{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .image_label p{
+                    font-size: 12px;
+                }
+                .file-list {
+                    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    }
+
+    .file-item {
+        position: relative;
+        width: 110px;
+        border: 1px solid #ccc;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .file-item .image-container {
+        height: 100px;
+        overflow: hidden;
+        margin-bottom: 5px;
+    }
+
+    .file-item img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .file-item span {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .delete-button {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 2px 8px;
+        font-size: 12px;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .delete-button:hover {
+        background-color: #da190b;
+    }
+
+    .file-input {
+        display: none;
+    }
+
+    .file-label {
+        cursor: pointer;
+        display: inline-block;
+        border: 1px dashed #ccc;
+        padding: 10px;
+        text-align: center;
+        margin: 0;
+    }
+
+    .file-label img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 5px;
+    }
+
+    .file-label p {
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 0;
+    }
+            
+
+    .radio-group {
+                    display: flex;
+                    gap: 10px;
+                    max-width: 446px;
+                    width: 100%;
+                }
+
+                input[type="radio"] {
+                    display: none;
+                }
+
+                .radio-label {
+                    padding: 0px 20px;
+                    background-color: #ffffff;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: background-color 0.3s;
+                    width: 8%;
+                    font-size: 14px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 5px 0;
+                }
+
+                input[type="radio"]:checked+.radio-label {
+                    background-color: #7CAFD5;
+                    color: #222222;
+                    border-color: #007BFF;
+                }
+
+                .radio-label:hover {
+                    background-color: #4AE9E9;
+                }
 a {
 text-decoration: none;
 color: inherit;
@@ -375,21 +505,9 @@ margin-bottom: 10px;
 }
 
 /* Style the file input label on hover */
-.file-label:hover {
-background-color: #e9e8e8;
-color:#222222;
-}
 
-.file-name{
-width: 452px;
-color: var(--Grey-primary, #989797);
 
-font-family: Lato;
-font-size: 17px;
-font-style: normal;
-font-weight: 400;
-line-height: 20.4px; /* 120% */
-}
+
 
 .box{
 

@@ -6,6 +6,7 @@ $color = 'blue';
 ?>
 
 * {
+  font-family: Lato;
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -13,7 +14,7 @@ $color = 'blue';
 
     .center_display {
       width: 100%;
-      margin: 86px 0 56px;
+      margin: 86px 0 6px;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -54,7 +55,7 @@ $color = 'blue';
 
     table {
       margin: 0 auto;
-      width: 78.67%;
+      width: 70.67%;
       /* Ensure the table takes up full width of its container */
       border-collapse: collapse;
       /* Collapse the borders between cells */
@@ -85,11 +86,13 @@ $color = 'blue';
 
     tr:nth-child(even) {
       background-color: #E1E9FF;
+      margin:0 0 10px;
       /* Alternate row background color for better readability */
     }
 
     tr:nth-child(odd) {
       background-color: #FDFDFD;
+      margin:0 0 10px;
       /* Alternate row background color for better readability */
     }
 
@@ -97,7 +100,7 @@ $color = 'blue';
       display: block;
       margin: 0px 0px 0px 40px;
       font-family: Lato;
-      font-size: 16px;
+      font-size: 19px;
       font-weight: 400;
       line-height: 19.2px;
       text-align: left !important
@@ -107,7 +110,7 @@ $color = 'blue';
       display: flex;
       flex-direction: column;
       align-items: center;
-      height: 240px;
+
       padding: 34px;
 
     }
@@ -115,7 +118,7 @@ $color = 'blue';
     .packages {
       font-family: Lato;
       font-size: 24px;
-      font-weight: 600;
+      font-weight: 500;
       line-height: 24px;
       text-align: left;
       color: #031B64;
@@ -135,17 +138,17 @@ $color = 'blue';
 
     .price {
       font-family: Lato;
-      font-size: 32px;
-      font-weight: 600;
+      font-size: 26px;
+      font-weight: 500;
       line-height: 38.4px;
       text-align: center;
       color: #222222;
-      margin: 40px 0;
+      margin: 20px 0;
     }
 
     .button {
       cursor: pointer;
-      width: 136px;
+      width: 116px;
       height: 40px;
       padding: 10px 44px 10px 44px;
       gap: 8px;
@@ -158,6 +161,9 @@ $color = 'blue';
       line-height: 19.2px;
       text-align: left;
       color: #ffffff;
+      display: flex;
+      align-items:center;
+      justify-content:center;
     }
 
     .button:hover {
@@ -211,7 +217,7 @@ $color = 'blue';
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      margin: 5rem 0rem;
+     
     }
 
 
@@ -226,8 +232,8 @@ $color = 'blue';
 
     .custom-pricing-card {
       margin: 20px 30px;
-      height: 400px;
-      width: 275px;
+      height: 450px;
+      width: 305px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -292,7 +298,7 @@ $color = 'blue';
       color: #031B64;
     }
 
-    @media screen and (max-width:1000px) {
+    @media screen and (max-width:700px) {
       .pricing {
         display: none;
 

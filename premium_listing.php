@@ -231,9 +231,11 @@ $conn->close();
   <title>Premium Listing</title>
 
   <link rel="stylesheet" href="assets/css/premium_listing-css.php">
+  <link rel="stylesheet" href="assets/css/header_footer-css.php">
 </head>
 
 <body>
+  <?php include 'header.php'?>
   < <div class="center_display">
     <span>Unlock new revenue streams! </span>
     <p>Choose a plan and list your retail space.</p>
@@ -274,7 +276,7 @@ $conn->close();
               <span class="packages">Plus</span>
 
               <span class="price">
-                Customisable</span>
+              Custom</span>
               <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <button type="submit" name="customisable" class="button">Contact</button>
               </form>
@@ -392,29 +394,39 @@ $conn->close();
             <ul class="custom-package-list">
               <li> Basic Features
               </li>
-              <li>Plan Validity - Free Lifetime</li>
-              <li> <strike> Visiblity in top slots</strike></li>
-              <li><strike>Invoice based billing</strike></li>
-              <li><strike>24/7 Support</strike></li>
-              <li><strike>Social Media promotion</strike></li>
+              <li>Plan Validity - 1 Month</li>
+              <li>  Visiblity- Standard visiblity</li>
+              <li><strike>Social Media Promotion</strike></li>
+              <li><strike>Premium</strike></li>
+              <li><strike>Leads</strike></li>
+              <li><strike>Dedicated Relationship Manager</strike></li>
+              <li><strike>Verified Status</strike></li>
+              <li><strike>Property Photoshoot</strike></li>
 
             </ul>
-            <a href="Space_listed.php" class="custom-get-started-btn">Get Started</a>
+            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <button type="submit" name="pay" class="button">Pay</button>
+              </form>
           </div>
           <div class="custom-pricing-card">
-            <span>Pro</span>
-            <h4 class="custom-price">₹ 1000 / month</h4>
+            <span>Plus</span>
+            <h4 class="custom-price">Custom</h4>
             <ul class="custom-package-list">
               <li>Basic Features</li>
-              <li>Plan Validity - 30 days free</li>
-              <li><strike> Visiblity in top slots</strike></li>
-              <li>Invoice based billing</li>
-              <li>24/7 Support</li>
-              <li>Social Media promotion</li>
+              <li>Plan Validity - 1 Year</li>
+              <li> Visiblity - 10x More visiblity</li>
+              <li>Social Media Promotion</li>
+              <li>Premium</li>
+              <li>Leads - Unlimited Leads</li>
+              <li>Dedicated Relationship Manager</li>
+              <li>Verified Status</li>
+              <li>Property Photoshoot</li>
             </ul>
-            <a href="#" class="custom-get-started-btn">Choose Plan</a>
+            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <button type="submit" name="customisable" class="button">Contact</button>
+              </form>
           </div>
-          <div class="custom-pricing-card">
+          <!-- <div class="custom-pricing-card">
             <span>Plus</span>
             <h4 class="custom-price">₹ 2000 / month</h4>
             <ul class="custom-package-list">
@@ -439,7 +451,7 @@ $conn->close();
               <li>Social Media promotion</li>
             </ul>
             <a href="#" class="custom-get-started-btn">Get Started</a>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

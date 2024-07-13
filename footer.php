@@ -49,7 +49,7 @@ $conn->close();
         <div class="footer">
             <div class="first-div">
                 <div class="f-details">
-                    <a href="index.php"><img src="assets/img/SpaceKraft_Logo.svg" alt=""></a>
+                    <a href="index.php"><img src="assets/img/SpaceKraft_Logo1.svg" alt=""></a>
                     <span>
                         Spacekraft connects brands, e-commerce
                         enterprise, and artists seeking short-term

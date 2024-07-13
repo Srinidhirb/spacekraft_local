@@ -7,31 +7,50 @@ if (isset($_COOKIE['user_id'])) {
 } else {
     $user_id = '';
 }
-// Start or resume the session
 
-
-// Process the form data for step 2
 // Process the form data for step 2
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Process List1 Form data
     $spaceArea = isset($_POST["space_area"]) ? $_POST["space_area"] : "";
     $spaceDes = isset($_POST["space_des"]) ? $_POST["space_des"] : "";
 
-    $spaceImages = array();
-    $imageUploaded = false; // Flag to check if at least one image is uploaded
+    // Function to handle file uploads
+    function handleFileUpload($fileKey)
+    {
+        $spaceImages = array();
+        $imageUploaded = false; // Flag to check if at least one image is uploaded
 
-    for ($i = 1; $i <= 4; $i++) {
-        $fileKey = "space_img" . $i;
+        // Loop through uploaded files
+        foreach ($_FILES[$fileKey]['tmp_name'] as $key => $tmp_name) {
+            $file_name = $_FILES[$fileKey]['name'][$key];
+            $file_size = $_FILES[$fileKey]['size'][$key];
+            $file_tmp = $_FILES[$fileKey]['tmp_name'][$key];
+            $file_type = $_FILES[$fileKey]['type'][$key];
+            $file_ext = strtolower(end(explode('.', $file_name)));
 
-        if (isset($_FILES[$fileKey]) && $_FILES[$fileKey]["error"] == UPLOAD_ERR_OK) {
-            $spaceImg = $_FILES[$fileKey]["name"];
+            $extensions = array("jpeg", "jpg", "png", "gif");
+
+            if (in_array($file_ext, $extensions) === false) {
+                echo "Extension not allowed, please choose a JPEG, JPG, PNG or GIF file.";
+                exit();
+            }
+
+            if ($file_size > 10485760) {
+                echo 'File size exceeds limit of 10 MB';
+                exit();
+            }
 
             // Generate a unique identifier for each image
             $imageIdentifier = uniqid();
             $target_dir = "uploaded_img/";
-            $target_file = $target_dir . $imageIdentifier . "_" . basename($_FILES[$fileKey]["name"]);
+            $target_file = $target_dir . $imageIdentifier . "_" . basename($file_name);
 
-            if (move_uploaded_file($_FILES[$fileKey]["tmp_name"], $target_file)) {
+            if (!is_dir($target_dir)) {
+                // Create the directory if it doesn't exist
+                mkdir($target_dir, 0755, true);
+            }
+
+            if (move_uploaded_file($file_tmp, $target_file)) {
                 echo "File uploaded successfully";
                 // Set $spaceImg to the relative path
                 $spaceImages[] = $target_file;
@@ -42,14 +61,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 exit();
             }
         }
+
+        return array($imageUploaded, $spaceImages);
     }
 
-    // If at least one image is uploaded, use the uploaded images; otherwise, use default images
-    if ($imageUploaded) {
-        // Convert the array of image paths to a comma-separated string
-        $imagePaths = implode(',', $spaceImages);
-    } else {
-        // No image uploaded, determine default image based on space type
+    // Call function to handle file uploads
+    list($imageUploaded, $spaceImages) = handleFileUpload("space_img");
+
+    // If no image uploaded, handle default image based on space type
+    if (!$imageUploaded) {
         $spaceType = $_SESSION['spaceType'];
 
         switch ($spaceType) {
@@ -91,17 +111,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         copy($defaultImage, $target_file);
 
         // Set $spaceImg to the relative path
-        $imagePaths = $target_file;
+        $spaceImages[] = $target_file;
     }
 
+    // Process other form data
     $amenities = isset($_POST["amenities"]) ? $_POST["amenities"] : array();
-
-    // Convert the array of amenities to a comma-separated string
     $amenitiesString = implode(',', $amenities);
 
     $spaceTypes = isset($_POST["spacetype"]) ? $_POST["spacetype"] : array();
-
-    // Convert the array of space types to a comma-separated string
     $spaceTypesString = implode(',', $spaceTypes);
 
     // Continue with the rest of your code...
@@ -118,16 +135,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Store these values in session for later use in List2 Form
     $_SESSION['spaceArea'] = $spaceArea;
     $_SESSION['spaceDes'] = $spaceDes;
-    $_SESSION['spaceImg'] = $imagePaths;
+    $_SESSION['spaceImg'] = implode(',', $spaceImages); // Convert array to comma-separated string
     $_SESSION['Amenities'] = $amenitiesString;
     $_SESSION['SpaceTypes'] = $spaceTypesString;
 
     // Set the next step
     echo '<script>window.location.href = "space_pricing.php";</script>';
-
     exit();
 }
 ?>
+
 <!-- Your HTML content for step 2 goes here -->
 <!DOCTYPE html>
 <html lang="en">
@@ -239,41 +256,120 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <label for="space_des">Description<span class="red">*</span></label>
             <textarea class="des" type="text" name="space_des" placeholder="Enter Description" id="space_des" required><?php echo isset($_SESSION['spaceDes']) ? $_SESSION['spaceDes'] : ''; ?></textarea>
             <h5 class="right">max of 150 words</h5>
-
-            <!-- Add the four image upload fields -->
-            <label for="pace_img">Space Images</label>
+            <label for="space_img">Space Images</label>
+          
             <!-- Add this code to your form -->
-            <?php for ($i = 1; $i <= 4; $i++) : ?>
-                <label id="label<?php echo $i; ?>" for="space_img<?php echo $i; ?>" class="file-label">Upload Image <?php echo $i; ?></label>
-                <input type="file" name="space_img<?php echo $i; ?>" id="space_img<?php echo $i; ?>" class="file-input" accept=".jpg, .jpeg, .gif, .png" onchange="updateLabel(this, <?php echo $i; ?>)">
-                <div id="file-name<?php echo $i; ?>" class="file-name"><?php echo isset($_POST['space_img' . $i . '_name']) ? htmlspecialchars($_POST['space_img' . $i . '_name']) : (isset($_SESSION['spaceImg' . $i]) ? $_SESSION['spaceImg' . $i] : ''); ?></div>
-            <?php endfor; ?><br>
+            <!-- <label id="label" for="space_img" class="file-label">Upload Images</label>
+            <input type="file" name="space_img[]" id="space_img" class="file-input" accept=".jpg, .jpeg, .gif, .png" multiple onchange="updateLabel(this)">
+            <div id="file-list" class="file-list"></div><br> -->
+            <label id="label" for="space_img" class="file-label">
+                <div class="image_label">
+                    <img src="assets\img\upload_img.jpg" alt="Upload Image">
+                    <p>Accepted formats are .jpg, .gif, .png and Maximum size allowed 10 MB</p>
+                </div>
+            </label>
+            <input type="file" name="space_img[]" id="space_img" class="file-input" accept=".jpg, .jpeg, .gif, .png" multiple onchange="updateLabel(this)">
+            <div id="file-list" class="file-list"></div>
 
             <script>
-                function updateLabel(input, index) {
-                    const label = document.getElementById('label' + index);
-                    label.textContent = input.files[0].name;
-                    document.getElementById('file-name' + index).textContent = input.files[0].name;
-                    localStorage.setItem('spaceImg' + index, input.files[0].name);
-                }
+    function updateLabel(input) {
+        const fileList = document.getElementById('file-list');
+        fileList.innerHTML = ''; // Clear previous list
 
-                document.addEventListener('clearLocalStorage', function() {
-                    localStorage.clear();
-                });
+        Array.from(input.files).forEach((file, index) => {
+            const fileReader = new FileReader();
+            fileReader.onload = function(event) {
+                const fileItem = document.createElement('div');
+                fileItem.classList.add('file-item');
 
-                // Restore file names from local storage
-                document.addEventListener('DOMContentLoaded', function() {
-                    for (let i = 1; i <= 4; i++) {
-                        const filePath = localStorage.getItem('spaceImg' + i);
-                        if (filePath) {
-                            document.getElementById('file-name' + i).textContent = filePath;
-                        }
-                    }
-                });
-            </script>
-            <br>
-            <p class="small" style="font-size: small;"> (Accepted formats are .jpg, .gif , .png and
-                Maximum size allowed 10 MB)</p>
+                // Image preview
+                const imageContainer = document.createElement('div');
+                imageContainer.classList.add('image-container');
+                const image = document.createElement('img');
+                image.src = event.target.result;
+                imageContainer.appendChild(image);
+                fileItem.appendChild(imageContainer);
+
+                // File name
+                const nameLabel = document.createElement('span');
+                nameLabel.textContent = file.name;
+                fileItem.appendChild(nameLabel);
+
+                // Delete button
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Remove';
+                deleteButton.classList.add('delete-button');
+                deleteButton.addEventListener('click', () => removeFile(index));
+                fileItem.appendChild(deleteButton);
+
+                fileList.appendChild(fileItem);
+            };
+            fileReader.readAsDataURL(file); // Read image as DataURL
+        });
+
+        // Store selected file names in localStorage
+        const selectedFiles = Array.from(input.files).map(file => file.name);
+        localStorage.setItem('selectedFiles', JSON.stringify(selectedFiles));
+
+        // Clear input value if no files are selected
+        if (input.files.length === 0) {
+            input.value = '';
+        }
+    }
+
+    function removeFile(index) {
+        const input = document.getElementById('space_img');
+        const fileList = Array.from(input.files);
+
+        fileList.splice(index, 1); // Remove file from array
+
+        const newFiles = new DataTransfer();
+        fileList.forEach(file => newFiles.items.add(file));
+
+        input.files = newFiles.files; // Update input files
+
+        // Update the display
+        updateLabel(input);
+
+        // Update localStorage with the modified list of selected files
+        const selectedFiles = fileList.map(file => file.name);
+        localStorage.setItem('selectedFiles', JSON.stringify(selectedFiles));
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const storedFiles = localStorage.getItem('selectedFiles');
+        if (storedFiles) {
+            const fileList = JSON.parse(storedFiles);
+            const input = document.getElementById('space_img');
+
+            // Create a DataTransfer object to simulate the input files
+            const dataTransfer = new DataTransfer();
+            fileList.forEach(fileName => {
+                const blob = new Blob([fileName], { type: 'image/jpeg' }); // Adjust type as per your files
+                const file = new File([blob], fileName);
+                dataTransfer.items.add(file);
+            });
+
+            // Set the input's files with the modified DataTransfer object
+            input.files = dataTransfer.files;
+
+            // Update the display of selected files
+            updateLabel(input);
+        }
+    });
+
+    document.addEventListener('clearLocalStorage', function() {
+        localStorage.removeItem('selectedFiles');
+    });
+</script>
+
+
+            
+
+            
+            <p class="right" > min of 4 Images  to be uploaded</p>
+
+
             <label for="Amenities">Amenities</label>
             <div class="amenities-container" id="Amenities">
                 <div class="amenities-options">
@@ -360,7 +456,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (amenities.length === 0) {
                 alert("Please select at least one amenity.");
                 event.preventDefault(); // Prevent form submission
+
             }
+
         });
     </script>
 
@@ -422,8 +520,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 input.value = ""; // Clear the file input
                 return;
             }
+        }
 
-            // Display the file name
+        // Display the file name
     </script>
 
 </body>
