@@ -668,7 +668,7 @@ if (isset($_GET['spaceId'])) {
 
 
                     <div class="right-section">
-                        <div class="enquiry-container" id="price-enquiry-container">
+                    <div class="enquiry-container" id="price-enquiry-container">
                             <p>Prices starting from</p>
                             <h1><?php
                                 // Array to store prices with their types

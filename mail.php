@@ -18,11 +18,11 @@ function send_mail($recipient, $subject, $message)
         $mail->Port = 465;
         $mail->Host = 'smtp.gmail.com';
         $mail->Username = 'klokeshj5@gmail.com';
-        $mail->Password = 'qlaw ffcc ejng gfda';
+        $mail->Password = 'nquz wzni txie rpwz';
 
         $mail->isHTML(true);
         $mail->addAddress($recipient, 'Esteemed Customer');
-        $mail->setFrom('klokeshj5@gmail.com', 'Spacekraft (Password Reset)');
+        $mail->setFrom('support@spacekraft.in', 'Spacekraft (Password Reset)');
         $mail->Subject = $subject;
         $content = $message;
 

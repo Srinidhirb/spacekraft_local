@@ -1,8 +1,6 @@
 <?php if (isset($_COOKIE['user_id'])) {
   $user_id = $_COOKIE['user_id'];
-} else {
-  $user_id = '';
-}
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,9 +24,7 @@
   </script>
   <link rel="stylesheet" href="assets\css\Space_listed-css.php">
   <link rel="stylesheet" href="assets\css\header_footer-css.php">
-  <style>
-    
-  </style>
+  
 </head>
 
 <body>

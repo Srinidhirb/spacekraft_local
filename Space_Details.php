@@ -4,10 +4,7 @@ session_start();
 
 if (isset($_COOKIE['user_id'])) {
     $user_id = $_COOKIE['user_id'];
-} else {
-    $user_id = '';
-    header('location:login.php');
-}
+} 
 include 'connect.php';
 // Start or resume the session
 
@@ -116,9 +113,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
             </select>
-            <style>
-               
-            </style>
             <!-- Add this code to your form -->
             <label for="space_type">Space Type <span class="red">*</span></label>
             <select name="space_type" id="space_type" required onchange="checkSpaceType()">

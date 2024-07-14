@@ -2,7 +2,7 @@
 
   <div class="header">
     <div class="logo_search">
-      <a href="index.php"> <img src="assets/img/SpaceKraft_Logo1.svg" alt=""></a>
+      <a href="index.php"> <img src="assets/img/SpaceKraft_Logoo.svg" alt=""></a>
       <div class="search_bar">
         <div id="find_button" onclick="display()">
           <div class="svg">

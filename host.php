@@ -42,7 +42,7 @@ if (isset($_COOKIE['user_id'])) {
             <h1>How it works - Hosts</h1>
             <span>We're India's <b>first short-term retail rental platform</b>, connecting landlords like you with a
                 network of
-                eager <br> businesses and brands looking for temporary spaces.  </span>
+                eager <br> businesses and brands looking for temporary spaces.  </span>
         </div>
         <div class="host_flex">
             <div class="host_right">

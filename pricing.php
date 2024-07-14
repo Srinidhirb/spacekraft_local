@@ -165,40 +165,34 @@ if (isset($_COOKIE['user_id'])) {
       <div class="custom-card-group">
         <div class="custom-pricing-card">
 
-        <span>Basic</span>
-        <h4 class="custom-price">Free</h4>
+          <span>Basic</span>
+          <h4 class="custom-price">Free</h4>
           <ul class="custom-package-list">
-              <li> Basic Features
-              </li>
-              <li>Plan Validity - 1 Month</li>
-              <li>  Visiblity- Standard visiblity</li>
-              <li><strike>Social Media Promotion</strike></li>
-              <li><strike>Premium</strike></li>
-              <li><strike>Leads</strike></li>
-              <li><strike>Dedicated Relationship Manager</strike></li>
-              <li><strike>Verified Status</strike></li>
-              <li><strike>Property Photoshoot</strike></li>
+            <li> Basic Features
+            </li>
+            <li>Plan Validity - Free Lifetime</li>
+            <li> <strike> Visiblity in top slots</strike></li>
+            <li><strike>Invoice based billing</strike></li>
+            <li><strike>24/7 Support</strike></li>
+            <li><strike>Social Media promotion</strike></li>
 
-            </ul>
+          </ul>
           <a href="#" class="custom-get-started-btn">Get Started</a>
         </div>
         <div class="custom-pricing-card">
-        <span>Plus</span>
-        <h4 class="custom-price">Custom</h4>
+          <span>Pro</span>
+          <h4 class="custom-price">₹ 1000 / month</h4>
           <ul class="custom-package-list">
-              <li>Basic Features</li>
-              <li>Plan Validity - 1 Year</li>
-              <li> Visiblity - 10x More visiblity</li>
-              <li>Social Media Promotion</li>
-              <li>Premium</li>
-              <li>Leads - Unlimited Leads</li>
-              <li>Dedicated Relationship Manager</li>
-              <li>Verified Status</li>
-              <li>Property Photoshoot</li>
-            </ul>
+            <li>Basic Features</li>
+            <li>Plan Validity - 30 days free</li>
+            <li><strike> Visiblity in top slots</strike></li>
+            <li>Invoice based billing</li>
+            <li>24/7 Support</li>
+            <li>Social Media promotion</li>
+          </ul>
           <a href="#" class="custom-get-started-btn">Choose Plan</a>
         </div>
-        <!-- <div class="custom-pricing-card">
+        <div class="custom-pricing-card">
           <span>Plus</span>
           <h4 class="custom-price">₹ 2000 / month</h4>
           <ul class="custom-package-list">
@@ -223,7 +217,7 @@ if (isset($_COOKIE['user_id'])) {
             <li>Social Media promotion</li>
           </ul>
           <a href="#" class="custom-get-started-btn">Get Started</a>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>

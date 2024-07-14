@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
             setcookie('user_id', $id, time() + 60 * 60 * 24 * 30, '/');
 
             // Redirect the user using JavaScript
-            echo '<script>window.location.href = "step1.php";</script>';
+            echo '<script>window.location.href = "Space_Details.php";</script>';
             exit();
          } else {
             $error_msg[] = 'Failed to insert user data!';

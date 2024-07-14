@@ -2,13 +2,9 @@
 session_start();
 
 // Include your database connection file
+
+
 include 'connect.php';
-if (isset($_COOKIE['user_id'])) {
-  $user_id = $_COOKIE['user_id'];
-} else {
-  $user_id = '';
-  header('location:login.php');
-}
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -69,9 +65,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && (isset($_POST['submit_free']) || is
   $maxDuration = !empty($maxDuration) ? $maxDuration : 0;
 
   $full_name = $_SESSION['full_name'] ?? "";
+  $email = $_SESSION['email'] ?? "";
   $mobile_number = $_SESSION['number'] ?? "";
   $otp = $_SESSION['otp'] ?? "";
   $you = $_SESSION['you_are'] ?? "";
+  $user_id = $_SESSION['id'] ?? "";
 
 
 
@@ -119,16 +117,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && (isset($_POST['submit_free']) || is
     $mail->Port = 587;
     $mail->Host = 'smtp.gmail.com';
     $mail->Username = 'klokeshj5@gmail.com';
-    $mail->Password = 'qlaw ffcc ejng gfda';
+    $mail->Password = 'nquz wzni txie rpwz';
 
     //Recipients
-    $mail->setFrom('klokeshj5@gmail.com', 'Your Name');
-    $mail->addAddress($user_email);
+    $mail->setFrom('support@spacekraft.in', 'Spacekraft');
+    $mail->addAddress($email);
 
     // Content
     $mail->isHTML(true);
     $mail->Subject = 'Thank you for submitting your listing';
-    $mail->Body = 'Dear ' . $user_email . ',<br><br>Thank you for submitting your listing. We have received your information and will review it shortly.<br><br>Best regards,<br>The XYZ Team';
+    $mail->Body = 'Dear ' . $email. ',<br><br>Thank you for submitting your listing. We have received your information and will review it shortly.<br><br>Best regards,<br>The Spacekrfat Team';
 
     $mail->send();
   } catch (Exception $e) {
@@ -159,10 +157,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && (isset($_POST['submit_free']) || is
   $stmt = $conn->prepare($sql);
 
   if ($stmt) {
+    $otp=0;
     // Bind parameters
     $stmt->bind_param(
       "sssssssssssssssssssssssssssssss",
-      $_COOKIE['user_id'],
+      $user_id,
       handleEmpty($spaceName),
       handleEmpty($projectType),
       handleEmpty($spaceType),
@@ -194,6 +193,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && (isset($_POST['submit_free']) || is
       $otp,
       $paymentType
     );
+    
 
     // Execute the statement
     if ($stmt->execute()) {
@@ -212,9 +212,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && (isset($_POST['submit_free']) || is
     // Statement preparation failed
     echo "Error preparing statement: " . $conn->error;
   }
-} else {
-  echo "Form not submitted";
-}
+} 
 
 
 // Close the database connection
@@ -231,12 +229,10 @@ $conn->close();
   <title>Premium Listing</title>
 
   <link rel="stylesheet" href="assets/css/premium_listing-css.php">
-  <link rel="stylesheet" href="assets/css/header_footer-css.php">
 </head>
 
 <body>
-  <?php include 'header.php'?>
-  < <div class="center_display">
+   <div class="center_display">
     <span>Unlock new revenue streams! </span>
     <p>Choose a plan and list your retail space.</p>
     </div>
@@ -276,7 +272,7 @@ $conn->close();
               <span class="packages">Plus</span>
 
               <span class="price">
-              Custom</span>
+                Customisable</span>
               <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <button type="submit" name="customisable" class="button">Contact</button>
               </form>
@@ -394,39 +390,29 @@ $conn->close();
             <ul class="custom-package-list">
               <li> Basic Features
               </li>
-              <li>Plan Validity - 1 Month</li>
-              <li>  Visiblity- Standard visiblity</li>
-              <li><strike>Social Media Promotion</strike></li>
-              <li><strike>Premium</strike></li>
-              <li><strike>Leads</strike></li>
-              <li><strike>Dedicated Relationship Manager</strike></li>
-              <li><strike>Verified Status</strike></li>
-              <li><strike>Property Photoshoot</strike></li>
+              <li>Plan Validity - Free Lifetime</li>
+              <li> <strike> Visiblity in top slots</strike></li>
+              <li><strike>Invoice based billing</strike></li>
+              <li><strike>24/7 Support</strike></li>
+              <li><strike>Social Media promotion</strike></li>
 
             </ul>
-            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                <button type="submit" name="pay" class="button">Pay</button>
-              </form>
+            <a href="Space_listed.php" class="custom-get-started-btn">Get Started</a>
           </div>
           <div class="custom-pricing-card">
-            <span>Plus</span>
-            <h4 class="custom-price">Custom</h4>
+            <span>Pro</span>
+            <h4 class="custom-price">₹ 1000 / month</h4>
             <ul class="custom-package-list">
               <li>Basic Features</li>
-              <li>Plan Validity - 1 Year</li>
-              <li> Visiblity - 10x More visiblity</li>
-              <li>Social Media Promotion</li>
-              <li>Premium</li>
-              <li>Leads - Unlimited Leads</li>
-              <li>Dedicated Relationship Manager</li>
-              <li>Verified Status</li>
-              <li>Property Photoshoot</li>
+              <li>Plan Validity - 30 days free</li>
+              <li><strike> Visiblity in top slots</strike></li>
+              <li>Invoice based billing</li>
+              <li>24/7 Support</li>
+              <li>Social Media promotion</li>
             </ul>
-            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                <button type="submit" name="customisable" class="button">Contact</button>
-              </form>
+            <a href="#" class="custom-get-started-btn">Choose Plan</a>
           </div>
-          <!-- <div class="custom-pricing-card">
+          <div class="custom-pricing-card">
             <span>Plus</span>
             <h4 class="custom-price">₹ 2000 / month</h4>
             <ul class="custom-package-list">
@@ -451,7 +437,7 @@ $conn->close();
               <li>Social Media promotion</li>
             </ul>
             <a href="#" class="custom-get-started-btn">Get Started</a>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>

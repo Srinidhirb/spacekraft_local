@@ -2,10 +2,7 @@
 session_start();
 
 $user_id = isset($_COOKIE['user_id']) ? $_COOKIE['user_id'] : '';
-if (empty($user_id)) {
-    header('Location: login.php');
-    exit();
-}
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Process List2 Form data
@@ -33,9 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Redirect to next step
     echo '<script>window.location.href = "personal_details.php";</script>';
     exit();
-} else {
-    echo "";
-}
+} 
 ?>
 
 
@@ -99,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         </div>
         <div class="heading-small">Space pricing</div>
-        <form action="" method="post"  onsubmit="return validateDurationSelection();" id="form">
+        <form action="" method="post"  onsubmit="return validateDurationSelection(); " id="form">
             <!-- List2 Form -->
             <div class="duration-container">
                 <div class="duration-input">

@@ -168,210 +168,229 @@ function is_code_correct($code)
             box-sizing: border-box;
         }
 
-        body {
-            width: 100%;
-            height: 100vh;
+       
+        .center_forgot{
+        
+           width: 100%;
+           height: 65vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-            background-color: #f7f7f7;
-        }
-
-        form {
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-            width: 30%;
-            max-width: 400px;
-            height: auto;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
-            padding: 30px;
-            background-color: #ffffff;
-            border-radius: 8px;
+            flex-direction: column;
+           
         }
-
-        form h1 {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
+        .center_forgot h1{
+            text-align: center;
         }
-
-        form h3 {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .textbox {
+        /* General Styles */
+        .forgot {
             width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 60px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
-        .textbox:focus {
-            outline: none;
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
-
-        .error {
-            color: red;
-            font-size: 12px;
-            margin-bottom: 10px;
-        }
-
-        .button {
-            border: none;
-            color: #fff;
-            background-color: #031B64;
-            padding: 16px 24px;
-            border-radius: 6px;
-            text-transform: capitalize;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            -webkit-transition: all 0.2s;
-            -o-transition: all 0.2s;
-            transition: all 0.2s;
-            width: auto;
-        }
-
-        .button:hover {
-            color: #222222 !important;
-            background-color: #4AE9E9;
-        }
-
-        .actions {
-            margin-top: 20px;
-            text-align: right;
-        }
-
-        .actions a {
-            color: #007bff;
+        .back-arrow {
+            position: absolute;
+            top: 0px;
+            left: 10px;
+            font-size: 16px;
+            color: #4CAF50;
             text-decoration: none;
         }
 
-        .actions a:hover {
-            text-decoration: underline;
-        }
-        .flex{
+        .forgot h3 {
+            font-size: 16px;
+            color: #333;
+            font-weight: normal;
+            text-align: left;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            gap: 5px;
+            margin: 0 0 10px 0;
         }
-        .small-button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
+
+        .forgot span {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        .forgot .textbox {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .forgot .button {
+
+            padding: 10px;
             background-color: #031B64;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    
-}
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
 
-.small-button:hover {
-    color: #222222 !important;
+        .forgot .button:hover {
             background-color: #4AE9E9;
-}
+        }
+
+        .forgot a {
+            display: block;
+            margin-top: 15px;
+            color: #222222;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
 
 
 
+        /* Responsive Styles */
+        @media (max-width: 480px) {
+            .forgot {
+                padding: 15px;
+                max-width: 300px;
+            }
+
+            .forgot h3 {
+                font-size: 20px;
+            }
+
+            .forgot .textbox {
+                font-size: 14px;
+            }
+
+            .forgot .button {
+                font-size: 14px;
+            }
+            .back-arrow {
+    position: absolute;
+    top: 65%;
+    left: 10px;
+            }
+        }
+
+        .red {
+            color: #E62134;
+        }
+
+        .forgot_button_div {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: end;
+            justify-content: space-between;
+        }
     </style>
+    <link rel="stylesheet" href="assets\css\header_footer-css.php">
 </head>
 
-<body>
+<body>\
+   
+        <?php include 'header.php'; ?>
+        <div class="center_forgot">
+        <h1>Forgot Password</h1>
 
-
-    <?php
-    switch ($mode) {
-        case 'enter_email':
-    ?>
-            <form method="post" action="forgot.php?mode=enter_email">
-                <h1>Forgot Password</h1>
-                <h3>Enter your email below</h3>
-                <span style="font-size: 12px;color:red;">
-                    <?php
-                    foreach ($error as $err) {
-                        echo $err . "<br>";
-                    }
-                    ?>
-                </span>
-                <input class="textbox" type="email" name="email" placeholder="Email"><br>
-                <br style="clear: both;">
-                <input class="button" type="submit" value="Next">
-                <br><br>
-                <div><a href="login.php">Login</a></div>
-            </form>
         <?php
-            break;
+        switch ($mode) {
+            case 'enter_email':
+        ?> <div class="forgot">
+                    <form method="post" action="forgot.php?mode=enter_email">
+                        <a href="login.php" class="back-arrow">&larr; Back</a>
+                        <h3>Enter your email below<span class="red">*</span></h3>
 
-        case 'enter_code':
-        ?>
-            <form method="post" action="forgot.php?mode=enter_code">
-                <h1>Forgot Password</h1>
-                <h3>Enter the code sent to your email</h3>
-                <span style="font-size: 12px;color:red;">
-                    <?php
-                    foreach ($error as $err) {
-                        echo $err . "<br>";
-                    }
-                    ?>
-                </span>
+                        </span>
+                        <input class="textbox" type="email" name="email" placeholder="Email"><br>
+                        <span style="font-size: 12px;color:red;">
+                            <?php
+                            foreach ($error as $err) {
+                                echo $err . "<br>";
+                            }
+                            ?>
+                            <br style="clear: both;">
+                            <div class="forgot_button_div">
+                                <input class="button" type="submit" value="Next">
 
-                <input class="textbox" type="text" name="code" placeholder="12345"><br>
 
-                <input class="button" type="submit" value="Next"> <br>
-                <div class="flex">
-                    <a href="forgot.php">
-                        <input class="small-button" type="button" value="Back">
-                    </a>
-
-                    <div><a href="login.php">Login</a></div>
+                            </div>
+                    </form>
                 </div>
-            </form>
+            <?php
+                break;
+
+            case 'enter_code':
+            ?><div class="forgot">
+                    <form method="post" action="forgot.php?mode=enter_code">
+                        <a href="forgot.php" class="back-arrow">&larr; Back</a>
+                        <h3>Enter the code sent to your email<span class="red">*</span></h3>
+
+
+                        <input class="textbox" type="number" maxlength="5" name="code" placeholder="12345"><br>
+                        <span style="font-size: 12px;color:red;">
+                            <?php
+                            foreach ($error as $err) {
+                                echo $err . "<br>";
+                            }
+                            ?>
+                        </span>
+                        <div class="forgot_button_div">
+                            <input class="button" type="submit" value="Next"> <br>
+
+
+                           
+                        </div>
+                    </form>
+                </div>
+            <?php
+                break;
+
+            case 'enter_password':
+            ?><div class="forgot">
+                    <form method="post" action="forgot.php?mode=enter_password">
+
+                        <h3>Enter your new password<span class="red">*</span></h3>
+
+
+                        <input class="textbox" type="password" name="password" placeholder="Password">
+                        <input class="textbox" type="password" name="password2" placeholder="Retype Password">
+                        <span style="font-size: 12px;color:red;">
+                            <?php
+                            foreach ($error as $err) {
+                                echo $err . "<br>";
+                            }
+                            ?>
+                        </span>
+                        <div class="forgot_button_div">
+                            <input class="button" type="submit" value="Next"> <br>
+
+                            <a href="forgot.php">
+                                <input class="button" type="button" value="Start Over">
+                            </a>
+
+                        </div>
+
+                    </form>
+                </div>
         <?php
-            break;
+                break;
 
-        case 'enter_password':
+            default:
+                break;
+        }
+
         ?>
-            <form method="post" action="forgot.php?mode=enter_password">
-                <h1>Forgot Password</h1>
-                <h3>Enter your new password</h3>
-                <span style="font-size: 12px;color:red;">
-                    <?php
-                    foreach ($error as $err) {
-                        echo $err . "<br>";
-                    }
-                    ?>
-                </span>
+    </div>
 
-                <input class="textbox" type="password" name="password" placeholder="Password">
-                <input class="textbox" type="password" name="password2" placeholder="Retype Password">
-                
-                <input class="button" type="submit" value="Next" > <br>
-                <div class="flex">
-                <a href="forgot.php">
-                    <input class="small-button" type="button" value="Start Over">
-                </a>
-                
-                <div><a href="login.php">Login</a></div>
-                </div>
-            </form>
-    <?php
-            break;
-
-        default:
-            break;
-    }
-
-    ?>
-
-
+    <?php include 'footer.php' ?>
 </body>
 
 </html>

@@ -117,7 +117,7 @@ if (isset($_COOKIE['user_id'])) {
             <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
 
             <label for="mobileNumber">Mobile Number <span class="red">*</span></label>
-            <input type="text" id="mobileNumber" name="mobileNumber" placeholder="+91 Enter Mobile Number" maxlength="10" required>
+            <input type="text" id="mobileNumber" name="mobileNumber" placeholder="+91 Enter Mobile Number" required>
 
             <label for="projectDescription">Describe your project <span class="red">*</span></label>
             <textarea id="projectDescription" name="projectDescription" placeholder="Tell the owner about your project. Be specific" required></textarea>

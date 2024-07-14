@@ -109,218 +109,171 @@ if (isset($_GET['City'])) {
     <div class="center">Find Short-Term Rental Spaces
       <p>Unleash your retail vision with Spacekraft! <br> Find the perfect short term retail space . </p>
     </div>
-
+   
     <div class="search">
-      <div class="search-container">
-        <div class="custom-dropdown-location">
-          <input type="text" id="locationInput" class="dropbtn-location" placeholder="Search for locations" onkeyup="filterLocations()" onclick="showDropdown('dropdownContentLocation')">
-          <div id="dropdownContentLocation" class="dropdown-content-location">
-            <?php
-            // Combine and select distinct city names from both tables
-            $sqlCombinedList = "SELECT DISTINCT City AS locationName FROM combined_list";
-            $sqlLocations = "SELECT DISTINCT name AS locationName FROM locations";
+  <div class="search-container">
+    <div class="custom-dropdown-location">
+      <input type="text" id="locationInput" class="dropbtn-location" placeholder="Search for locations" onkeyup="filterLocations()" onclick="showDropdown('dropdownContentLocation')">
+      <div id="dropdownContentLocation" class="dropdown-content-location">
+        <?php
+        // Combine and select distinct city names from both tables
+        $sqlCombinedList = "SELECT DISTINCT City AS locationName FROM combined_list";
+        $sqlLocations = "SELECT DISTINCT name AS locationName FROM locations";
 
-            $sqlUnion = "($sqlCombinedList) UNION ($sqlLocations) ORDER BY locationName ASC";
-            $resultUnion = $conn->query($sqlUnion);
+        $sqlUnion = "($sqlCombinedList) UNION ($sqlLocations) ORDER BY locationName ASC";
+        $resultUnion = $conn->query($sqlUnion);
 
-            $locations = array();
-            if ($resultUnion->num_rows > 0) {
-              while ($rowUnion = $resultUnion->fetch_assoc()) {
-                $locations[] = $rowUnion['locationName'];
-              }
-            }
-
-            // Display all locations (hidden initially)
-            foreach ($locations as $location) {
-              echo "<div class='dropdown-item-location' onclick=\"selectLocation('$location')\" style='display: none;'>$location</div>";
-            }
-            ?>
-          </div>
-        </div>
-
-        <hr class="hr">
-
-        <div class="custom-dropdown-type">
-          <input type="text" id="typeInput" class="dropbtn-type" placeholder="Search for space use" onkeyup="filterTypes()" onclick="showDropdown('dropdownContentType')">
-          <div v id="dropdownContentType" class="dropdown-content-type">
-            <?php
-            $spaceTypes = [
-              "Kiosk", "Canopy", "FMCG Brands", "Fashion", "Photoshoot", "Video shoot", "Retail", "Showroom",
-              "Event", "Party", "Art", "Food", "Conference", "Shopshare", "Newsroom", "Banquet", "Warehouse",
-              "Workspace", "Boutique", "Office", "Pop Up", "Workshop", "Training", "Baby Shower", "Wedding",
-              "Birthday Party", "Casting", "Audition", "Flex Space", "Celebration", "Patio", "Function",
-              "Art Gallery", "Outdoor Event", "Dance Party", "Outdoor Party", "Restaurant", "Gathering",
-              "Exhibit", "Product Release", "Launch Event", "Trad Show", "Exhibition", "Rooftop", "Company Party",
-              "Auction", "Fundraising Event", "Product Demo", "Marketing Check", "Garage", "Art Studio", "Green Screen",
-              "Garden", "Society Complex", "Mall Space", "Film Studio", "Cafe", "Salon", "House", "Film Shoot",
-              "Presentation", "Convention", "Lecture", "Orientation", "Networking", "Meetup", "Loft", "Job Fair",
-              "Influencer Event", "Career Expo", "Networking Event", "Theatre", "Live Music", "Auditorium", "Club",
-              "Concert", "Performance", "Poetry Reading", "Stand up Events", "Art Show", "Retail Shop", "Storefront",
-              "Retreat", "Co-retailing", "Short Term Rental", "Product Shoot", "Product Launch"
-            ];
-
-            foreach ($spaceTypes as $type) {
-              echo "<div class='dropdown-item-type' onclick=\"selectType('$type')\" style='display: none;'>$type</div>";
-            }
-            ?>
-          </div>
-        </div>
-
-        <script>
-          function showDropdown(dropdownId) {
-            var dropdown = document.getElementById(dropdownId);
-            dropdown.classList.add("show");
+        $locations = array();
+        if ($resultUnion->num_rows > 0) {
+          while ($rowUnion = $resultUnion->fetch_assoc()) {
+            $locations[] = $rowUnion['locationName'];
           }
+        }
 
-          function filterLocations() {
-            var input, filter, dropdown, items, i, txtValue;
-            input = document.getElementById("locationInput");
-            filter = input.value.toUpperCase();
-            dropdown = document.getElementById("dropdownContentLocation");
-            items = dropdown.getElementsByClassName("dropdown-item-location");
+        // Display all locations (hidden initially)
+        foreach ($locations as $location) {
+          echo "<div class='dropdown-item-location' onclick=\"selectLocation('$location')\" style='display: none;'>$location</div>";
+        }
+        ?>
+      </div>
+    </div>
 
-            if (filter === "") {
-              dropdown.classList.remove("show"); // Hide dropdown if input is empty
-              for (i = 0; i < items.length; i++) {
-                items[i].style.display = "none";
-              }
-            } else {
-              dropdown.classList.add("show"); // Show dropdown if input is not empty
-              for (i = 0; i < items.length; i++) {
-                txtValue = items[i].textContent || items[i].innerText;
-                items[i].style.display = (txtValue.toUpperCase().indexOf(filter) > -1) ? "" : "none";
-              }
-            }
+    <hr class="hr">
+
+    <div class="custom-dropdown-type">
+      <input type="text" id="typeInput" class="dropbtn-type" placeholder="Search for space use" onkeyup="filterTypes()" onclick="showDropdown('dropdownContentType')">
+      <div id="dropdownContentType" class="dropdown-content-type">
+        <?php
+        $spaceTypes = [
+          "Kiosk", "Canopy", "FMCG Brands", "Fashion", "Photoshoot", "Video shoot", "Retail", "Showroom",
+          "Event", "Party", "Art", "Food", "Conference", "Shopshare", "Newsroom", "Banquet", "Warehouse",
+          "Workspace", "Boutique", "Office", "Pop Up", "Workshop", "Training", "Baby Shower", "Wedding",
+          "Birthday Party", "Casting", "Audition", "Flex Space", "Celebration", "Patio", "Function",
+          "Art Gallery", "Outdoor Event", "Dance Party", "Outdoor Party", "Restaurant", "Gathering",
+          "Exhibit", "Product Release", "Launch Event", "Trad Show", "Exhibition", "Rooftop", "Company Party",
+          "Auction", "Fundraising Event", "Product Demo", "Marketing Check", "Garage", "Art Studio", "Green Screen",
+          "Garden", "Society Complex", "Mall Space", "Film Studio", "Cafe", "Salon", "House", "Film Shoot",
+          "Presentation", "Convention", "Lecture", "Orientation", "Networking", "Meetup", "Loft", "Job Fair",
+          "Influencer Event", "Career Expo", "Networking Event", "Theatre", "Live Music", "Auditorium", "Club",
+          "Concert", "Performance", "Poetry Reading", "Stand up Events", "Art Show", "Retail Shop", "Storefront",
+          "Retreat", "Co-retailing", "Short Term Rental", "Product Shoot", "Product Launch"
+        ];
+
+        foreach ($spaceTypes as $type) {
+          echo "<div class='dropdown-item-type' onclick=\"selectType('$type')\" style='display: none;'>$type</div>";
+        }
+        ?>
+      </div>
+    </div>
+
+    <script>
+      function showDropdown(dropdownId) {
+        var dropdown = document.getElementById(dropdownId);
+        dropdown.classList.add("show");
+      }
+
+      function filterLocations() {
+        var input, filter, dropdown, items, i, txtValue;
+        input = document.getElementById("locationInput");
+        filter = input.value.toUpperCase();
+        dropdown = document.getElementById("dropdownContentLocation");
+        items = dropdown.getElementsByClassName("dropdown-item-location");
+
+        if (filter === "") {
+          dropdown.classList.remove("show"); // Hide dropdown if input is empty
+          for (i = 0; i < items.length; i++) {
+            items[i].style.display = "none";
           }
-
-          function filterTypes() {
-            var input, filter, dropdown, items, i, txtValue;
-            input = document.getElementById("typeInput");
-            filter = input.value.toUpperCase();
-            dropdown = document.getElementById("dropdownContentType");
-            items = dropdown.getElementsByClassName("dropdown-item-type");
-
-            if (filter === "") {
-              dropdown.classList.remove("show"); // Hide dropdown if input is empty
-              for (i = 0; i < items.length; i++) {
-                items[i].style.display = "none";
-              }
-            } else {
-              dropdown.classList.add("show"); // Show dropdown if input is not empty
-              for (i = 0; i < items.length; i++) {
-                txtValue = items[i].textContent || items[i].innerText;
-                items[i].style.display = (txtValue.toUpperCase().indexOf(filter) > -1) ? "" : "none";
-              }
-            }
+        } else {
+          dropdown.classList.add("show"); // Show dropdown if input is not empty
+          for (i = 0; i < items.length; i++) {
+            txtValue = items[i].textContent || items[i].innerText;
+            items[i].style.display = (txtValue.toUpperCase().indexOf(filter) > -1) ? "" : "none";
           }
+        }
+      }
 
-          function selectLocation(location) {
-            var input = document.getElementById("locationInput");
-            input.value = location;
-            document.getElementById("dropdownContentLocation").classList.remove("show");
+      function filterTypes() {
+        var input, filter, dropdown, items, i, txtValue;
+        input = document.getElementById("typeInput");
+        filter = input.value.toUpperCase();
+        dropdown = document.getElementById("dropdownContentType");
+        items = dropdown.getElementsByClassName("dropdown-item-type");
+
+        if (filter === "") {
+          dropdown.classList.remove("show"); // Hide dropdown if input is empty
+          for (i = 0; i < items.length; i++) {
+            items[i].style.display = "none";
           }
-
-          function selectType(type) {
-            var input = document.getElementById("typeInput");
-            input.value = type;
-            document.getElementById("dropdownContentType").classList.remove("show");
+        } else {
+          dropdown.classList.add("show"); // Show dropdown if input is not empty
+          for (i = 0; i < items.length; i++) {
+            txtValue = items[i].textContent || items[i].innerText;
+            items[i].style.display = (txtValue.toUpperCase().indexOf(filter) > -1) ? "" : "none";
           }
+        }
+      }
 
-          document.addEventListener('click', function(event) {
-            var locationDropdown = document.querySelector('.custom-dropdown-location');
-            var typeDropdown = document.querySelector('.custom-dropdown-type');
-            var durationDropdown = document.querySelector('.custom-dropdown-duration');
+      function selectLocation(location) {
+        var input = document.getElementById("locationInput");
+        input.value = location;
+        document.getElementById("dropdownContentLocation").classList.remove("show");
+      }
 
-            if (!locationDropdown.contains(event.target) && event.target.id !== 'locationInput') {
-              document.getElementById("dropdownContentLocation").classList.remove("show");
-            }
-            if (!typeDropdown.contains(event.target) && event.target.id !== 'typeInput') {
-              document.getElementById("dropdownContentType").classList.remove("show");
-            }
-            if (!durationDropdown.contains(event.target) && event.target.id !== 'durationInput') {
-              document.getElementById("dropdownContentDuration").classList.remove("show-duration");
-            }
-          });
+      function selectType(type) {
+        var input = document.getElementById("typeInput");
+        input.value = type;
+        document.getElementById("dropdownContentType").classList.remove("show");
+      }
 
-          function filterDurations() {
-            var input, filter, dropdown, items, i, txtValue;
-            input = document.getElementById("durationInput");
-            filter = input.value.toUpperCase();
-            dropdown = document.getElementById("dropdownContentDuration");
-            items = dropdown.getElementsByClassName("dropdown-item-duration");
+      document.addEventListener('click', function(event) {
+        var locationDropdown = document.querySelector('.custom-dropdown-location');
+        var typeDropdown = document.querySelector('.custom-dropdown-type');
+        var durationDropdown = document.querySelector('.custom-dropdown-duration');
 
-            if (filter === "") {
-              dropdown.classList.remove("show-duration"); // Hide dropdown if input is empty
-              for (i = 0; i < items.length; i++) {
-                items[i].style.display = "none";
-              }
-            } else {
-              dropdown.classList.add("show-duration"); // Show dropdown if input is not empty
-              for (i = 0; i < items.length; i++) {
-                txtValue = items[i].textContent || items[i].innerText;
-                items[i].style.display = (txtValue.toUpperCase().indexOf(filter) > -1) ? "" : "none";
-              }
-            }
+        if (!locationDropdown.contains(event.target) && event.target.id !== 'locationInput') {
+          document.getElementById("dropdownContentLocation").classList.remove("show");
+        }
+        if (!typeDropdown.contains(event.target) && event.target.id !== 'typeInput') {
+          document.getElementById("dropdownContentType").classList.remove("show");
+        }
+        if (!durationDropdown.contains(event.target) && event.target.id !== 'durationInput') {
+          document.getElementById("dropdownContentDuration").classList.remove("show-duration");
+        }
+      });
+
+      function filterDurations() {
+        var input, filter, dropdown, items, i, txtValue;
+        input = document.getElementById("durationInput");
+        filter = input.value.toUpperCase();
+        dropdown = document.getElementById("dropdownContentDuration");
+        items = dropdown.getElementsByClassName("dropdown-item-duration");
+
+        if (filter === "") {
+          dropdown.classList.remove("show-duration"); // Hide dropdown if input is empty
+          for (i = 0; i < items.length; i++) {
+            items[i].style.display = "none";
           }
-
-          function selectDuration(duration) {
-            var input = document.getElementById("durationInput");
-            input.value = duration;
-            document.getElementById("dropdownContentDuration").classList.remove("show-duration");
+        } else {
+          dropdown.classList.add("show-duration"); // Show dropdown if input is not empty
+          for (i = 0; i < items.length; i++) {
+            txtValue = items[i].textContent || items[i].innerText;
+            items[i].style.display = (txtValue.toUpperCase().indexOf(filter) > -1) ? "" : "none";
           }
-        </script>
+        }
+      }
 
-        <hr class="hr">
-        <style>
-          .custom-dropdown-duration {
-            position: relative;
-            display: inline-block;
-            width: 200px;
-          }
+      function selectDuration(duration) {
+        var input = document.getElementById("durationInput");
+        input.value = duration;
+        document.getElementById("dropdownContentDuration").classList.remove("show-duration");
+      }
+    </script>
 
-          input:focus {
-            outline: none;
-          }
-
-          .dropbtn-duration {
-            width: 100%;
-            padding: 10px 30px 10px 10px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            background: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10"><path fill="none" stroke="%23333" stroke-width="2" d="M1 1l6 6 6-6"/></svg>') no-repeat right center;
-            background-size: 12px;
-          }
-
-          .dropdown-content-duration {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            width: 100%;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-          }
-
-          .dropdown-content-duration .dropdown-item-duration {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            cursor: pointer;
-          }
-
-          .dropdown-content-duration .dropdown-item-duration:hover {
-            background-color: #f1f1f1;
-          }
-
-          .show-duration {
-            display: block;
-          }
-        </style>
-        <div class="custom-dropdown-duration">
+    <hr class="hr">
+    
+    
+    <div class="custom-dropdown-duration">
           <div id="durationInput" class="dropbtn-duration" onclick="toggleDropdown('dropdownContentDuration')">Choose Duration</div>
           <div id="dropdownContentDuration" class="dropdown-content-duration">
             <div class="dropdown-item-duration" onclick="selectDuration('days')">Days</div>
@@ -353,34 +306,34 @@ if (isset($_GET['City'])) {
         </script>
 
 
-        <button class="btn right block" onclick="performSearch()">Search</button>
-      </div>
-      <button style="margin-left: 2%; cursor:pointer;" class='search-round' onclick="performSearch()">
-        <svg width="64" height="65" viewBox="0 0 64 65" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect y="0.5" width="64" height="64" rx="6" fill="#031B64" />
-          <g clip-path="url(#clip0_3259_17454)">
-            <path d="M42.2929 44.2071C42.6834 44.5976 43.3166 44.5976 43.7071 44.2071C44.0976 43.8166 44.0976 43.1834 43.7071 42.7929L42.2929 44.2071ZM38.1176 30.5588C38.1176 35.0096 34.5096 38.6176 30.0588 38.6176V40.6176C35.6142 40.6176 40.1176 36.1142 40.1176 30.5588H38.1176ZM30.0588 38.6176C25.6081 38.6176 22 35.0096 22 30.5588H20C20 36.1142 24.5035 40.6176 30.0588 40.6176V38.6176ZM22 30.5588C22 26.1081 25.6081 22.5 30.0588 22.5V20.5C24.5035 20.5 20 25.0035 20 30.5588H22ZM30.0588 22.5C34.5096 22.5 38.1176 26.1081 38.1176 30.5588H40.1176C40.1176 25.0035 35.6142 20.5 30.0588 20.5V22.5ZM35.8223 37.7365L42.2929 44.2071L43.7071 42.7929L37.2365 36.3223L35.8223 37.7365Z" fill="#F0F0F0" />
-          </g>
-          <defs>
-            <clipPath id="clip0_3259_17454">
-              <rect width="24" height="24" fill="white" transform="translate(20 20.5)" />
-            </clipPath>
-          </defs>
-        </svg>
-      </button>
+    <button class="btn right block" onclick="performSearch()">Search</button>
+  </div>
+  <button style="margin-left: 2%; cursor:pointer;" class='search-round' onclick="performSearch()">
+    <svg width="64" height="65" viewBox="0 0 64 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect y="0.5" width="64" height="64" rx="6" fill="#031B64" />
+      <g clip-path="url(#clip0_3259_17454)">
+        <path d="M42.2929 44.2071C42.6834 44.5976 43.3166 44.5976 43.7071 44.2071C44.0976 43.8166 44.0976 43.1834 43.7071 42.7929L42.2929 44.2071ZM38.1176 30.5588C38.1176 35.0096 34.5096 38.6176 30.0588 38.6176V40.6176C35.6142 40.6176 40.1176 36.1142 40.1176 30.5588H38.1176ZM30.0588 38.6176C25.6081 38.6176 22 35.0096 22 30.5588H20C20 36.1142 24.5035 40.6176 30.0588 40.6176V38.6176ZM22 30.5588C22 26.1081 25.6081 22.5 30.0588 22.5V20.5C24.5035 20.5 20 25.0035 20 30.5588H22ZM30.0588 22.5C34.5096 22.5 38.1176 26.1081 38.1176 30.5588H40.1176C40.1176 25.0035 35.6142 20.5 30.0588 20.5V22.5ZM35.8223 37.7365L42.2929 44.2071L43.7071 42.7929L37.2365 36.3223L35.8223 37.7365Z" fill="#F0F0F0" />
+      </g>
+      <defs>
+        <clipPath id="clip0_3259_17454">
+          <rect width="24" height="24" fill="white" transform="translate(20 20.5)" />
+        </clipPath>
+      </defs>
+    </svg>
+  </button>
 
-      <script>
-        function performSearch() {
-          // Get the selected values from the dropdowns and input
-          var location = document.getElementById('locationInput').value;
-          var type = document.getElementById('typeInput').value;
-          var duration = document.getElementById('durationInput').value;
+  <script>
+    function performSearch() {
+      // Get the selected values from the dropdowns and input
+      var location = document.getElementById('locationInput').value;
+      var type = document.getElementById('typeInput').value;
+      var duration = document.getElementById('durationInput').value;
 
-          // Redirect to city.php with the search parameters
-          window.location.href = 'find.php?location=' + location + '&type=' + type + '&duration=' + duration;
-        }
-      </script>
-    </div>
+      // Redirect to city.php with the search parameters
+      window.location.href = 'find.php?location=' + location + '&type=' + type + '&duration=' + duration;
+    }
+  </script>
+</div>
 
   </div>
   <div class="heading">
@@ -488,6 +441,8 @@ if (isset($_GET['City'])) {
         },
       },
     });
+
+ 
   </script>
 
 
