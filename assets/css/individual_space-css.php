@@ -1096,7 +1096,7 @@ display:flex;
     position: sticky;
     top: 10%;
     left: 0;
-    z-index: 1000; /* Ensures it stays above other content */
+
     background-color:white;
 }
 }
@@ -1116,7 +1116,7 @@ display:flex;
         left: 0;
         position: -webkit-sticky; 
         position: fixed;
-        z-index: 1000; 
+      
         width: 100%; /* Ensure it remains full width */
     }
 

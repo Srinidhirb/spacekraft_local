@@ -428,17 +428,20 @@ text-align: left;
 }
 
 .nav_right {
-display: none;
+
 position: absolute;
 
 padding: 20px;
 gap: 30px;
 top: 64px;
 right: 0%;
-width: 80%;
+
+max-width:100%;
+width:100%;
 height: 90vh;
 background-color: #ffffff;
 transition: all 3s ease-in-out;
+
 }
 
 .open,
@@ -449,7 +452,7 @@ display: none;
 .nav_flex {
 display: flex;
 flex-direction: column;
-gap: 20px;
+gap: 30px;
 }
 
 .dropdown_display {
@@ -743,7 +746,13 @@ transform: scale(1.06);
 max-width: 150px;
 max-height: 75px;
 }
+.btn span {
+    font-size: 11px;
 
+}
+.btn {
+    padding:9px;
+}
 .logo-container img {
 max-height: 75px;
 }
@@ -753,4 +762,19 @@ font-size: 1.8rem;
 .heading span{
 font-size: 0.8rem;
 }
+}
+#nav_right {
+    position: absolute; /* Ensure nav_right is positioned absolutely */
+    right: -10000px; /* Start off-screen */
+    transition: right 0.5s ease-in-out; /* Animate the left property */
+    /* Add other necessary styling */
+    
+}
+@media (max-width: 980px) {
+  #nav_right {
+    right: -1000px; /* Move nav_right to the right */
+    }
+}
+#open, #close {
+    cursor: pointer;
 }

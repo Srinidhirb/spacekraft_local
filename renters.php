@@ -18,7 +18,38 @@ if (isset($_COOKIE['user_id'])) {
     <link rel="website icon " href="assets\img\Logo Icon 16_16.svg">
     <link rel="stylesheet" href="assets\css\header_footer-css.php">
     <link rel="stylesheet" href="assets\css\renters-css.php">
-    
+    <style>
+        .banner {
+margin: 65px 0 35px;
+position: relative;
+width: 100%;
+height: 83vh;
+/* Full height of the viewport */
+background: url('assets/img/renters1.jpg') no-repeat center/cover;
+
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+color: white;
+}
+.marketing-space {
+position: relative;
+width: 100%;
+max-height: 480px;
+height: 50vh;
+background-image: url('assets/img/renters3.jpg');
+/* Update path to your image */
+background-size: cover;
+background-position: center;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+color: white;
+margin: 0 0 70px 0;
+}
+    </style>
 </head>
 
 <body>

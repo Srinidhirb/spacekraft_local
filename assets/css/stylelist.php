@@ -786,3 +786,18 @@ width:90%;
     display:flex;
     width:100%;
 }
+@media (max-width: 880px) {
+    .file-list {
+        width:90%;
+    }
+
+}
+@media (max-width: 480px) {
+  /* For mobile devices */
+  .nav_right {
+    width:98%!important;
+    padding:20px 0 20px 40px !important;
+    
+
+  }
+}
