@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+    <style>
+        .image-upload {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .image-upload input[type="file"] {
+            display: none;
+        }
+        .image-upload label {
+            display: block;
+            cursor: pointer;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .image-upload p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #666;
+        }
+        .preview {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .preview img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: relative;
+        }
+        .preview .image-container {
+            position: relative;
+            display: inline-block;
+        }
+        .preview .remove-btn {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="image-upload">
+    <label for="upload">
+        <img src="upload_img.jpg" alt="Upload Image">
+        
+        <p>Accepted formats are .jpg, .gif, .png and Maximum size allowed 10 MB</p>
+        
+    </label>
+    <input type="file" id="upload" multiple accept=".jpg,.jpeg,.png,.gif" onchange="checkFiles(this)">
+    <div class="preview" id="preview"></div>
+</div>
+
+<script>
+    let filesArray = [];
+
+    function checkFiles(input) {
+        const preview = document.getElementById('preview');
+        
+        // Append new files to the array
+        for (let i = 0; i < input.files.length; i++) {
+            filesArray.push(input.files[i]);
+        }
+
+        if (filesArray.length < 4) {
+            alert('Please upload at least 4 images.');
+            input.value = '';
+            filesArray = []; // Reset the array
+            preview.innerHTML = ''; // Clear the preview
+        } else {
+            updatePreview();
+        }
+    }
+
+    function updatePreview() {
+        const preview = document.getElementById('preview');
+        preview.innerHTML = '';
+        filesArray.forEach((file, index) => {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const imgContainer = document.createElement('div');
+                imgContainer.classList.add('image-container');
+
+                const img = document.createElement('img');
+                img.src = e.target.result;
+
+                const removeBtn = document.createElement('button');
+                removeBtn.classList.add('remove-btn');
+                removeBtn.innerHTML = '&times;';
+                removeBtn.onclick = function () {
+                    filesArray.splice(index, 1);
+                    updatePreview();
+                };
+
+                imgContainer.appendChild(img);
+                imgContainer.appendChild(removeBtn);
+                preview.appendChild(imgContainer);
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+</script>
+
+</body>
+</html>

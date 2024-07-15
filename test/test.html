@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Swiper Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Demo styles -->
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto 0 auto auto;
+            padding: 20px;
+            height: 50vh;
+        }
+
+        .resources {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .resources h2 {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .resources .view-all {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            float: right;
+        }
+
+        .swiper {
+            width: 100%;
+
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .swiper-slide h3 {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .swiper-slide p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #007bff;
+            top: 10px;
+            width: 40px;
+            height: 40px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .swiper-button-next {
+            right: 10px;
+            background-image: url('right.jpg');
+            /* Replace this with the correct path to your arrow image */
+        }
+
+        .swiper-button-prev {
+            right: 60px;
+            left: unset;
+            background-image: url('right.jpg');
+            /* Replace this with the correct path to your arrow image */
+            transform: rotate(180deg);
+            /* Flip the image for the previous button */
+        }
+
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            display: none;
+            /* Hide the default Swiper arrows */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="resources">
+            <h2>Resources</h2>
+            <button class="view-all">View All</button>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://via.placeholder.com/30" alt="Resource 1">
+                        <h3>Perks Of Short Term Rentals For India B</h3>
+                        <p>09 Apr 2024</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://via.placeholder.com/30" alt="Resource 2">
+                        <h3>The Rise Of Pop-Up Culture In India A</h3>
+                        <p>02 Apr 2024</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://via.placeholder.com/30" alt="Resource 3">
+                        <h3>Pop-Up Shop Strategies And Marketing Tac</h3>
+                        <p>05 Apr 2024</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://via.placeholder.com/30" alt="Resource 4">
+                        <h3>Perks Of Short Term Rentals For India C</h3>
+                        <p>01 Apr 2024</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://via.placeholder.com/30" alt="Resource 1">
+                        <h3>Perks Of Short Term Rentals For India B</h3>
+                        <p>09 Apr 2024</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://via.placeholder.com/30" alt="Resource 2">
+                        <h3>The Rise Of Pop-Up Culture In India A</h3>
+                        <p>02 Apr 2024</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://via.placeholder.com/30" alt="Resource 3">
+                        <h3>Pop-Up Shop Strategies And Marketing Tac</h3>
+                        <p>05 Apr 2024</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://via.placeholder.com/30" alt="Resource 4">
+                        <h3>Perks Of Short Term Rentals For India C</h3>
+                        <p>01 Apr 2024</p>
+                    </div>
+                    <!-- Add more slides as needed -->
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>

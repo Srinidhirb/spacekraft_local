@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trusted Partners</title>
+   <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    .trusted-by {
+        text-align: center;
+        padding: 20px;
+        background-color: #F4F4F4;
+    }
+    .trusted-by span{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+       
+           
+           
+        }
+    .trusted-by h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    
+    .logos {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        gap: 20px;
+        width: 80%;
+        margin: 0 auto;
+    }
+    
+    .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 200px;
+        max-height: 100px;
+        padding: 10px;
+        
+    }
+    
+    .logo-container img {
+        max-height: 100px;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+        transition: transform 0.5s ease;
+    }
+    .logo-container img:hover {
+        transform: scale(1.06);
+    }
+    @media (max-width: 600px) {
+        .logo-container {
+            max-width: 150px;
+            max-height: 75px;
+        }
+        
+        .logo-container img {
+            max-height: 75px;
+        }
+    }
+    
+   </style>
+</head>
+<body>
+    <section class="trusted-by">
+        <span> <img src="trust.png" alt="" width="40px" height="40px"> <h2> Trusted Partners</h2></span>
+        <div class="logos">
+            <div class="logo-container"><img src="herm.png" alt="Company 1 Logo"></div>
+            <div class="logo-container"><img src="gold_leaf.jpeg" alt="Company 2 Logo"></div>
+            <div class="logo-container"><img src="anibee.jpg" alt="Company 3 Logo"></div>
+            <div class="logo-container"><img src="raissa.jpg" alt="Company 4 Logo"></div>
+            
+        </div>
+    </section>
+</body>
+</html>
